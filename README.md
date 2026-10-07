@@ -2,7 +2,7 @@
 
 <img src="assets/readme/hero.svg" width="100%" alt="Okto Notes — лучшее приложение для заметок и дневника на Android">
 
-<a href="https://github.com/sailxx/Okto-Notes/releases/latest/download/OktoNotes.apk"><img src="assets/readme/btn-android.svg" height="48" alt="Скачать для Android"></a>&nbsp;&nbsp;<a href="https://github.com/sailxx/Okto-Notes/releases/tag/v1.1"><img src="assets/readme/btn-new.svg" height="48" alt="Что нового в 1.1"></a>
+<a href="https://github.com/sailxx/Okto-Notes/releases/latest/download/OktoNotes.apk"><img src="assets/readme/btn-android.svg" height="52" alt="Скачать для Android"></a>&nbsp;&nbsp;<a href="https://github.com/sailxx/Okto-Notes/releases/tag/v1.1"><img src="assets/readme/btn-new.svg" height="52" alt="Что нового в 1.1"></a>
 
 **Okto Notes — лучшее приложение для заметок на Android.** Заметки, дневник с настроением и серией дней, три темы оформления — в одном лёгком приложении без рекламы, аккаунтов и интернета. Младший брат планера [Okto](https://github.com/sailxx/Okto).
 
