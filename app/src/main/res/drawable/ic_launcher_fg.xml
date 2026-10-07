@@ -4,10 +4,17 @@
     <!-- Рисунок в сетке 104×104, вписан в видимую зону адаптивной иконки (72dp) -->
     <group android:translateX="18" android:translateY="18"
         android:scaleX="0.6923" android:scaleY="0.6923">
-        <!-- Четыре щупальца -->
+        <!-- Три щупальца -->
         <path android:strokeColor="#FF7A1A" android:strokeWidth="6"
             android:strokeLineCap="round"
-            android:pathData="M38,52q-6,12 -14,14M46,56q-2,14 -8,20M54,56q2,14 8,20M62,52q6,12 14,14"/>
+            android:pathData="M38,52q-6,12 -14,14M46,56q-2,14 -8,20M54,56q2,14 8,20"/>
+        <!-- Карандаш вместо четвёртого щупальца, начало спрятано под головой -->
+        <group android:translateX="58" android:translateY="48" android:rotation="45">
+            <path android:fillColor="#F2F2F2" android:pathData="M3,-4h27v8h-27z"/>
+            <path android:fillColor="#D6D6D6" android:pathData="M3,-1h27v2h-27z"/>
+            <path android:fillColor="#F5D0A9" android:pathData="M30,-4L38,0L30,4z"/>
+            <path android:fillColor="#3A3A3A" android:pathData="M35,-1.5L38,0L35,1.5z"/>
+        </group>
         <!-- Голова и глаза -->
         <path android:fillColor="#FF7A1A"
             android:pathData="M32,38a18,18 0,1 1,36 0a18,18 0,1 1,-36 0z"/>
