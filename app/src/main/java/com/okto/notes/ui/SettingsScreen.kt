@@ -37,6 +37,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.okto.notes.OktoViewModel
+import com.okto.notes.data.Lang
 import com.okto.notes.data.ThemeKind
 import com.okto.notes.data.ThemeSettings
 import com.okto.notes.data.UiStyle
@@ -66,9 +67,9 @@ fun SettingsScreen(vm: OktoViewModel) {
                 .padding(horizontal = 16.dp, vertical = 10.dp),
             verticalAlignment = Alignment.CenterVertically,
         ) {
-            IconBtn(Icons.AutoMirrored.Filled.ArrowBack, "Назад", { vm.showSettings = false })
+            IconBtn(Icons.AutoMirrored.Filled.ArrowBack, S.back, { vm.showSettings = false })
             Spacer(Modifier.width(14.dp))
-            Text(t.cap("Настройки"), style = if (t.okto) t.keyLabel.copy(fontSize = 14.sp, letterSpacing = 2.sp) else t.h1.copy(fontSize = 26.sp))
+            Text(t.cap(S.settings), style = if (t.okto) t.keyLabel.copy(fontSize = 14.sp, letterSpacing = 2.sp) else t.h1.copy(fontSize = 26.sp))
         }
 
         Column(
@@ -78,29 +79,36 @@ fun SettingsScreen(vm: OktoViewModel) {
                 .padding(horizontal = 16.dp),
             verticalArrangement = Arrangement.spacedBy(12.dp),
         ) {
-            SectionTitle("Тема", Modifier.padding(start = 4.dp, top = 6.dp))
+            SectionTitle(S.theme, Modifier.padding(start = 4.dp, top = 6.dp))
 
             ThemeOption(
-                title = "Цветная", subtitle = "Основная тема: мягкие пастельные карточки",
+                title = S.themeColor, subtitle = S.themeColorSub,
                 preview = buildTheme(ThemeSettings(kind = ThemeKind.COLOR)),
                 selected = s.kind == ThemeKind.COLOR,
             ) { vm.updateSettings { it.copy(kind = ThemeKind.COLOR) } }
             ThemeOption(
-                title = "Okto", subtitle = "Графит, табло с цифрами и клавиши",
+                title = "Okto", subtitle = S.themeOktoSub,
                 preview = buildTheme(ThemeSettings(kind = ThemeKind.OKTO)),
                 selected = s.kind == ThemeKind.OKTO,
             ) { vm.updateSettings { it.copy(kind = ThemeKind.OKTO) } }
             ThemeOption(
-                title = "Своя", subtitle = "Собери тему из своей гаммы",
+                title = S.themeCustom, subtitle = S.themeCustomSub,
                 preview = buildTheme(s.copy(kind = ThemeKind.CUSTOM)),
                 selected = s.kind == ThemeKind.CUSTOM,
             ) { vm.updateSettings { it.copy(kind = ThemeKind.CUSTOM) } }
 
             if (s.kind == ThemeKind.CUSTOM) CustomThemeEditor(vm, s)
 
-            SectionTitle("О приложении", Modifier.padding(start = 4.dp, top = 12.dp))
+            SectionTitle(S.language, Modifier.padding(start = 4.dp, top = 12.dp))
+            Row(Modifier.padding(horizontal = 4.dp), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                // Названия языков — всегда на самих языках, чтобы свой находился в любом интерфейсе.
+                Chip("Русский", s.lang == Lang.RU) { vm.updateSettings { it.copy(lang = Lang.RU) } }
+                Chip("English", s.lang == Lang.EN) { vm.updateSettings { it.copy(lang = Lang.EN) } }
+            }
+
+            SectionTitle(S.about, Modifier.padding(start = 4.dp, top = 12.dp))
             Text(
-                "Okto Notes 1.1 · заметки и дневник хранятся только на этом устройстве.",
+                S.aboutText("1.2"),
                 style = t.bodyText, color = c.muted, modifier = Modifier.padding(horizontal = 4.dp),
             )
             Spacer(Modifier.height(24.dp))
@@ -176,19 +184,19 @@ private fun CustomThemeEditor(vm: OktoViewModel, s: ThemeSettings) {
             .padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(10.dp),
     ) {
-        Label("Оформление")
+        Label(S.layout)
         Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-            Chip("Цветное", s.style == UiStyle.TONAL) { vm.updateSettings { it.copy(style = UiStyle.TONAL) } }
+            Chip(S.layoutColor, s.style == UiStyle.TONAL) { vm.updateSettings { it.copy(style = UiStyle.TONAL) } }
             Chip("Okto", s.style == UiStyle.OKTO) { vm.updateSettings { it.copy(style = UiStyle.OKTO) } }
         }
         Spacer(Modifier.height(2.dp))
-        Label("Режим")
+        Label(S.mode)
         Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-            Chip("Светлая", !s.dark) { vm.updateSettings { it.copy(dark = false) } }
-            Chip("Тёмная", s.dark) { vm.updateSettings { it.copy(dark = true) } }
+            Chip(S.light, !s.dark) { vm.updateSettings { it.copy(dark = false) } }
+            Chip(S.dark, s.dark) { vm.updateSettings { it.copy(dark = true) } }
         }
         Spacer(Modifier.height(2.dp))
-        Label("Акцентный цвет")
+        Label(S.accent)
         for (row in Swatches.chunked(6)) {
             Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
                 row.forEach { (h, sat) ->
@@ -208,7 +216,7 @@ private fun CustomThemeEditor(vm: OktoViewModel, s: ThemeSettings) {
             }
         }
         Spacer(Modifier.height(2.dp))
-        Label("Оттенок · ${s.hue.toInt()}°")
+        Label(S.hue(s.hue.toInt()))
         Box(
             Modifier
                 .fillMaxWidth()
@@ -226,7 +234,7 @@ private fun CustomThemeEditor(vm: OktoViewModel, s: ThemeSettings) {
                 inactiveTrackColor = c.surfaceHi,
             ),
         )
-        Label("Насыщенность · ${(s.sat * 100).toInt()}%")
+        Label(S.saturation((s.sat * 100).toInt()))
         Slider(
             value = s.sat,
             onValueChange = { v -> vm.updateSettings { it.copy(sat = v) } },

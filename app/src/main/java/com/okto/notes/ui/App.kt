@@ -91,7 +91,7 @@ private fun HomeScreen(vm: OktoViewModel) {
         NavBar(vm.tab, { vm.tab = it }, onAdd, Modifier.align(Alignment.BottomCenter))
         if (!t.okto) {
             ExtendedFab(
-                if (vm.tab == Tab.NOTES) "Новая" else "Запись", onAdd,
+                if (vm.tab == Tab.NOTES) S.newNote else S.newEntry, onAdd,
                 Modifier
                     .align(Alignment.BottomEnd)
                     .navigationBarsPadding()

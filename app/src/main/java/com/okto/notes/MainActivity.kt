@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.okto.notes.ui.App
 import com.okto.notes.ui.OktoTheme
 import com.okto.notes.ui.buildTheme
+import com.okto.notes.ui.stringsFor
 
 class MainActivity : ComponentActivity() {
     private lateinit var vm: OktoViewModel
@@ -31,7 +32,7 @@ class MainActivity : ComponentActivity() {
                 }
                 enableEdgeToEdge(statusBarStyle = style, navigationBarStyle = style)
             }
-            OktoTheme(theme) { App(vm) }
+            OktoTheme(theme, stringsFor(vm.settings.lang)) { App(vm) }
         }
     }
 

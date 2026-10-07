@@ -31,6 +31,7 @@ import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.ReadOnlyComposable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -264,7 +265,7 @@ fun SearchField(value: String, onValueChange: (String) -> Unit, placeholder: Str
         }
         if (value.isNotEmpty()) {
             Icon(
-                Icons.Filled.Close, "Очистить", tint = c.muted,
+                Icons.Filled.Close, S.clear, tint = c.muted,
                 modifier = Modifier
                     .size(20.dp)
                     .clip(CircleShape)
@@ -300,7 +301,7 @@ fun OktoHeader(onSettings: () -> Unit) {
                 .clip(CircleShape)
                 .clickable(onClick = onSettings),
             contentAlignment = Alignment.Center,
-        ) { Icon(Icons.Filled.Settings, "Настройки", tint = c.onBg, modifier = Modifier.size(20.dp)) }
+        ) { Icon(Icons.Filled.Settings, S.settings, tint = c.onBg, modifier = Modifier.size(20.dp)) }
     }
 }
 
@@ -319,12 +320,12 @@ fun NavBar(tab: Tab, onTab: (Tab) -> Unit, onAdd: () -> Unit, modifier: Modifier
                 .padding(start = 10.dp, end = 10.dp, top = 10.dp, bottom = 12.dp),
             horizontalArrangement = Arrangement.spacedBy(8.dp),
         ) {
-            OktoNavKey("Заметки", Icons.AutoMirrored.Filled.List, tab == Tab.NOTES, Modifier.weight(1f)) { onTab(Tab.NOTES) }
-            OktoNavKey("Дневник", Icons.Filled.DateRange, tab == Tab.DIARY, Modifier.weight(1f)) { onTab(Tab.DIARY) }
+            OktoNavKey(S.notes, Icons.AutoMirrored.Filled.List, tab == Tab.NOTES, Modifier.weight(1f)) { onTab(Tab.NOTES) }
+            OktoNavKey(S.diary, Icons.Filled.DateRange, tab == Tab.DIARY, Modifier.weight(1f)) { onTab(Tab.DIARY) }
             KeySurface(onAdd, Modifier.weight(2f).height(62.dp), bg = c.primary) {
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
                     Icon(Icons.Filled.Add, null, tint = c.onPrimary, modifier = Modifier.size(22.dp))
-                    Text(if (tab == Tab.NOTES) "НОВАЯ" else "ЗАПИСЬ", style = t.keyLabel.copy(fontSize = 10.sp, fontWeight = FontWeight.Bold), color = c.onPrimary)
+                    Text((if (tab == Tab.NOTES) S.newNote else S.newEntry).uppercase(), style = t.keyLabel.copy(fontSize = 10.sp, fontWeight = FontWeight.Bold), color = c.onPrimary)
                 }
             }
         }
@@ -338,8 +339,8 @@ fun NavBar(tab: Tab, onTab: (Tab) -> Unit, onAdd: () -> Unit, modifier: Modifier
             horizontalArrangement = Arrangement.SpaceAround,
             verticalAlignment = Alignment.CenterVertically,
         ) {
-            TonalNavItem("Заметки", Icons.AutoMirrored.Filled.List, tab == Tab.NOTES) { onTab(Tab.NOTES) }
-            TonalNavItem("Дневник", Icons.Filled.DateRange, tab == Tab.DIARY) { onTab(Tab.DIARY) }
+            TonalNavItem(S.notes, Icons.AutoMirrored.Filled.List, tab == Tab.NOTES) { onTab(Tab.NOTES) }
+            TonalNavItem(S.diary, Icons.Filled.DateRange, tab == Tab.DIARY) { onTab(Tab.DIARY) }
         }
     }
 }
@@ -418,10 +419,10 @@ fun UndoBar(onUndo: () -> Unit, modifier: Modifier = Modifier) {
                 .padding(start = 16.dp, end = 6.dp, top = 6.dp, bottom = 6.dp),
             verticalAlignment = Alignment.CenterVertically,
         ) {
-            Text("ЗАПИСЬ УДАЛЕНА", style = t.keyLabel, color = c.wellInk)
+            Text(S.entryDeleted.uppercase(), style = t.keyLabel, color = c.wellInk)
             Spacer(Modifier.width(14.dp))
             KeySurface(onUndo, Modifier.height(36.dp), bg = c.primary) {
-                Text("ВЕРНУТЬ", style = t.keyLabel, color = c.onPrimary, modifier = Modifier.padding(horizontal = 12.dp))
+                Text(S.undo.uppercase(), style = t.keyLabel, color = c.onPrimary, modifier = Modifier.padding(horizontal = 12.dp))
             }
         }
     } else {
@@ -432,14 +433,14 @@ fun UndoBar(onUndo: () -> Unit, modifier: Modifier = Modifier) {
                 .padding(start = 18.dp, end = 4.dp, top = 4.dp, bottom = 4.dp),
             verticalAlignment = Alignment.CenterVertically,
         ) {
-            Text("Запись удалена", color = c.bg, fontFamily = Nunito, fontWeight = FontWeight.Bold, fontSize = 14.sp)
+            Text(S.entryDeleted, color = c.bg, fontFamily = Nunito, fontWeight = FontWeight.Bold, fontSize = 14.sp)
             Spacer(Modifier.width(8.dp))
             Box(
                 Modifier
                     .clip(RoundedCornerShape(12.dp))
                     .clickable(onClick = onUndo)
                     .padding(horizontal = 12.dp, vertical = 10.dp),
-            ) { Text("Вернуть", color = c.container, fontFamily = Nunito, fontWeight = FontWeight.ExtraBold, fontSize = 14.sp) }
+            ) { Text(S.undo, color = c.container, fontFamily = Nunito, fontWeight = FontWeight.ExtraBold, fontSize = 14.sp) }
         }
     }
 }
@@ -455,7 +456,7 @@ fun EmptyState(emoji: String, title: String, text: String, modifier: Modifier = 
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         if (t.okto) {
-            Text("[ ПУСТО ]", fontFamily = JbMono, fontSize = 13.sp, letterSpacing = 2.sp, color = c.muted)
+            Text(S.emptyMark, fontFamily = JbMono, fontSize = 13.sp, letterSpacing = 2.sp, color = c.muted)
         } else {
             Box(
                 Modifier
@@ -500,4 +501,5 @@ fun ScreenTitle(title: String, subtitle: String, modifier: Modifier = Modifier, 
     }
 }
 
+@Composable @ReadOnlyComposable
 fun todaySubtitle(now: LocalDateTime = LocalDateTime.now()) = "${now.toLocalDate().weekday()}, ${now.toLocalDate().dayMonth()}"

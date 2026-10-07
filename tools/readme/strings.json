@@ -6,7 +6,7 @@
       "sub": ["Пиши мысли, веди дневник и отмечай настроение —", "быстро, офлайн и без рекламы."],
       "cards": [["Мгновенно", "Автосохранение"], ["Офлайн", "Без аккаунтов"], ["Три темы", "И своя палитра"], ["Бесплатно", "Без рекламы"]]
     },
-    "buttons": { "android": "Скачать для Android", "whatsNew": "Что нового в 1.1" },
+    "buttons": { "android": "Скачать для Android", "whatsNew": "Что нового в 1.2" },
     "features": {
       "alt": "Возможности: заметки, дневник, редактор, приватность", "chip": "Возможности", "title": "Всё для записей — *и ничего лишнего*",
       "items": [
@@ -33,7 +33,7 @@
       "sub": ["Write down thoughts, keep a journal and track your mood —", "fast, offline and ad-free."],
       "cards": [["Instant", "Autosave"], ["Offline", "No accounts"], ["Three themes", "Plus your own palette"], ["Free", "No ads"]]
     },
-    "buttons": { "android": "Download for Android", "whatsNew": "What’s new in 1.1" },
+    "buttons": { "android": "Download for Android", "whatsNew": "What’s new in 1.2" },
     "features": {
       "alt": "Features: notes, journal, editor, privacy", "chip": "Features", "title": "Everything for writing — *and nothing extra*",
       "items": [
@@ -60,7 +60,7 @@
       "sub": ["Apunta ideas, lleva un diario y registra tu ánimo:", "rápido, sin conexión y sin anuncios."],
       "cards": [["Al instante", "Guardado automático"], ["Sin conexión", "Sin cuentas"], ["Tres temas", "Y tu propia paleta"], ["Gratis", "Sin anuncios"]]
     },
-    "buttons": { "android": "Descargar para Android", "whatsNew": "Novedades de la 1.1" },
+    "buttons": { "android": "Descargar para Android", "whatsNew": "Novedades de la 1.2" },
     "features": {
       "alt": "Funciones: notas, diario, editor, privacidad", "chip": "Funciones", "title": "Todo para escribir, *nada que sobre*",
       "items": [
@@ -87,7 +87,7 @@
       "sub": ["Anote ideias, mantenha um diário e marque o humor —", "rápido, offline e sem anúncios."],
       "cards": [["Na hora", "Salvamento automático"], ["Offline", "Sem contas"], ["Três temas", "E sua própria paleta"], ["Grátis", "Sem anúncios"]]
     },
-    "buttons": { "android": "Baixar para Android", "whatsNew": "Novidades da 1.1" },
+    "buttons": { "android": "Baixar para Android", "whatsNew": "Novidades da 1.2" },
     "features": {
       "alt": "Recursos: notas, diário, editor, privacidade", "chip": "Recursos", "title": "Tudo para escrever — *nada sobrando*",
       "items": [
@@ -114,7 +114,7 @@
       "sub": ["Gedanken notieren, Tagebuch führen, Stimmung festhalten —", "schnell, offline und ohne Werbung."],
       "cards": [["Sofort", "Automatisch gespeichert"], ["Offline", "Ohne Konto"], ["Drei Designs", "Plus eigene Palette"], ["Kostenlos", "Ohne Werbung"]]
     },
-    "buttons": { "android": "Für Android laden", "whatsNew": "Neu in 1.1" },
+    "buttons": { "android": "Für Android laden", "whatsNew": "Neu in 1.2" },
     "features": {
       "alt": "Funktionen: Notizen, Tagebuch, Editor, Datenschutz", "chip": "Funktionen", "title": "Alles zum Schreiben — *nichts zu viel*",
       "items": [
@@ -141,7 +141,7 @@
       "sub": ["Note tes idées, tiens ton journal et suis ton humeur —", "rapide, hors ligne et sans pub."],
       "cards": [["Instantané", "Enregistrement auto"], ["Hors ligne", "Sans compte"], ["Trois thèmes", "Et ta propre palette"], ["Gratuit", "Sans pub"]]
     },
-    "buttons": { "android": "Télécharger pour Android", "whatsNew": "Nouveautés de la 1.1" },
+    "buttons": { "android": "Télécharger pour Android", "whatsNew": "Nouveautés de la 1.2" },
     "features": {
       "alt": "Fonctionnalités : notes, journal, éditeur, confidentialité", "chip": "Fonctionnalités", "title": "Tout pour écrire — *rien de superflu*",
       "items": [
@@ -168,7 +168,7 @@
       "sub": ["Scrivi pensieri, tieni un diario e segna l’umore —", "veloce, offline e senza pubblicità."],
       "cards": [["Istantanea", "Salvataggio automatico"], ["Offline", "Senza account"], ["Tre temi", "E la tua palette"], ["Gratis", "Senza pubblicità"]]
     },
-    "buttons": { "android": "Scarica per Android", "whatsNew": "Novità della 1.1" },
+    "buttons": { "android": "Scarica per Android", "whatsNew": "Novità della 1.2" },
     "features": {
       "alt": "Funzioni: note, diario, editor, privacy", "chip": "Funzioni", "title": "Tutto per scrivere — *niente di superfluo*",
       "items": [
@@ -195,7 +195,7 @@
       "sub": ["Düşüncelerini yaz, günlük tut ve ruh halini işaretle —", "hızlı, çevrimdışı ve reklamsız."],
       "cards": [["Anında", "Otomatik kayıt"], ["Çevrimdışı", "Hesap yok"], ["Üç tema", "Ve kendi paletin"], ["Ücretsiz", "Reklam yok"]]
     },
-    "buttons": { "android": "Android için indir", "whatsNew": "1.1'deki yenilikler" },
+    "buttons": { "android": "Android için indir", "whatsNew": "1.2'deki yenilikler" },
     "features": {
       "alt": "Özellikler: notlar, günlük, düzenleyici, gizlilik", "chip": "Özellikler", "title": "Yazmak için her şey — *fazlası yok*",
       "items": [
@@ -222,7 +222,7 @@
       "sub": ["Записуй думки, веди щоденник і відзначай настрій —", "швидко, офлайн і без реклами."],
       "cards": [["Миттєво", "Автозбереження"], ["Офлайн", "Без акаунтів"], ["Три теми", "І своя палітра"], ["Безкоштовно", "Без реклами"]]
     },
-    "buttons": { "android": "Завантажити для Android", "whatsNew": "Що нового в 1.1" },
+    "buttons": { "android": "Завантажити для Android", "whatsNew": "Що нового в 1.2" },
     "features": {
       "alt": "Можливості: нотатки, щоденник, редактор, приватність", "chip": "Можливості", "title": "Усе для записів — *і нічого зайвого*",
       "items": [
@@ -249,7 +249,7 @@
       "sub": ["Zapisuj myśli, prowadź dziennik i zaznaczaj nastrój —", "szybko, offline i bez reklam."],
       "cards": [["Od razu", "Autozapis"], ["Offline", "Bez kont"], ["Trzy motywy", "I własna paleta"], ["Za darmo", "Bez reklam"]]
     },
-    "buttons": { "android": "Pobierz na Androida", "whatsNew": "Co nowego w 1.1" },
+    "buttons": { "android": "Pobierz na Androida", "whatsNew": "Co nowego w 1.2" },
     "features": {
       "alt": "Funkcje: notatki, dziennik, edytor, prywatność", "chip": "Funkcje", "title": "Wszystko do pisania — *nic zbędnego*",
       "items": [

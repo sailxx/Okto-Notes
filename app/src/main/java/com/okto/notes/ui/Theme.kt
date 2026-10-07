@@ -245,14 +245,14 @@ fun buildTheme(s: ThemeSettings): AppTheme = when (s.kind) {
 }
 
 @Composable
-fun OktoTheme(theme: AppTheme, content: @Composable () -> Unit) {
+fun OktoTheme(theme: AppTheme, strings: Strings, content: @Composable () -> Unit) {
     val c = theme.c
     val scheme = if (c.dark) {
         darkColorScheme(primary = c.primary, onPrimary = c.onPrimary, background = c.bg, onBackground = c.onBg, surface = c.surface, onSurface = c.onBg, surfaceVariant = c.surfaceHi, outline = c.outline)
     } else {
         lightColorScheme(primary = c.primary, onPrimary = c.onPrimary, background = c.bg, onBackground = c.onBg, surface = c.surface, onSurface = c.onBg, surfaceVariant = c.surfaceHi, outline = c.outline)
     }
-    CompositionLocalProvider(LocalAppTheme provides theme) {
+    CompositionLocalProvider(LocalAppTheme provides theme, LocalStrings provides strings) {
         MaterialTheme(colorScheme = scheme) {
             ProvideTextStyle(TextStyle(fontFamily = theme.font, color = c.onBg), content)
         }
@@ -261,62 +261,53 @@ fun OktoTheme(theme: AppTheme, content: @Composable () -> Unit) {
 
 // ---------- Даты ----------
 
-private val ru = Locale("ru")
-private val dayMonth = DateTimeFormatter.ofPattern("d MMMM", ru)
-private val dayMonthShort = DateTimeFormatter.ofPattern("d MMM", ru)
-private val weekdayFull = DateTimeFormatter.ofPattern("EEEE", ru)
-private val weekdayShort = DateTimeFormatter.ofPattern("EE", ru)
-private val monthShort = DateTimeFormatter.ofPattern("MMM", ru)
-private val time = DateTimeFormatter.ofPattern("HH:mm", ru)
-private val ddMM = DateTimeFormatter.ofPattern("dd.MM", ru)
+private val formatters = HashMap<Pair<String, Locale>, DateTimeFormatter>()
+private val time = DateTimeFormatter.ofPattern("HH:mm")
 
-fun LocalDate.dayMonth(): String = format(dayMonth)
-fun LocalDate.weekday(): String = format(weekdayFull).replaceFirstChar { it.uppercase() }
-fun LocalDate.weekdayShort(): String = format(weekdayShort).replaceFirstChar { it.uppercase() }
-fun LocalDate.monthShort(): String = format(monthShort).trimEnd('.')
-fun LocalDate.ddMM(): String = format(ddMM)
+/** Форматтер для шаблона на языке интерфейса (кэшируется). */
+private fun fmt(pattern: String, locale: Locale): DateTimeFormatter =
+    formatters.getOrPut(pattern to locale) { DateTimeFormatter.ofPattern(pattern, locale) }
+
+@Composable @ReadOnlyComposable
+fun LocalDate.dayMonth(): String = format(fmt(S.dayMonthPattern, S.locale))
+@Composable @ReadOnlyComposable
+fun LocalDate.weekday(): String = format(fmt("EEEE", S.locale)).replaceFirstChar { it.uppercase() }
+@Composable @ReadOnlyComposable
+fun LocalDate.weekdayShort(): String = format(fmt("EE", S.locale)).replaceFirstChar { it.uppercase() }
+@Composable @ReadOnlyComposable
+fun LocalDate.monthShort(): String = format(fmt("MMM", S.locale)).trimEnd('.')
+@Composable @ReadOnlyComposable
+fun LocalDate.ddMM(): String = format(fmt(S.ddMMPattern, S.locale))
 fun LocalDateTime.hhmm(): String = format(time)
 
+@Composable @ReadOnlyComposable
 fun formatStamp(millis: Long): String {
+    val s = S
     val dt = Instant.ofEpochMilli(millis).atZone(ZoneId.systemDefault())
     val d = dt.toLocalDate()
     val today = LocalDate.now()
     return when (d) {
-        today -> "Сегодня, ${dt.format(time)}"
-        today.minusDays(1) -> "Вчера, ${dt.format(time)}"
-        else -> if (d.year == today.year) d.format(dayMonthShort) else d.format(DateTimeFormatter.ofPattern("d MMM yyyy", ru))
+        today -> "${s.today}, ${dt.format(time)}"
+        today.minusDays(1) -> "${s.yesterday}, ${dt.format(time)}"
+        else -> d.format(fmt(if (d.year == today.year) s.dayMonthShortPattern else s.fullDatePattern, s.locale))
     }
 }
 
 /** Короткая метка времени для строк Okto: «14:32», «ВЧЕРА», «05.10». */
+@Composable @ReadOnlyComposable
 fun shortStamp(millis: Long): String {
     val dt = Instant.ofEpochMilli(millis).atZone(ZoneId.systemDefault())
     val d = dt.toLocalDate()
     val today = LocalDate.now()
     return when (d) {
         today -> dt.format(time)
-        today.minusDays(1) -> "ВЧЕРА"
-        else -> d.format(ddMM)
+        today.minusDays(1) -> S.yesterday.uppercase()
+        else -> d.ddMM()
     }
 }
 
-fun greeting(now: LocalDateTime = LocalDateTime.now()) = when (now.hour) {
-    in 5..11 -> "Доброе утро"
-    in 12..16 -> "Добрый день"
-    in 17..22 -> "Добрый вечер"
-    else -> "Доброй ночи"
-}
-
-fun plural(n: Int, one: String, few: String, many: String): String {
-    val m10 = n % 10
-    val m100 = n % 100
-    val w = when {
-        m10 == 1 && m100 != 11 -> one
-        m10 in 2..4 && m100 !in 12..14 -> few
-        else -> many
-    }
-    return "$n $w"
-}
+@Composable @ReadOnlyComposable
+fun greeting(now: LocalDateTime = LocalDateTime.now()) = S.greeting(now.hour)
 
 /** Текущее время, обновляется раз в 20 секунд — для часов в шапке Okto. */
 @Composable

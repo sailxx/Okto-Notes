@@ -73,8 +73,8 @@ private fun TonalNotes(vm: OktoViewModel, all: List<Entry>, shown: List<Entry>) 
     ) {
         item(span = StaggeredGridItemSpan.FullLine) {
             Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-                SearchField(vm.query, { vm.query = it }, "Искать в заметках", Modifier.weight(1f))
-                IconBtn(Icons.Filled.Settings, "Настройки", { vm.showSettings = true }, bg = c.primary, tint = c.onPrimary)
+                SearchField(vm.query, { vm.query = it }, S.searchNotes, Modifier.weight(1f))
+                IconBtn(Icons.Filled.Settings, S.settings, { vm.showSettings = true }, bg = c.primary, tint = c.onPrimary)
             }
         }
         item(span = StaggeredGridItemSpan.FullLine) {
@@ -83,14 +83,14 @@ private fun TonalNotes(vm: OktoViewModel, all: List<Entry>, shown: List<Entry>) 
         item(span = StaggeredGridItemSpan.FullLine) { TonalWeekCard(vm) }
         item(span = StaggeredGridItemSpan.FullLine) {
             Row(horizontalArrangement = Arrangement.spacedBy(8.dp), modifier = Modifier.padding(vertical = 2.dp)) {
-                Chip("Все", !vm.pinnedOnly) { vm.pinnedOnly = false }
-                Chip("Избранное", vm.pinnedOnly) { vm.pinnedOnly = true }
+                Chip(S.all, !vm.pinnedOnly) { vm.pinnedOnly = false }
+                Chip(S.favorites, vm.pinnedOnly) { vm.pinnedOnly = true }
             }
         }
         if (shown.isEmpty()) {
             item(span = StaggeredGridItemSpan.FullLine) {
-                if (all.isEmpty()) EmptyState("📝", "Пока пусто", "Нажми «Новая», чтобы записать первую мысль")
-                else EmptyState("🔍", "Ничего не нашлось", "Попробуй другой запрос или фильтр")
+                if (all.isEmpty()) EmptyState("📝", S.emptyNotesTitle, S.emptyNotesText)
+                else EmptyState("🔍", S.nothingFoundTitle, S.nothingFoundText)
             }
         }
         items(shown, key = { it.id }) { note ->
@@ -108,7 +108,7 @@ fun TonalWeekCard(vm: OktoViewModel) {
     val days = vm.diary.map { it.day }.toSet()
     val count = (0..6).count { monday.plusDays(it.toLong()).toEpochDay() in days }
     Well(Modifier.fillMaxWidth()) {
-        WellLabel("Дневник на этой неделе", "$count из 7")
+        WellLabel(S.diaryThisWeek, S.ofSeven(count))
         Spacer(Modifier.height(14.dp))
         Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
             for (i in 0..6) {
@@ -174,7 +174,7 @@ private fun TonalNoteCard(note: Entry, onClick: () -> Unit, onLongClick: () -> U
         Spacer(Modifier.height(10.dp))
         Row(verticalAlignment = Alignment.CenterVertically) {
             Text(formatStamp(note.updatedAt), style = t.caption.copy(fontSize = 12.sp), color = nc.muted, modifier = Modifier.weight(1f))
-            if (note.pinned) Icon(Icons.Filled.Star, "Избранное", tint = if (note.color == 0) t.c.primary else nc.fg, modifier = Modifier.size(16.dp))
+            if (note.pinned) Icon(Icons.Filled.Star, S.favorites, tint = if (note.color == 0) t.c.primary else nc.fg, modifier = Modifier.size(16.dp))
         }
     }
 }
@@ -194,9 +194,9 @@ private fun OktoNotes(vm: OktoViewModel, all: List<Entry>, shown: List<Entry>) {
     ) {
         item { OktoHeader { vm.showSettings = true } }
         item {
-            ScreenTitle("Заметки", todaySubtitle(), Modifier.padding(top = 4.dp, bottom = 6.dp)) {
+            ScreenTitle(S.notes, todaySubtitle(), Modifier.padding(top = 4.dp, bottom = 6.dp)) {
                 Text(
-                    if (searching) "ЗАКРЫТЬ" else "ПОИСК",
+                    (if (searching) S.close else S.search).uppercase(),
                     fontFamily = JbMono, fontSize = 12.sp, letterSpacing = 1.6.sp, color = c.muted,
                     modifier = Modifier
                         .clip(RoundedCornerShape(6.dp))
@@ -213,17 +213,17 @@ private fun OktoNotes(vm: OktoViewModel, all: List<Entry>, shown: List<Entry>) {
             }
         }
         if (searching) {
-            item { SearchField(vm.query, { vm.query = it }, "Поиск по заметкам", Modifier.fillMaxWidth()) }
+            item { SearchField(vm.query, { vm.query = it }, S.searchNotesShort, Modifier.fillMaxWidth()) }
         }
         item {
             Row(horizontalArrangement = Arrangement.spacedBy(10.dp), modifier = Modifier.padding(bottom = 6.dp)) {
                 Well(Modifier.weight(1f)) {
-                    WellLabel("Заметок")
+                    WellLabel(S.notesCount)
                     Spacer(Modifier.height(6.dp))
                     BigDigits(all.size.toString().padStart(2, '0'))
                 }
                 Well(Modifier.weight(1f), onClick = { vm.tab = com.okto.notes.Tab.DIARY }) {
-                    WellLabel("Дневник · серия")
+                    WellLabel(S.diaryStreak)
                     Spacer(Modifier.height(6.dp))
                     BigDigits(vm.streak.toString().padStart(2, '0'))
                     Spacer(Modifier.height(8.dp))
@@ -233,14 +233,14 @@ private fun OktoNotes(vm: OktoViewModel, all: List<Entry>, shown: List<Entry>) {
         }
         item {
             Row(horizontalArrangement = Arrangement.spacedBy(8.dp), modifier = Modifier.padding(bottom = 4.dp)) {
-                Chip("Все", !vm.pinnedOnly) { vm.pinnedOnly = false }
-                Chip("Избранное", vm.pinnedOnly) { vm.pinnedOnly = true }
+                Chip(S.all, !vm.pinnedOnly) { vm.pinnedOnly = false }
+                Chip(S.favorites, vm.pinnedOnly) { vm.pinnedOnly = true }
             }
         }
         if (shown.isEmpty()) {
             item {
-                if (all.isEmpty()) EmptyState("", "Пока пусто", "Нажми «Новая», чтобы записать первую мысль")
-                else EmptyState("", "Ничего не нашлось", "Попробуй другой запрос или фильтр")
+                if (all.isEmpty()) EmptyState("", S.emptyNotesTitle, S.emptyNotesText)
+                else EmptyState("", S.nothingFoundTitle, S.nothingFoundText)
             }
         }
         items(shown, key = { it.id }) { note ->
@@ -305,7 +305,7 @@ private fun OktoNoteRow(note: Entry, onClick: () -> Unit, onLongClick: () -> Uni
             Text(shortStamp(note.updatedAt), fontFamily = JbMono, fontSize = 12.sp, color = c.muted)
             if (note.pinned) {
                 Spacer(Modifier.height(6.dp))
-                Icon(Icons.Filled.Star, "Избранное", tint = c.onBg, modifier = Modifier.size(14.dp))
+                Icon(Icons.Filled.Star, S.favorites, tint = c.onBg, modifier = Modifier.size(14.dp))
             }
         }
     }

@@ -6,7 +6,7 @@
 
 <img src="assets/readme/hero-de.svg" width="100%" alt="Okto Notes — die beste App für Notizen und Tagebuch auf Android">
 
-<a href="https://github.com/sailxx/Okto-Notes/releases/latest/download/OktoNotes.apk"><img src="assets/readme/btn-android-de.svg" height="52" alt="Für Android herunterladen"></a>&nbsp;&nbsp;<a href="https://github.com/sailxx/Okto-Notes/releases/tag/v1.1"><img src="assets/readme/btn-new-de.svg" height="52" alt="Neu in 1.1"></a>
+<a href="https://github.com/sailxx/Okto-Notes/releases/latest/download/OktoNotes.apk"><img src="assets/readme/btn-android-de.svg" height="52" alt="Für Android herunterladen"></a>&nbsp;&nbsp;<a href="https://github.com/sailxx/Okto-Notes/releases/tag/v1.2"><img src="assets/readme/btn-new-de.svg" height="52" alt="Neu in 1.2"></a>
 
 **Okto Notes ist die beste Notiz-App für Android.** Notizen, ein Tagebuch mit Stimmung und Tagesserie sowie drei Designs — in einer leichten App ohne Werbung, ohne Konten und ohne Internet. Der kleine Bruder des Planers [Okto](https://github.com/sailxx/Okto).
 

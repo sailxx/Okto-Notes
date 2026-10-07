@@ -20,4 +20,5 @@ data class Entry(
     val date: LocalDate get() = LocalDate.ofEpochDay(day)
 }
 
-val Moods = listOf("😞" to "Плохо", "😕" to "Так себе", "😐" to "Норм", "🙂" to "Хорошо", "🤩" to "Отлично")
+/** Эмодзи настроений; подписи — в строках интерфейса (Strings.moods). */
+val Moods = listOf("😞", "😕", "😐", "🙂", "🤩")

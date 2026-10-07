@@ -62,8 +62,8 @@ private fun TonalDiary(vm: OktoViewModel) {
         modifier = Modifier.fillMaxSize(),
     ) {
         item {
-            ScreenTitle("Дневник", todaySubtitle(), Modifier.padding(start = 4.dp)) {
-                IconBtn(Icons.Filled.Settings, "Настройки", { vm.showSettings = true }, bg = c.primary, tint = c.onPrimary)
+            ScreenTitle(S.diary, todaySubtitle(), Modifier.padding(start = 4.dp)) {
+                IconBtn(Icons.Filled.Settings, S.settings, { vm.showSettings = true }, bg = c.primary, tint = c.onPrimary)
             }
         }
         item {
@@ -85,11 +85,11 @@ private fun TonalDiary(vm: OktoViewModel) {
                 Spacer(Modifier.width(16.dp))
                 Column(Modifier.weight(1f)) {
                     Text(
-                        plural(vm.streak, "день", "дня", "дней").substringAfter(' ').replaceFirstChar { it.uppercase() } + " подряд",
+                        S.daysInRow(vm.streak),
                         fontFamily = Nunito, fontWeight = FontWeight.ExtraBold, fontSize = 18.sp, color = c.onPrimary,
                     )
                     Text(
-                        "Всего ${plural(entries.size, "запись", "записи", "записей")}",
+                        S.totalEntries(entries.size),
                         fontFamily = Nunito, fontWeight = FontWeight.SemiBold, fontSize = 14.sp, color = c.onPrimary.copy(alpha = 0.8f),
                     )
                 }
@@ -103,10 +103,10 @@ private fun TonalDiary(vm: OktoViewModel) {
                     .background(c.surface)
                     .padding(18.dp),
             ) {
-                Text("Как ты сегодня?", style = T.cardTitle, color = c.onBg)
+                Text(S.howAreYou, style = T.cardTitle, color = c.onBg)
                 Spacer(Modifier.height(12.dp))
                 Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
-                    Moods.forEachIndexed { i, (emoji, label) ->
+                    Moods.zip(S.moods).forEachIndexed { i, (emoji, label) ->
                         val active = i == todayMood
                         Column(
                             Modifier
@@ -130,9 +130,9 @@ private fun TonalDiary(vm: OktoViewModel) {
         }
         item { TonalWeekCard(vm) }
         if (entries.isEmpty()) {
-            item { EmptyState("📔", "Начни свой дневник", "Отметь настроение или нажми «Запись», чтобы описать день") }
+            item { EmptyState("📔", S.emptyDiaryTitle, S.emptyDiaryText) }
         } else {
-            item { SectionTitle("Записи", Modifier.padding(start = 4.dp, top = 8.dp)) }
+            item { SectionTitle(S.entries, Modifier.padding(start = 4.dp, top = 8.dp)) }
             items(entries, key = { it.id }) { e -> TonalDiaryCard(e, { vm.open(e) }, Modifier.animateItem()) }
         }
     }
@@ -165,7 +165,7 @@ private fun TonalDiaryCard(e: Entry, onClick: () -> Unit, modifier: Modifier = M
         Spacer(Modifier.width(14.dp))
         Column(Modifier.weight(1f)) {
             Text(e.title.ifBlank { e.date.weekday() }, style = t.cardTitle, color = c.onBg, maxLines = 1, overflow = TextOverflow.Ellipsis)
-            Text(e.body.ifBlank { "Без текста" }, style = t.bodyText, color = c.muted, maxLines = 2, overflow = TextOverflow.Ellipsis)
+            Text(e.body.ifBlank { S.noText }, style = t.bodyText, color = c.muted, maxLines = 2, overflow = TextOverflow.Ellipsis)
         }
         if (e.mood >= 0) {
             Spacer(Modifier.width(8.dp))
@@ -175,7 +175,7 @@ private fun TonalDiaryCard(e: Entry, onClick: () -> Unit, modifier: Modifier = M
                     .clip(CircleShape)
                     .background(c.surfaceHi),
                 contentAlignment = Alignment.Center,
-            ) { Text(Moods[e.mood].first, fontSize = 20.sp) }
+            ) { Text(Moods[e.mood], fontSize = 20.sp) }
         }
     }
 }
@@ -205,11 +205,11 @@ private fun OktoDiary(vm: OktoViewModel) {
             Well(Modifier.fillMaxWidth()) {
                 Row(verticalAlignment = Alignment.Bottom) {
                     Column(Modifier.weight(1f)) {
-                        WellLabel("Серия")
+                        WellLabel(S.streak)
                         Spacer(Modifier.height(6.dp))
                         BigDigits(vm.streak.toString().padStart(2, '0'), 58.sp)
                         Spacer(Modifier.height(6.dp))
-                        Text("ДНЕЙ ПОДРЯД", fontFamily = JbMono, fontSize = 10.sp, letterSpacing = 1.4.sp, color = c.wellDim)
+                        Text(S.daysInRowCaps, fontFamily = JbMono, fontSize = 10.sp, letterSpacing = 1.4.sp, color = c.wellDim)
                     }
                     val start = today.with(DayOfWeek.MONDAY).minusWeeks(3)
                     Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
@@ -244,7 +244,7 @@ private fun OktoDiary(vm: OktoViewModel) {
         // Настроение сегодня — клавиши 1..5
         item {
             Well(Modifier.fillMaxWidth()) {
-                WellLabel("Настроение · сегодня", if (todayMood >= 0) Moods[todayMood].second else "—")
+                WellLabel(S.moodToday, if (todayMood >= 0) S.moods[todayMood] else "—")
                 Spacer(Modifier.height(10.dp))
                 MoodCells(todayMood) { vm.quickMood(it) }
             }
@@ -260,7 +260,7 @@ private fun OktoDiary(vm: OktoViewModel) {
             val rated = moods.filter { it >= 0 }
             val avg = if (rated.isEmpty()) "—" else String.format(Locale.US, "%.1f", rated.average() + 1)
             Well(Modifier.fillMaxWidth()) {
-                WellLabel("Настроение · неделя", "среднее $avg")
+                WellLabel(S.moodWeek, S.average(avg))
                 Spacer(Modifier.height(12.dp))
                 Row(Modifier.fillMaxWidth().height(84.dp), horizontalArrangement = Arrangement.spacedBy(10.dp), verticalAlignment = Alignment.Bottom) {
                     moods.forEachIndexed { i, m ->
@@ -298,9 +298,9 @@ private fun OktoDiary(vm: OktoViewModel) {
         }
 
         if (entries.isEmpty()) {
-            item { EmptyState("", "Начни свой дневник", "Отметь настроение или нажми «Запись», чтобы описать день") }
+            item { EmptyState("", S.emptyDiaryTitle, S.emptyDiaryText) }
         } else {
-            item { SectionTitle("Записи", Modifier.padding(start = 2.dp, top = 8.dp)) }
+            item { SectionTitle(S.entries, Modifier.padding(start = 2.dp, top = 8.dp)) }
             items(entries, key = { it.id }) { e -> OktoDiaryRow(e, { vm.open(e) }, Modifier.animateItem()) }
         }
     }
@@ -355,7 +355,7 @@ private fun OktoDiaryRow(e: Entry, onClick: () -> Unit, modifier: Modifier = Mod
         }
         Column(Modifier.weight(1f)) {
             Text(e.title.ifBlank { e.date.weekday() }, style = t.cardTitle, color = c.onBg, maxLines = 1, overflow = TextOverflow.Ellipsis)
-            Text(e.body.ifBlank { "Без текста" }.replace('\n', ' '), style = t.bodyText, color = c.muted, maxLines = 1, overflow = TextOverflow.Ellipsis)
+            Text(e.body.ifBlank { S.noText }.replace('\n', ' '), style = t.bodyText, color = c.muted, maxLines = 1, overflow = TextOverflow.Ellipsis)
         }
         if (e.mood >= 0) {
             Text(

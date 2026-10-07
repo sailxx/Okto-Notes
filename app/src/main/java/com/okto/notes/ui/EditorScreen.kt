@@ -109,10 +109,10 @@ fun EditorScreen(entry: Entry, vm: OktoViewModel) {
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(8.dp),
         ) {
-            IconBtn(Icons.AutoMirrored.Filled.ArrowBack, "Назад", vm::closeEditor, bg = chipBg, tint = nc.fg)
+            IconBtn(Icons.AutoMirrored.Filled.ArrowBack, S.back, vm::closeEditor, bg = chipBg, tint = nc.fg)
             if (t.okto) {
                 Text(
-                    "${if (isDiary) "ДНЕВНИК" else "ЗАМЕТКА"} · ${entry.date.ddMM()}",
+                    "${if (isDiary) S.diaryCaps else S.noteCaps} · ${entry.date.ddMM()}",
                     fontFamily = JbMono, fontSize = 12.sp, letterSpacing = 1.6.sp, color = c.muted,
                     modifier = Modifier.padding(start = 6.dp),
                 )
@@ -120,13 +120,13 @@ fun EditorScreen(entry: Entry, vm: OktoViewModel) {
             Spacer(Modifier.weight(1f))
             if (!isDiary) {
                 IconBtn(
-                    Icons.Filled.Star, "Избранное", { vm.edit { it.copy(pinned = !it.pinned) } },
+                    Icons.Filled.Star, S.favorites, { vm.edit { it.copy(pinned = !it.pinned) } },
                     bg = chipBg,
                     tint = if (entry.pinned) (if (t.okto || entry.color == 0) c.primary else nc.fg) else nc.fg.copy(alpha = 0.35f),
                 )
             }
-            IconBtn(Icons.Filled.Delete, "Удалить", { vm.delete(entry) }, bg = chipBg, tint = if (t.okto) c.danger else nc.fg)
-            Btn("Готово", vm::closeEditor, primary = true, height = if (t.okto) 46.dp else 48.dp)
+            IconBtn(Icons.Filled.Delete, S.delete, { vm.delete(entry) }, bg = chipBg, tint = if (t.okto) c.danger else nc.fg)
+            Btn(S.done, vm::closeEditor, primary = true, height = if (t.okto) 46.dp else 48.dp)
         }
 
         Column(
@@ -138,7 +138,7 @@ fun EditorScreen(entry: Entry, vm: OktoViewModel) {
             if (isDiary) {
                 if (t.okto) {
                     Well(Modifier.fillMaxWidth()) {
-                        WellLabel("Настроение", if (entry.mood >= 0) Moods[entry.mood].second else "—")
+                        WellLabel(S.mood, if (entry.mood >= 0) S.moods[entry.mood] else "—")
                         Spacer(Modifier.height(10.dp))
                         MoodCells(entry.mood) { m -> vm.edit { it.copy(mood = if (it.mood == m) -1 else m) } }
                     }
@@ -153,7 +153,7 @@ fun EditorScreen(entry: Entry, vm: OktoViewModel) {
             } else {
                 if (t.okto) {
                     Well(Modifier.fillMaxWidth()) {
-                        WellLabel("Метка")
+                        WellLabel(S.tag)
                         Spacer(Modifier.height(10.dp))
                         TagPicker(entry.color) { i -> vm.edit { it.copy(color = i) } }
                     }
@@ -177,7 +177,7 @@ fun EditorScreen(entry: Entry, vm: OktoViewModel) {
             Field(
                 value = entry.title,
                 onValueChange = { s -> vm.edit { it.copy(title = s) } },
-                placeholder = if (isDiary) "Заголовок дня" else "Заголовок",
+                placeholder = if (isDiary) S.dayTitle else S.title,
                 style = titleStyle, placeholderColor = nc.muted, cursor = c.primary,
                 modifier = Modifier.focusRequester(titleFocus),
             )
@@ -188,7 +188,7 @@ fun EditorScreen(entry: Entry, vm: OktoViewModel) {
                     .heightIn(min = 300.dp),
             ) {
                 if (body.text.isEmpty()) {
-                    Text(if (isDiary) "Что сегодня произошло? О чём думаешь?" else "Начни писать…", style = bodyStyle.copy(color = nc.muted))
+                    Text(if (isDiary) S.diaryHint else S.noteHint, style = bodyStyle.copy(color = nc.muted))
                 }
                 BasicTextField(
                     value = body,
@@ -211,13 +211,13 @@ fun EditorScreen(entry: Entry, vm: OktoViewModel) {
         Column(Modifier.padding(horizontal = 16.dp, vertical = 10.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
             Row(Modifier.fillMaxWidth().padding(horizontal = 4.dp)) {
                 val st = if (t.okto) TextStyle(fontFamily = JbMono, fontSize = 11.sp, letterSpacing = 1.sp) else TextStyle(fontFamily = Nunito, fontSize = 12.sp, fontWeight = FontWeight.Bold)
-                Text(t.cap("Сохранено · $saved"), style = st, color = nc.muted, modifier = Modifier.weight(1f))
-                Text(if (t.okto) "${words.toString().padStart(3, '0')} СЛОВ" else plural(words, "слово", "слова", "слов"), style = st, color = nc.muted)
+                Text(t.cap(S.saved(saved)), style = st, color = nc.muted, modifier = Modifier.weight(1f))
+                Text(if (t.okto) S.wordsCaps(words) else S.words(words), style = st, color = nc.muted)
             }
             Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                ToolKey("• Список", Modifier.weight(1f), chipBg) { setBody(body.insertLine("• ")) }
-                ToolKey("☐ Задача", Modifier.weight(1f), chipBg) { setBody(body.insertLine("☐ ")) }
-                ToolKey("Время", Modifier.weight(1f), chipBg) { setBody(body.insert(LocalDateTime.now().hhmm() + " ")) }
+                ToolKey(S.toolList, Modifier.weight(1f), chipBg) { setBody(body.insertLine("• ")) }
+                ToolKey(S.toolTask, Modifier.weight(1f), chipBg) { setBody(body.insertLine("☐ ")) }
+                ToolKey(S.toolTime, Modifier.weight(1f), chipBg) { setBody(body.insert(LocalDateTime.now().hhmm() + " ")) }
             }
         }
     }
@@ -292,7 +292,7 @@ private fun TagPicker(selected: Int, onSelect: (Int) -> Unit) {
 private fun TonalMoodPicker(selected: Int, onSelect: (Int) -> Unit) {
     val c = C
     Row(horizontalArrangement = Arrangement.spacedBy(6.dp), modifier = Modifier.fillMaxWidth()) {
-        Moods.forEachIndexed { i, (emoji, label) ->
+        Moods.zip(S.moods).forEachIndexed { i, (emoji, label) ->
             val active = i == selected
             Column(
                 Modifier
