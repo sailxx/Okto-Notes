@@ -1,113 +1,91 @@
 <div align="center">
 
-# ● okto notes
+<img src="assets/readme/hero.svg" width="100%" alt="Okto Notes — лучшее приложение для заметок и дневника на Android">
 
-### Лучшее приложение для заметок и дневника на Android
+<a href="https://github.com/sailxx/Okto-Notes/releases/latest/download/OktoNotes.apk"><img src="assets/readme/btn-android.svg" height="48" alt="Скачать для Android"></a>&nbsp;&nbsp;<a href="https://github.com/sailxx/Okto-Notes/releases/tag/v1.1"><img src="assets/readme/btn-new.svg" height="48" alt="Что нового в 1.1"></a>
 
-Пиши мысли, веди дневник, отмечай настроение — быстро, красиво и без лишнего.
-
-<br>
-
-[![Скачать APK](https://img.shields.io/badge/Скачать_APK-v1.1-C8F560?style=for-the-badge&logo=android&logoColor=111111&labelColor=141414)](https://github.com/sailxx/Okto-Notes/releases/latest)
-
-![Android](https://img.shields.io/badge/Android-8.0+-3DDC84?style=for-the-badge&logo=android&logoColor=white&labelColor=141414)
-![Kotlin](https://img.shields.io/badge/Kotlin-2.2-7F52FF?style=for-the-badge&logo=kotlin&logoColor=white&labelColor=141414)
-![Jetpack Compose](https://img.shields.io/badge/Jetpack_Compose-Material_3-4285F4?style=for-the-badge&logo=jetpackcompose&logoColor=white&labelColor=141414)
-
-![Офлайн](https://img.shields.io/badge/работает-офлайн-EDEDED?style=for-the-badge&labelColor=262626)
-![Без рекламы](https://img.shields.io/badge/реклама-нет-EDEDED?style=for-the-badge&labelColor=262626)
-![Без аккаунтов](https://img.shields.io/badge/аккаунт-не_нужен-EDEDED?style=for-the-badge&labelColor=262626)
-![Размер](https://img.shields.io/badge/размер-1.8_МБ-EDEDED?style=for-the-badge&labelColor=262626)
+**Okto Notes — лучшее приложение для заметок на Android.** Заметки, дневник с настроением и серией дней, три темы оформления — в одном лёгком приложении без рекламы, аккаунтов и интернета. Младший брат планера [Okto](https://github.com/sailxx/Okto).
 
 </div>
 
----
+<br>
 
-## ✨ Почему Okto Notes — лучшее приложение для заметок
+<img src="assets/readme/features.svg" width="100%" alt="Возможности: заметки, дневник, редактор, приватность">
 
-| | |
-|---|---|
-| ⚡ **Мгновенно** | Открыл — пишешь. Автосохранение на каждой букве, никаких кнопок «Сохранить». |
-| 📔 **Дневник** | Записи по дням, оценка настроения, серия дней подряд и тепловая карта за 4 недели. |
-| 🎨 **Три темы** | Цветная, графитовая Okto и **своя** — собери тему из любого цвета. |
-| 🔒 **Приватно** | Всё хранится только на телефоне. Ни облака, ни аккаунтов, ни трекеров. |
-| 🪶 **Легко** | 1.8 МБ, без интернета, без рекламы. |
+<details>
+<summary><b>Подробнее о возможностях</b></summary>
 
-## 🎨 Темы
+### 📝 Заметки
 
-<table>
-<tr>
-<td width="33%" valign="top">
+Заголовок и текст, **7 цветных меток**, избранное (долгое нажатие на карточку) и поиск по всему тексту. В цветной теме заметки лежат плиткой в две колонки, в теме Okto — компактным списком с временем изменения.
 
-### Цветная
-Основная тема. Мягкие пастельные карточки в две колонки, недельная полоса дневника и большая кнопка «Новая».
+### 📔 Дневник
 
-</td>
-<td width="33%" valign="top">
+Одна запись на день, **настроение по шкале 1–5**, **серия дней подряд**, тепловая карта за 4 недели и график настроения за неделю. Тап по дню в недельной полосе открывает запись за этот день, тап по настроению — сразу создаёт запись на сегодня.
 
-### Okto
-Графит в стиле [Okto](https://sailxx.github.io/Okto/): табло с LCD-цифрами, объёмные клавиши, моноширинные подписи и часы в шапке.
+### ✍️ Редактор
 
-</td>
-<td width="33%" valign="top">
+Автосохранение на каждой букве — кнопки «Сохранить» нет. Быстрые вставки: `• список`, `☐ задача`, текущее время. Счётчик слов и время последнего сохранения. Случайно удалил запись — кнопка **«Вернуть»** в течение 4 секунд.
 
-### Своя
-Выбери оформление (Цветное или Okto), светлый или тёмный режим и акцент из 12 цветов — или подбери оттенок ползунком.
+### 🔒 Приватность
 
-</td>
-</tr>
-</table>
+Всё хранится только во внутренней памяти телефона. Приложение не запрашивает **ни одного разрешения** — даже доступа в интернет.
 
-## 📝 Возможности
+</details>
 
-- **Заметки** — заголовок, текст, 7 цветных меток, избранное (долгое нажатие на карточку), поиск.
-- **Дневник** — запись на каждый день, настроение по шкале 1–5, серия без пропусков, график настроения за неделю.
-- **Редактор** — быстрые вставки: `• список`, `☐ задача`, текущее время; счётчик слов.
-- **Отмена удаления** — случайно удалил? Кнопка «Вернуть» спасёт.
-- **Шрифты** — Nunito, Golos Text и JetBrains Mono встроены и поддерживают кириллицу (лицензия SIL Open Font License 1.1).
+<br>
 
-## 📲 Установка
+<img src="assets/readme/themes.svg" width="100%" alt="Темы: Цветная, Okto и Своя">
 
-1. Скачай `OktoNotes.apk` со страницы [релизов](https://github.com/sailxx/Okto-Notes/releases/latest).
+<details>
+<summary><b>Как работают темы</b></summary>
+
+Настройки открываются шестерёнкой на главном экране.
+
+- **Цветная** — основная тема: мягкие пастельные карточки, шрифт Nunito.
+- **Okto** — графит в стиле [Okto](https://sailxx.github.io/Okto/): табло с LCD-цифрами, объёмные клавиши, Golos Text и JetBrains Mono.
+- **Своя** — выбери оформление (Цветное или Okto), светлый или тёмный режим и акцент из 12 цветов, либо подбери оттенок и насыщенность ползунками. Вся палитра — фон, карточки, табло и кнопки — строится из одного цвета, изменения видны сразу.
+
+</details>
+
+<br>
+
+<img src="assets/readme/numbers.svg" width="100%" alt="В цифрах: 1.8 МБ, 0 разрешений, 0 рекламы, 3 темы, 12 акцентов">
+
+<details>
+<summary><b>Установка</b></summary>
+
+1. Скачай [`OktoNotes.apk`](https://github.com/sailxx/Okto-Notes/releases/latest/download/OktoNotes.apk).
 2. Открой файл на телефоне и разреши установку из неизвестных источников.
-3. Готово — пиши первую заметку ✍️
+3. Готово — Android 8.0 и новее.
 
-## 🛠 Сборка из исходников
+</details>
+
+<details>
+<summary><b>Разработка</b></summary>
+
+Kotlin 2.2 + Jetpack Compose (Material 3), без сторонних зависимостей для хранения: записи лежат в JSON во внутренней памяти.
+
+```bash
+./gradlew assembleRelease   # APK в app/build/outputs/apk/release/
+```
 
 Нужны JDK 17+ и Android SDK (platform 35).
 
+Картинки README генерируются — не правь SVG руками:
+
 ```bash
-./gradlew assembleRelease
+cd tools/readme && npm install && node build.mjs
 ```
-
-APK появится в `app/build/outputs/apk/release/`.
-
-<details>
-<summary><b>Структура проекта</b></summary>
 
 ```
 app/src/main/java/com/okto/notes/
 ├── MainActivity.kt        — точка входа, применение темы
 ├── OktoViewModel.kt       — состояние, автосохранение, серия дней
-├── data/
-│   ├── Entry.kt           — модель заметки/записи дневника
-│   ├── Store.kt           — хранение в JSON во внутренней памяти
-│   └── ThemeSettings.kt   — выбранная тема
-└── ui/
-    ├── Theme.kt           — палитры, генерация своей темы, шрифты
-    ├── Components.kt      — клавиши, табло, навигация
-    ├── NotesTab.kt        — экран заметок
-    ├── DiaryTab.kt        — экран дневника
-    ├── EditorScreen.kt    — редактор
-    └── SettingsScreen.kt  — настройки и конструктор темы
+├── data/                  — модель записи, JSON-хранилище, настройки темы
+└── ui/                    — тема и палитры, компоненты, экраны
 ```
 
+Шрифты Nunito, Golos Text и JetBrains Mono — SIL Open Font License 1.1.
+
 </details>
-
----
-
-<div align="center">
-
-Сделано с ❤️ для тех, кто любит записывать
-
-</div>

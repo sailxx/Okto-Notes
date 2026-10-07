@@ -3,3 +3,5 @@ build/
 local.properties
 .idea/
 *.iml
+node_modules/
+preview.html
