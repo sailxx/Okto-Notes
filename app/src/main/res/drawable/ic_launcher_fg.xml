@@ -1,8 +1,17 @@
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="108dp" android:height="108dp"
     android:viewportWidth="108" android:viewportHeight="108">
-    <path android:fillColor="#FFFFFF"
-        android:pathData="M54,30a24,24 0,1 1,0 48a24,24 0,1 1,0 -48zM54,42a12,12 0,1 0,0 24a12,12 0,1 0,0 -24z"/>
-    <path android:fillColor="#C8F560"
-        android:pathData="M70,30m-7,0a7,7 0,1 1,14 0a7,7 0,1 1,-14 0"/>
+    <!-- Рисунок в сетке 104×104, вписан в видимую зону адаптивной иконки (72dp) -->
+    <group android:translateX="18" android:translateY="18"
+        android:scaleX="0.6923" android:scaleY="0.6923">
+        <!-- Четыре щупальца -->
+        <path android:strokeColor="#FF7A1A" android:strokeWidth="6"
+            android:strokeLineCap="round"
+            android:pathData="M38,52q-6,12 -14,14M46,56q-2,14 -8,20M54,56q2,14 8,20M62,52q6,12 14,14"/>
+        <!-- Голова и глаза -->
+        <path android:fillColor="#FF7A1A"
+            android:pathData="M32,38a18,18 0,1 1,36 0a18,18 0,1 1,-36 0z"/>
+        <path android:fillColor="#0E0E0E"
+            android:pathData="M41,36a3,3 0,1 1,6 0a3,3 0,1 1,-6 0zM53,36a3,3 0,1 1,6 0a3,3 0,1 1,-6 0z"/>
+    </group>
 </vector>
