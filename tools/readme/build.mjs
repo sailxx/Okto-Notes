@@ -1,5 +1,5 @@
 // Генерирует SVG-баннеры README в стиле темы «Цветная» (мягкий тональный Material You)
-// со встроенным урезанным шрифтом Nunito.
+// со встроенным урезанным шрифтом Nunito — на всех языках из strings.json.
 // Запуск: cd tools/readme && npm install && node build.mjs
 import fs from 'node:fs';
 import path from 'node:path';
@@ -9,6 +9,7 @@ import subsetFont from 'subset-font';
 const REPO = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const OUT = path.join(REPO, 'assets/readme');
 const FONT = path.join(REPO, 'app/src/main/res/font/nunito.ttf');
+const STR = JSON.parse(fs.readFileSync(path.join(REPO, 'tools/readme/strings.json'), 'utf8'));
 
 // Палитра темы «Цветная» — те же значения, что ColorPalette в Theme.kt
 const P = {
@@ -36,6 +37,8 @@ const svg = (w, h, label, body) => (font) =>
   `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img" aria-label="${esc(label)}">\n${style(font)}\n${frame(w, h)}\n${body}\n</svg>\n`;
 
 const spans = (parts) => parts.map(([s, c]) => `<tspan fill="${c}">${T(s)}</tspan>`).join('');
+// «обычный *акцент* обычный» → части с цветом основного текста и акцента
+const accent = (s, ink = P.ink, hi = P.primary) => s.split('*').map((p, i) => [p, i % 2 ? hi : ink]).filter(([p]) => p);
 const delay = (i) => `style="animation-delay:${(i * 0.08).toFixed(2)}s"`;
 const card = (x, y, w, h, fill, rx = 24) => `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="${rx}" fill="${fill}"/>`;
 
@@ -93,24 +96,20 @@ function phoneOkto(x, y, p) {
 }
 
 // ---------- HERO ----------
-function hero() {
+function hero(t) {
   const W = 880, H = 480;
   let b = '';
   b += `<g class="r"><circle cx="54" cy="56" r="14" fill="${P.primary}"/><circle cx="54" cy="56" r="5" fill="#fff"/>
 <text x="78" y="64" font-size="24" font-weight="900" letter-spacing="-.4" fill="${P.ink}">${T('Okto Notes')}</text></g>`;
   const v = chip(220, 41, 'v1.1', { fill: P.surfaceHi, color: P.muted });
   b += `<g class="r" ${delay(1)}>${v.s}</g>`;
-  b += `<g class="r" ${delay(2)}><text x="40" y="146" font-size="40" font-weight="900" letter-spacing="-1">${spans([['Лучшее приложение', P.ink]])}</text>
-<text x="40" y="194" font-size="40" font-weight="900" letter-spacing="-1">${spans([['для ', P.ink], ['заметок', P.primary], [' и дневника', P.ink]])}</text></g>`;
-  b += `<g class="r" ${delay(3)}><text x="40" y="234" font-size="17" font-weight="600" fill="${P.muted}">${T('Пиши мысли, веди дневник и отмечай настроение —')}</text>
-<text x="40" y="258" font-size="17" font-weight="600" fill="${P.muted}">${T('быстро, офлайн и без рекламы.')}</text></g>`;
+  b += `<g class="r" ${delay(2)}><text x="40" y="146" font-size="40" font-weight="900" letter-spacing="-1">${spans(accent(t.hero.title[0]))}</text>
+<text x="40" y="194" font-size="40" font-weight="900" letter-spacing="-1">${spans(accent(t.hero.title[1]))}</text></g>`;
+  b += `<g class="r" ${delay(3)}><text x="40" y="234" font-size="17" font-weight="600" fill="${P.muted}">${T(t.hero.sub[0])}</text>
+<text x="40" y="258" font-size="17" font-weight="600" fill="${P.muted}">${T(t.hero.sub[1])}</text></g>`;
 
-  const feats = [
-    ['Мгновенно', 'Автосохранение', '#fff', P.ink, P.muted],
-    ['Офлайн', 'Без аккаунтов', P.green, P.onGreen, '#24533A'],
-    ['Три темы', 'И своя палитра', P.pink, P.onPink, '#633B48'],
-    ['Бесплатно', 'Без рекламы', P.container, P.onContainer, '#4F4566'],
-  ];
+  const colors = [['#fff', P.ink, P.muted], [P.green, P.onGreen, '#24533A'], [P.pink, P.onPink, '#633B48'], [P.container, P.onContainer, '#4F4566']];
+  const feats = t.hero.cards.map(([a, b], i) => [a, b, ...colors[i]]);
   feats.forEach(([t, d, fill, c1, c2], i) => {
     const x = 40 + (i % 2) * 262, y = 290 + Math.floor(i / 2) * 86;
     b += `<g class="r" ${delay(4 + i)}>${card(x, y, 250, 74, fill)}
@@ -119,7 +118,7 @@ function hero() {
   });
 
   b += `<g class="r" ${delay(3)}>${phoneTonal(588, 44, 1.7)}</g>`;
-  return svg(W, H, 'Okto Notes — лучшее приложение для заметок и дневника на Android', b);
+  return svg(W, H, t.hero.alt, b);
 }
 
 // ---------- КНОПКИ ----------
@@ -140,15 +139,11 @@ ${icon(color)}
 }
 
 // ---------- ВОЗМОЖНОСТИ ----------
-function features() {
+function features(t) {
   const W = 880, H = 470;
-  let b = sectionHead('Возможности', [['Всё для записей — ', P.ink], ['и ничего лишнего', P.primary]]);
-  const items = [
-    ['1', 'Заметки', ['Заголовок, текст и 7 цветных меток.', 'Избранное и поиск по всему тексту.'], '#fff', P.ink, P.muted],
-    ['2', 'Дневник', ['Настроение 1–5, серия дней подряд', 'и тепловая карта за 4 недели.'], P.container, P.onContainer, '#4F4566'],
-    ['3', 'Редактор', ['Автосохранение на каждой букве.', 'Список, задача и время в одно касание.'], P.green, P.onGreen, '#24533A'],
-    ['4', 'Приватность', ['Всё хранится только на телефоне.', 'Ноль разрешений, ни облака, ни трекеров.'], P.pink, P.onPink, '#633B48'],
-  ];
+  let b = sectionHead(t.features.chip, accent(t.features.title));
+  const colors = [['#fff', P.ink, P.muted], [P.container, P.onContainer, '#4F4566'], [P.green, P.onGreen, '#24533A'], [P.pink, P.onPink, '#633B48']];
+  const items = t.features.items.map(([title, lines], i) => [String(i + 1), title, lines, ...colors[i]]);
   items.forEach(([n, t, lines, fill, c1, c2], i) => {
     const x = 40 + (i % 2) * 408, y = 132 + Math.floor(i / 2) * 156;
     b += `<g class="r" ${delay(2 + i)}>${card(x, y, 392, 140, fill, 28)}
@@ -156,19 +151,19 @@ function features() {
 <text x="${x + 70}" y="${y + 49}" font-size="21" font-weight="900" fill="${c1}">${T(t)}</text>
 ${lines.map((l, k) => `<text x="${x + 24}" y="${y + 92 + k * 22}" font-size="15" font-weight="600" fill="${c2}">${T(l)}</text>`).join('\n')}</g>`;
   });
-  return svg(W, H, 'Возможности: заметки, дневник, редактор, приватность', b);
+  return svg(W, H, t.features.alt, b);
 }
 
 // ---------- ТЕМЫ ----------
-function themes() {
+function themes(t) {
   const W = 880, H = 520;
-  let b = sectionHead('Темы оформления', [['Три темы — ', P.ink], ['выбери свою', P.primary]]);
+  let b = sectionHead(t.themes.chip, accent(t.themes.title));
   const okto = { bg: '#141414', key: '#262626', ink: '#EDEDED', muted: '#8E8E8E', well: '#0A0A0A', wellInk: '#F2F2F2', row: '#1D1D1D', tint: '#2A1E1F', primary: '#EDEDED' };
   const amber = { bg: '#120f0a', key: '#231d12', ink: '#f3e7cf', muted: '#9a8a6a', well: '#050402', wellInk: '#ffb000', row: '#1a160e', tint: '#2a2010', primary: '#ffb000' };
   const cols = [
-    ['Цветная', 'Основная тема', (x, y) => phoneTonal(x, y)],
-    ['Okto', 'Графит и табло', (x, y) => phoneOkto(x, y, okto)],
-    ['Своя', 'Любой цвет', (x, y) => phoneOkto(x, y, amber)],
+    [...t.themes.cols[0], (x, y) => phoneTonal(x, y)],
+    [...t.themes.cols[1], (x, y) => phoneOkto(x, y, okto)],
+    [...t.themes.cols[2], (x, y) => phoneOkto(x, y, amber)],
   ];
   cols.forEach(([t, d, phone], i) => {
     const x = 40 + i * 272, y = 132;
@@ -178,21 +173,16 @@ function themes() {
   });
   const sw = ['#8a8a8a', '#7c5cff', '#3d7bff', '#2ec4d6', '#2fbf8a', '#5cc85a', '#a6d93a', '#ffb000', '#ff7a2e', '#ef5a5f', '#ff5c9a', '#b05cff'];
   sw.forEach((c, i) => { b += `<circle class="r" ${delay(6 + i * 0.3)} cx="${52 + i * 26}" cy="${H - 34}" r="9" fill="${c}"/>`; });
-  b += `<text x="${52 + 12 * 26 + 2}" y="${H - 29}" font-size="14" font-weight="700" fill="${P.muted}">${T('12 акцентов + свой оттенок и насыщенность')}</text>`;
-  return svg(W, H, 'Темы: Цветная, Okto и Своя', b);
+  b += `<text x="${52 + 12 * 26 + 2}" y="${H - 29}" font-size="14" font-weight="700" fill="${P.muted}">${T(t.themes.accents)}</text>`;
+  return svg(W, H, t.themes.alt, b);
 }
 
 // ---------- В ЦИФРАХ ----------
-function numbers() {
+function numbers(t) {
   const W = 880, H = 290;
-  let b = sectionHead('В цифрах', [['Лёгкое, быстрое ', P.ink], ['и приватное', P.primary]]);
-  const items = [
-    ['1.8', ' МБ', ['размер APK'], P.primary, '#fff', '#E1D9FF'],
-    ['0', '', ['разрешений', 'системы'], '#fff', P.ink, P.muted],
-    ['0', '', ['рекламы', 'и трекеров'], P.green, P.onGreen, '#24533A'],
-    ['3', '', ['темы', 'оформления'], P.pink, P.onPink, '#633B48'],
-    ['12', '', ['акцентных', 'цветов'], P.container, P.onContainer, '#4F4566'],
-  ];
+  let b = sectionHead(t.numbers.chip, accent(t.numbers.title));
+  const colors = [[P.primary, '#fff', '#E1D9FF'], ['#fff', P.ink, P.muted], [P.green, P.onGreen, '#24533A'], [P.pink, P.onPink, '#633B48'], [P.container, P.onContainer, '#4F4566']];
+  const items = t.numbers.items.map(([n, unit, lines], i) => [n, unit, lines, ...colors[i]]);
   const w = (800 - 4 * 12) / 5;
   items.forEach(([n, unit, lines, fill, c1, c2], i) => {
     const x = 40 + i * (w + 12), y = 132;
@@ -200,27 +190,31 @@ function numbers() {
 <text x="${x + 20}" y="${y + 56}" font-size="40" font-weight="900" letter-spacing="-1" fill="${c1}">${T(n)}<tspan font-size="18">${T(unit)}</tspan></text>
 ${lines.map((l, k) => `<text x="${x + 20}" y="${y + 86 + k * 18}" font-size="14" font-weight="700" fill="${c2}">${T(l)}</text>`).join('\n')}</g>`;
   });
-  return svg(W, H, 'В цифрах: 1.8 МБ, 0 разрешений, 0 рекламы, 3 темы, 12 акцентов', b);
+  return svg(W, H, t.numbers.alt, b);
 }
 
 // ---------- сборка ----------
-const files = {
-  'hero.svg': hero(),
-  'btn-android.svg': button('Скачать для Android', androidIcon, P.primary, '#fff'),
-  'btn-new.svg': button('Что нового в 1.1', sparkIcon, P.container, P.onContainer),
-  'features.svg': features(),
-  'themes.svg': themes(),
-  'numbers.svg': numbers(),
-};
-
-for (const f of Object.values(files)) f(''); // собрать весь текст для урезания шрифта
-const chars = [...new Set(allText + '0123456789')].join('');
-const font = (await subsetFont(fs.readFileSync(FONT), chars, { targetFormat: 'woff2' })).toString('base64');
-
+// Шрифт урезается отдельно под каждый язык — только нужные буквы.
 fs.mkdirSync(OUT, { recursive: true });
-for (const [name, render] of Object.entries(files)) {
-  const out = render(font);
-  fs.writeFileSync(path.join(OUT, name), out);
-  console.log(name, (out.length / 1024).toFixed(1) + ' KB');
+const fontSrc = fs.readFileSync(FONT);
+for (const [lang, t] of Object.entries(STR)) {
+  allText = '';
+  const files = {
+    [`hero-${lang}.svg`]: hero(t),
+    [`btn-android-${lang}.svg`]: button(t.buttons.android, androidIcon, P.primary, '#fff'),
+    [`btn-new-${lang}.svg`]: button(t.buttons.whatsNew, sparkIcon, P.container, P.onContainer),
+    [`features-${lang}.svg`]: features(t),
+    [`themes-${lang}.svg`]: themes(t),
+    [`numbers-${lang}.svg`]: numbers(t),
+  };
+  for (const f of Object.values(files)) f(''); // собрать весь текст для урезания шрифта
+  const chars = [...new Set(allText + '0123456789')].join('');
+  const font = (await subsetFont(fontSrc, chars, { targetFormat: 'woff2' })).toString('base64');
+  let size = 0;
+  for (const [name, render] of Object.entries(files)) {
+    const out = render(font);
+    fs.writeFileSync(path.join(OUT, name), out);
+    size += out.length;
+  }
+  console.log(lang, (size / 1024).toFixed(1) + ' KB,', 'glyphs:', chars.length);
 }
-console.log('glyphs:', chars.length);

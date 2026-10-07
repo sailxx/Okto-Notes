@@ -1,8 +1,12 @@
 <div align="center">
 
-<img src="assets/readme/hero.svg" width="100%" alt="Okto Notes — лучшее приложение для заметок и дневника на Android">
+**Русский** · [English](README.en.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Türkçe](README.tr.md) · [Українська](README.uk.md) · [Polski](README.pl.md)
 
-<a href="https://github.com/sailxx/Okto-Notes/releases/latest/download/OktoNotes.apk"><img src="assets/readme/btn-android.svg" height="52" alt="Скачать для Android"></a>&nbsp;&nbsp;<a href="https://github.com/sailxx/Okto-Notes/releases/tag/v1.1"><img src="assets/readme/btn-new.svg" height="52" alt="Что нового в 1.1"></a>
+<br>
+
+<img src="assets/readme/hero-ru.svg" width="100%" alt="Okto Notes — лучшее приложение для заметок и дневника на Android">
+
+<a href="https://github.com/sailxx/Okto-Notes/releases/latest/download/OktoNotes.apk"><img src="assets/readme/btn-android-ru.svg" height="52" alt="Скачать для Android"></a>&nbsp;&nbsp;<a href="https://github.com/sailxx/Okto-Notes/releases/tag/v1.1"><img src="assets/readme/btn-new-ru.svg" height="52" alt="Что нового в 1.1"></a>
 
 **Okto Notes — лучшее приложение для заметок на Android.** Заметки, дневник с настроением и серией дней, три темы оформления — в одном лёгком приложении без рекламы, аккаунтов и интернета. Младший брат планера [Okto](https://github.com/sailxx/Okto).
 
@@ -10,7 +14,7 @@
 
 <br>
 
-<img src="assets/readme/features.svg" width="100%" alt="Возможности: заметки, дневник, редактор, приватность">
+<img src="assets/readme/features-ru.svg" width="100%" alt="Возможности: заметки, дневник, редактор, приватность">
 
 <details>
 <summary><b>Подробнее о возможностях</b></summary>
@@ -35,7 +39,7 @@
 
 <br>
 
-<img src="assets/readme/themes.svg" width="100%" alt="Темы: Цветная, Okto и Своя">
+<img src="assets/readme/themes-ru.svg" width="100%" alt="Темы: Цветная, Okto и Своя">
 
 <details>
 <summary><b>Как работают темы</b></summary>
@@ -50,7 +54,7 @@
 
 <br>
 
-<img src="assets/readme/numbers.svg" width="100%" alt="В цифрах: 1.8 МБ, 0 разрешений, 0 рекламы, 3 темы, 12 акцентов">
+<img src="assets/readme/numbers-ru.svg" width="100%" alt="В цифрах: 1.8 МБ, 0 разрешений, 0 рекламы, 3 темы, 12 акцентов">
 
 <details>
 <summary><b>Установка</b></summary>
@@ -72,7 +76,7 @@ Kotlin 2.2 + Jetpack Compose (Material 3), без сторонних завис�
 
 Нужны JDK 17+ и Android SDK (platform 35).
 
-Картинки README генерируются — не правь SVG руками:
+Картинки README генерируются на всех языках (тексты — в `tools/readme/strings.json`), не правь SVG руками:
 
 ```bash
 cd tools/readme && npm install && node build.mjs
