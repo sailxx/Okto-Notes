@@ -85,6 +85,7 @@ abstract class Strings {
     abstract val themeColor: String
     abstract val themeColorSub: String
     abstract val themeOktoSub: String
+    abstract val themeOktoLightSub: String
     abstract val themeCustom: String
     abstract val themeCustomSub: String
     abstract val layout: String
@@ -176,6 +177,7 @@ object RuStrings : Strings() {
     override val themeColor = "Цветная"
     override val themeColorSub = "Основная тема: мягкие пастельные карточки"
     override val themeOktoSub = "Графит, табло с цифрами и клавиши"
+    override val themeOktoLightSub = "Белая: светлый фон, табло и клавиши"
     override val themeCustom = "Своя"
     override val themeCustomSub = "Собери тему из своей гаммы"
     override val layout = "Оформление"
@@ -278,6 +280,7 @@ object EnStrings : Strings() {
     override val themeColor = "Colorful"
     override val themeColorSub = "Main theme: soft pastel cards"
     override val themeOktoSub = "Graphite, digit display and keys"
+    override val themeOktoLightSub = "White: light background, display and keys"
     override val themeCustom = "Custom"
     override val themeCustomSub = "Build a theme from your own palette"
     override val layout = "Layout"

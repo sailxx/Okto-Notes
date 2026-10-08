@@ -92,6 +92,11 @@ fun SettingsScreen(vm: OktoViewModel) {
                 selected = s.kind == ThemeKind.OKTO,
             ) { vm.updateSettings { it.copy(kind = ThemeKind.OKTO) } }
             ThemeOption(
+                title = "Okto Light", subtitle = S.themeOktoLightSub,
+                preview = buildTheme(ThemeSettings(kind = ThemeKind.OKTO_LIGHT)),
+                selected = s.kind == ThemeKind.OKTO_LIGHT,
+            ) { vm.updateSettings { it.copy(kind = ThemeKind.OKTO_LIGHT) } }
+            ThemeOption(
                 title = S.themeCustom, subtitle = S.themeCustomSub,
                 preview = buildTheme(s.copy(kind = ThemeKind.CUSTOM)),
                 selected = s.kind == ThemeKind.CUSTOM,
@@ -108,7 +113,7 @@ fun SettingsScreen(vm: OktoViewModel) {
 
             SectionTitle(S.about, Modifier.padding(start = 4.dp, top = 12.dp))
             Text(
-                S.aboutText("1.2"),
+                S.aboutText("1.4"),
                 style = t.bodyText, color = c.muted, modifier = Modifier.padding(horizontal = 4.dp),
             )
             Spacer(Modifier.height(24.dp))

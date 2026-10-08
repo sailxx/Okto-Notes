@@ -4,7 +4,7 @@ import android.content.Context
 import java.util.Locale
 
 /** Какая тема выбрана в настройках. */
-enum class ThemeKind { COLOR, OKTO, CUSTOM }
+enum class ThemeKind { COLOR, OKTO, OKTO_LIGHT, CUSTOM }
 
 /** Раскладка интерфейса: «Цветная» (мягкие карточки) или «Okto» (табло и клавиши). */
 enum class UiStyle { TONAL, OKTO }

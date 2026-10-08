@@ -112,6 +112,20 @@ val OktoPalette = Palette(
     danger = Color(0xFFEF5A5F),
 )
 
+/** «Okto Light» — белая тема в раскладке Okto. */
+val OktoLightPalette = Palette(
+    dark = false,
+    bg = Color(0xFFF6F6F6), onBg = Color(0xFF141414), muted = Color(0xFF6B6B6B),
+    surface = Color.White, surfaceHi = Color(0xFFEBEBEB), outline = Color(0xFFDADADA),
+    primary = Color(0xFF141414), onPrimary = Color(0xFFF6F6F6),
+    container = Color(0xFFEBEBEB), onContainer = Color(0xFF141414),
+    accent2 = Color(0xFFEBEBEB), onAccent2 = Color(0xFF141414),
+    well = Color(0xFFEAEAEA), wellInk = Color(0xFF141414), wellDim = Color(0xFF7A7A7A),
+    wellGhost = Color(0x0F000000), wellEdge = Color(0xFFD6D6D6),
+    key = Color.White, keyInk = Color(0xFF141414), keyEdge = Color(0xFFC4C4C4), keyHi = Color(0xCCFFFFFF),
+    danger = Color(0xFFD33A3F),
+)
+
 /** Своя тема в цветной раскладке: тональная палитра из одного оттенка. */
 fun tonalPalette(h: Float, s: Float, dark: Boolean): Palette {
     val ps = s.coerceIn(0f, 1f)
@@ -238,6 +252,7 @@ val C: Palette
 fun buildTheme(s: ThemeSettings): AppTheme = when (s.kind) {
     ThemeKind.COLOR -> AppTheme(UiStyle.TONAL, ColorPalette)
     ThemeKind.OKTO -> AppTheme(UiStyle.OKTO, OktoPalette)
+    ThemeKind.OKTO_LIGHT -> AppTheme(UiStyle.OKTO, OktoLightPalette)
     ThemeKind.CUSTOM -> when (s.style) {
         UiStyle.TONAL -> AppTheme(UiStyle.TONAL, tonalPalette(s.hue, s.sat, s.dark))
         UiStyle.OKTO -> AppTheme(UiStyle.OKTO, oktoPalette(s.hue, s.sat, s.dark))
