@@ -1,6 +1,9 @@
 package com.okto.notes.ui
 
 import androidx.compose.animation.animateColorAsState
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.PickVisualMediaRequest
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -84,6 +87,9 @@ fun EditorScreen(entry: Entry, vm: OktoViewModel) {
         body = v
         if (v.text != entry.body) vm.edit { it.copy(body = v.text) }
     }
+
+    val pickPhotos = rememberLauncherForActivityResult(ActivityResultContracts.PickMultipleVisualMedia()) { vm.attach(it) }
+    val pickFiles = rememberLauncherForActivityResult(ActivityResultContracts.OpenMultipleDocuments()) { vm.attach(it) }
 
     val titleFocus = remember { FocusRequester() }
     val bodyFocus = remember { FocusRequester() }
@@ -202,6 +208,7 @@ fun EditorScreen(entry: Entry, vm: OktoViewModel) {
                         .focusRequester(bodyFocus),
                 )
             }
+            AttachmentsView(entry.attachments, vm, nc.fg, nc.muted)
             Spacer(Modifier.height(16.dp))
         }
 
@@ -218,6 +225,12 @@ fun EditorScreen(entry: Entry, vm: OktoViewModel) {
                 ToolKey(S.toolList, Modifier.weight(1f), chipBg) { setBody(body.insertLine("• ")) }
                 ToolKey(S.toolTask, Modifier.weight(1f), chipBg) { setBody(body.insertLine("☐ ")) }
                 ToolKey(S.toolTime, Modifier.weight(1f), chipBg) { setBody(body.insert(LocalDateTime.now().hhmm() + " ")) }
+            }
+            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                ToolKey(S.toolPhoto, Modifier.weight(1f), chipBg) {
+                    pickPhotos.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
+                }
+                ToolKey(S.toolFile, Modifier.weight(1f), chipBg) { pickFiles.launch(arrayOf("*/*")) }
             }
         }
     }

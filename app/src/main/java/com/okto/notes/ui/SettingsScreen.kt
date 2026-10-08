@@ -113,7 +113,7 @@ fun SettingsScreen(vm: OktoViewModel) {
 
             SectionTitle(S.about, Modifier.padding(start = 4.dp, top = 12.dp))
             Text(
-                S.aboutText("1.4"),
+                S.aboutText("1.5"),
                 style = t.bodyText, color = c.muted, modifier = Modifier.padding(horizontal = 4.dp),
             )
             Spacer(Modifier.height(24.dp))

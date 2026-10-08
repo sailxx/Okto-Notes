@@ -79,6 +79,10 @@ abstract class Strings {
     abstract val toolList: String
     abstract val toolTask: String
     abstract val toolTime: String
+    abstract val toolPhoto: String
+    abstract val toolFile: String
+    abstract val attachFailed: String
+    abstract val noAppToOpen: String
 
     // Настройки
     abstract val theme: String
@@ -172,6 +176,10 @@ object RuStrings : Strings() {
     override val toolList = "• Список"
     override val toolTask = "☐ Задача"
     override val toolTime = "Время"
+    override val toolPhoto = "Фото"
+    override val toolFile = "Файл"
+    override val attachFailed = "Не удалось прикрепить файл"
+    override val noAppToOpen = "Нет приложения для открытия файла"
 
     override val theme = "Тема"
     override val themeColor = "Цветная"
@@ -275,6 +283,10 @@ object EnStrings : Strings() {
     override val toolList = "• List"
     override val toolTask = "☐ Task"
     override val toolTime = "Time"
+    override val toolPhoto = "Photo"
+    override val toolFile = "File"
+    override val attachFailed = "Couldn't attach the file"
+    override val noAppToOpen = "No app to open this file"
 
     override val theme = "Theme"
     override val themeColor = "Colorful"

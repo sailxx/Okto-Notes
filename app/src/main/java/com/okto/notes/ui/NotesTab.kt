@@ -174,6 +174,7 @@ private fun TonalNoteCard(note: Entry, onClick: () -> Unit, onLongClick: () -> U
         Spacer(Modifier.height(10.dp))
         Row(verticalAlignment = Alignment.CenterVertically) {
             Text(formatStamp(note.updatedAt), style = t.caption.copy(fontSize = 12.sp), color = nc.muted, modifier = Modifier.weight(1f))
+            if (note.attachments.isNotEmpty()) Text("📎${note.attachments.size}", style = t.caption.copy(fontSize = 12.sp), color = nc.muted, modifier = Modifier.padding(end = 8.dp))
             if (note.pinned) Icon(Icons.Filled.Star, S.favorites, tint = if (note.color == 0) t.c.primary else nc.fg, modifier = Modifier.size(16.dp))
         }
     }
@@ -303,6 +304,10 @@ private fun OktoNoteRow(note: Entry, onClick: () -> Unit, onLongClick: () -> Uni
         }
         Column(horizontalAlignment = Alignment.End) {
             Text(shortStamp(note.updatedAt), fontFamily = JbMono, fontSize = 12.sp, color = c.muted)
+            if (note.attachments.isNotEmpty()) {
+                Spacer(Modifier.height(4.dp))
+                Text("📎${note.attachments.size}", fontFamily = JbMono, fontSize = 12.sp, color = c.muted)
+            }
             if (note.pinned) {
                 Spacer(Modifier.height(6.dp))
                 Icon(Icons.Filled.Star, S.favorites, tint = c.onBg, modifier = Modifier.size(14.dp))

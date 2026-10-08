@@ -1,11 +1,14 @@
 package com.okto.notes
 
 import android.app.Application
+import android.net.Uri
+import android.widget.Toast
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
+import com.okto.notes.data.Attachments
 import com.okto.notes.data.Entry
 import com.okto.notes.data.EntryType
 import com.okto.notes.data.SettingsStore
@@ -18,6 +21,9 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
+import kotlinx.coroutines.withContext
+import com.okto.notes.data.Attachment
+import com.okto.notes.ui.stringsFor
 import java.time.LocalDate
 import kotlin.random.Random
 
@@ -25,6 +31,7 @@ enum class Tab { NOTES, DIARY }
 
 class OktoViewModel(app: Application) : AndroidViewModel(app) {
     private val store = Store(app)
+    val attachments = Attachments(app)
     private val writeLock = Mutex()
     private var saveJob: Job? = null
 
@@ -34,6 +41,10 @@ class OktoViewModel(app: Application) : AndroidViewModel(app) {
         private set
     var recentlyDeleted by mutableStateOf<Entry?>(null)
         private set
+
+    init {
+        viewModelScope.launch(Dispatchers.IO) { attachments.cleanup(entries) }
+    }
 
     var tab by mutableStateOf(Tab.NOTES)
     var query by mutableStateOf("")
@@ -111,6 +122,18 @@ class OktoViewModel(app: Application) : AndroidViewModel(app) {
         editing = updated
         commit(updated)
     }
+
+    /** Копирует выбранные файлы в хранилище и прикрепляет их к открытой записи. */
+    fun attach(uris: List<Uri>) {
+        val id = editing?.id ?: return
+        viewModelScope.launch {
+            val imported = withContext(Dispatchers.IO) { uris.mapNotNull { attachments.import(it) } }
+            if (imported.size < uris.size) Toast.makeText(getApplication(), stringsFor(settings.lang).attachFailed, Toast.LENGTH_SHORT).show()
+            if (imported.isNotEmpty() && editing?.id == id) edit { it.copy(attachments = it.attachments + imported) }
+        }
+    }
+
+    fun removeAttachment(a: Attachment) = edit { e -> e.copy(attachments = e.attachments - a) }
 
     fun togglePin(e: Entry) = commit(e.copy(pinned = !e.pinned))
 
