@@ -9,12 +9,7 @@ import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.Immutable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.ReadOnlyComposable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.lerp
@@ -30,7 +25,6 @@ import com.okto.notes.R
 import com.okto.notes.data.ThemeKind
 import com.okto.notes.data.ThemeSettings
 import com.okto.notes.data.UiStyle
-import kotlinx.coroutines.delay
 import java.time.Instant
 import java.time.LocalDate
 import java.time.LocalDateTime
@@ -323,16 +317,3 @@ fun shortStamp(millis: Long): String {
 
 @Composable @ReadOnlyComposable
 fun greeting(now: LocalDateTime = LocalDateTime.now()) = S.greeting(now.hour)
-
-/** Текущее время, обновляется раз в 20 секунд — для часов в шапке Okto. */
-@Composable
-fun rememberNow(): LocalDateTime {
-    var now by remember { mutableStateOf(LocalDateTime.now()) }
-    LaunchedEffect(Unit) {
-        while (true) {
-            delay(20_000)
-            now = LocalDateTime.now()
-        }
-    }
-    return now
-}

@@ -275,11 +275,10 @@ fun SearchField(value: String, onValueChange: (String) -> Unit, placeholder: Str
     }
 }
 
-/** Шапка Okto: точка, логотип, дата и время моноширинным, кнопка настроек. */
+/** Шапка Okto: точка, логотип, кнопка настроек. */
 @Composable
 fun OktoHeader(onSettings: () -> Unit) {
     val c = C
-    val now = rememberNow()
     Row(Modifier.fillMaxWidth().height(44.dp), verticalAlignment = Alignment.CenterVertically) {
         Box(
             Modifier
@@ -291,10 +290,6 @@ fun OktoHeader(onSettings: () -> Unit) {
         Spacer(Modifier.width(10.dp))
         Text("okto notes", fontFamily = JbMono, fontWeight = FontWeight.Bold, fontSize = 16.sp, color = c.onBg)
         Spacer(Modifier.weight(1f))
-        Text(
-            "${now.toLocalDate().weekdayShort().uppercase()} ${now.toLocalDate().ddMM()} · ${now.hhmm()}",
-            fontFamily = JbMono, fontSize = 12.sp, letterSpacing = 0.8.sp, color = c.muted,
-        )
         Box(
             Modifier
                 .size(44.dp)

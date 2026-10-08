@@ -217,22 +217,6 @@ private fun OktoNotes(vm: OktoViewModel, all: List<Entry>, shown: List<Entry>) {
             item { SearchField(vm.query, { vm.query = it }, S.searchNotesShort, Modifier.fillMaxWidth()) }
         }
         item {
-            Row(horizontalArrangement = Arrangement.spacedBy(10.dp), modifier = Modifier.padding(bottom = 6.dp)) {
-                Well(Modifier.weight(1f)) {
-                    WellLabel(S.notesCount)
-                    Spacer(Modifier.height(6.dp))
-                    BigDigits(all.size.toString().padStart(2, '0'))
-                }
-                Well(Modifier.weight(1f), onClick = { vm.tab = com.okto.notes.Tab.DIARY }) {
-                    WellLabel(S.diaryStreak)
-                    Spacer(Modifier.height(6.dp))
-                    BigDigits(vm.streak.toString().padStart(2, '0'))
-                    Spacer(Modifier.height(8.dp))
-                    WeekSegments(vm)
-                }
-            }
-        }
-        item {
             Row(horizontalArrangement = Arrangement.spacedBy(8.dp), modifier = Modifier.padding(bottom = 4.dp)) {
                 Chip(S.all, !vm.pinnedOnly) { vm.pinnedOnly = false }
                 Chip(S.favorites, vm.pinnedOnly) { vm.pinnedOnly = true }
@@ -246,25 +230,6 @@ private fun OktoNotes(vm: OktoViewModel, all: List<Entry>, shown: List<Entry>) {
         }
         items(shown, key = { it.id }) { note ->
             OktoNoteRow(note, { vm.open(note) }, { vm.togglePin(note) }, Modifier.animateItem())
-        }
-    }
-}
-
-/** 7 сегментов — последние семь дней, закрашены дни с записью в дневнике. */
-@Composable
-private fun WeekSegments(vm: OktoViewModel) {
-    val c = C
-    val days = vm.diary.map { it.day }.toSet()
-    val today = LocalDate.now().toEpochDay()
-    Row(horizontalArrangement = Arrangement.spacedBy(3.dp)) {
-        for (i in 6 downTo 0) {
-            Box(
-                Modifier
-                    .weight(1f)
-                    .height(4.dp)
-                    .clip(RoundedCornerShape(1.dp))
-                    .background(if (today - i in days) c.wellInk else c.wellGhost),
-            )
         }
     }
 }

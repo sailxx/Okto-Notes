@@ -45,8 +45,6 @@ abstract class Strings {
     abstract val nothingFoundText: String
     abstract val diaryThisWeek: String
     abstract fun ofSeven(n: Int): String
-    abstract val notesCount: String
-    abstract val diaryStreak: String
 
     // Дневник
     abstract fun daysInRow(n: Int): String
@@ -144,8 +142,6 @@ object RuStrings : Strings() {
     override val nothingFoundText = "Попробуй другой запрос или фильтр"
     override val diaryThisWeek = "Дневник на этой неделе"
     override fun ofSeven(n: Int) = "$n из 7"
-    override val notesCount = "Заметок"
-    override val diaryStreak = "Дневник · серия"
 
     override fun daysInRow(n: Int) = ru(n, "день", "дня", "дней").replaceFirstChar { it.uppercase() } + " подряд"
     override fun totalEntries(n: Int) = "Всего $n " + ru(n, "запись", "записи", "записей")
@@ -251,8 +247,6 @@ object EnStrings : Strings() {
     override val nothingFoundText = "Try a different search or filter"
     override val diaryThisWeek = "Diary this week"
     override fun ofSeven(n: Int) = "$n of 7"
-    override val notesCount = "Notes"
-    override val diaryStreak = "Diary · streak"
 
     override fun daysInRow(n: Int) = (if (n == 1) "Day" else "Days") + " in a row"
     override fun totalEntries(n: Int) = "$n " + (if (n == 1) "entry" else "entries") + " total"
