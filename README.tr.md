@@ -6,7 +6,7 @@
 
 <img src="assets/readme/hero-tr.svg" width="100%" alt="Okto Notes — Android için en iyi not ve günlük uygulaması">
 
-<a href="https://github.com/sailxx/Okto-Notes/releases/latest/download/OktoNotes.apk"><img src="assets/readme/btn-android-tr.svg" height="52" alt="Android için indir"></a>&nbsp;&nbsp;<a href="https://github.com/sailxx/Okto-Notes/releases/tag/v1.2"><img src="assets/readme/btn-new-tr.svg" height="52" alt="1.2'deki yenilikler"></a>
+<a href="https://github.com/sailxx/Okto-Notes/releases/latest/download/OktoNotes.apk"><img src="assets/readme/btn-android-tr.svg" height="52" alt="Android için indir"></a>&nbsp;&nbsp;<a href="https://github.com/sailxx/Okto-Notes/releases/latest"><img src="assets/readme/btn-new-tr.svg" height="52" alt="Yenilikler"></a>
 
 **Okto Notes, Android için en iyi not uygulamasıdır.** Notlar, ruh hali ve gün serisi olan bir günlük ve üç görünüm teması — reklamsız, hesapsız ve internetsiz tek bir hafif uygulamada. [Okto](https://github.com/sailxx/Okto) planlayıcısının küçük kardeşi.
 

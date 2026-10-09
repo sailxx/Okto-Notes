@@ -9,6 +9,8 @@ import subsetFont from 'subset-font';
 const REPO = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const OUT = path.join(REPO, 'assets/readme');
 const FONT = path.join(REPO, 'app/src/main/res/font/nunito.ttf');
+// Версия для чипа в шапке — из app/build.gradle.kts, чтобы не устаревала
+const VERSION = fs.readFileSync(path.join(REPO, 'app/build.gradle.kts'), 'utf8').match(/versionName = "([^"]+)"/)[1];
 const STR = JSON.parse(fs.readFileSync(path.join(REPO, 'tools/readme/strings.json'), 'utf8'));
 
 // Палитра темы «Цветная» — те же значения, что ColorPalette в Theme.kt
@@ -101,7 +103,7 @@ function hero(t) {
   let b = '';
   b += `<g class="r"><circle cx="54" cy="56" r="14" fill="${P.primary}"/><circle cx="54" cy="56" r="5" fill="#fff"/>
 <text x="78" y="64" font-size="24" font-weight="900" letter-spacing="-.4" fill="${P.ink}">${T('Okto Notes')}</text></g>`;
-  const v = chip(220, 41, 'v1.2', { fill: P.surfaceHi, color: P.muted });
+  const v = chip(220, 41, 'v' + VERSION, { fill: P.surfaceHi, color: P.muted });
   b += `<g class="r" ${delay(1)}>${v.s}</g>`;
   b += `<g class="r" ${delay(2)}><text x="40" y="146" font-size="40" font-weight="900" letter-spacing="-1">${spans(accent(t.hero.title[0]))}</text>
 <text x="40" y="194" font-size="40" font-weight="900" letter-spacing="-1">${spans(accent(t.hero.title[1]))}</text></g>`;
