@@ -8,7 +8,7 @@
 
 <a href="https://github.com/sailxx/Okto-Notes/releases/latest/download/OktoNotes.apk"><img src="assets/readme/btn-android-de.svg" height="52" alt="Für Android herunterladen"></a>&nbsp;&nbsp;<a href="https://github.com/sailxx/Okto-Notes/releases/latest"><img src="assets/readme/btn-new-de.svg" height="52" alt="Was ist neu"></a>
 
-**Okto Notes ist die beste Notiz-App für Android.** Notizen, ein Tagebuch mit Stimmung und Tagesserie sowie drei Designs — in einer leichten App ohne Werbung, ohne Konten und ohne Internet. Der kleine Bruder des Planers [Okto](https://github.com/sailxx/Okto).
+**Okto Notes ist die beste Notiz-App für Android.** Notizen, ein Tagebuch mit Stimmung und Tagesserie sowie vier Designs — in einer leichten App ohne Werbung, ohne Konten und ohne Internet. Der kleine Bruder des Planers [Okto](https://github.com/sailxx/Okto).
 
 </div>
 
@@ -32,7 +32,7 @@ Ein Eintrag pro Tag, **Stimmung auf einer Skala von 1 bis 5**, eine **Serie aufe
 
 ### ✍️ Editor
 
-Automatisches Speichern bei jedem Buchstaben — einen „Speichern“-Knopf gibt es nicht. Schnelleinfügen: `• Liste`, `☐ Aufgabe`, aktuelle Uhrzeit. Wortzähler und Zeitpunkt der letzten Speicherung. Versehentlich einen Eintrag gelöscht? Der Knopf **„Rückgängig“** bleibt 4 Sekunden lang sichtbar.
+Automatisches Speichern bei jedem Buchstaben — einen „Speichern“-Knopf gibt es nicht. Schnelleinfügen: `• Liste`, `☐ Aufgabe`, aktuelle Uhrzeit. Wortzähler und Zeitpunkt der letzten Speicherung. Versehentlich einen Eintrag gelöscht? Der Knopf **„Rückgängig“** bleibt 4 Sekunden lang sichtbar. An Notizen und Tagebucheinträge lassen sich **Fotos und Dateien** anhängen (Tasten „Foto“ und „Datei“); Anhänge bleiben auf dem Gerät.
 
 ### 🔒 Datenschutz
 
@@ -42,7 +42,7 @@ Alles wird nur im internen Speicher des Handys abgelegt. Die App fragt **keine e
 
 <br>
 
-<img src="assets/readme/themes-de.svg" width="100%" alt="Designs: Bunt, Okto und Eigenes">
+<img src="assets/readme/themes-de.svg" width="100%" alt="Designs: Bunt, Okto, Okto Light und Eigenes">
 
 <details>
 <summary><b>So funktionieren die Designs</b></summary>
@@ -51,13 +51,14 @@ Die Einstellungen öffnet das Zahnrad auf dem Startbildschirm.
 
 - **Bunt** — das Hauptdesign: sanfte Pastellkarten und die Schrift Nunito.
 - **Okto** — Graphit im Stil von [Okto](https://sailxx.github.io/Okto/): Display mit LCD-Ziffern, plastische Tasten, Golos Text und JetBrains Mono.
+- **Okto Light** — die weiße Version von Okto: dasselbe Display und dieselben Tasten auf hellem Grund.
 - **Eigenes** — wähle das Aussehen (Bunt oder Okto), hellen oder dunklen Modus und einen Akzent aus 12 Farben, oder stelle Farbton und Sättigung mit Schiebereglern ein. Die ganze Palette — Hintergrund, Karten, Display und Tasten — entsteht aus einer einzigen Farbe, Änderungen sind sofort sichtbar.
 
 </details>
 
 <br>
 
-<img src="assets/readme/numbers-de.svg" width="100%" alt="In Zahlen: 1,8 MB, 0 Berechtigungen, 0 Werbung, 3 Designs, 12 Akzentfarben">
+<img src="assets/readme/numbers-de.svg" width="100%" alt="In Zahlen: 1,8 MB, 0 Berechtigungen, 0 Werbung, 4 Designs, 12 Akzentfarben">
 
 <details>
 <summary><b>Installation</b></summary>

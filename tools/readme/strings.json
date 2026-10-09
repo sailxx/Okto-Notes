@@ -4,7 +4,7 @@
       "alt": "Okto Notes — лучшее приложение для заметок и дневника на Android",
       "title": ["Лучшее приложение", "для *заметок* и дневника"],
       "sub": ["Пиши мысли, веди дневник и отмечай настроение —", "быстро, офлайн и без рекламы."],
-      "cards": [["Мгновенно", "Автосохранение"], ["Офлайн", "Без аккаунтов"], ["Три темы", "И своя палитра"], ["Бесплатно", "Без рекламы"]]
+      "cards": [["Мгновенно", "Автосохранение"], ["Офлайн", "Без аккаунтов"], ["Четыре темы", "И своя палитра"], ["Бесплатно", "Без рекламы"]]
     },
     "buttons": { "android": "Скачать для Android", "whatsNew": "Что нового" },
     "features": {
@@ -17,13 +17,13 @@
       ]
     },
     "themes": {
-      "alt": "Темы: Цветная, Okto и Своя", "chip": "Темы оформления", "title": "Три темы — *выбери свою*",
-      "cols": [["Цветная", "Основная тема"], ["Okto", "Графит и табло"], ["Своя", "Любой цвет"]],
+      "alt": "Темы: Цветная, Okto, Okto Light и Своя", "chip": "Темы оформления", "title": "Четыре темы — *выбери свою*",
+      "cols": [["Цветная", "Основная тема"], ["Okto", "Графит и табло"], ["Okto Light", "Белая версия"], ["Своя", "Любой цвет"]],
       "accents": "12 акцентов + свой оттенок и насыщенность"
     },
     "numbers": {
-      "alt": "В цифрах: 1.8 МБ, 0 разрешений, 0 рекламы, 3 темы, 12 акцентов", "chip": "В цифрах", "title": "Лёгкое, быстрое *и приватное*",
-      "items": [["1.8", " МБ", ["размер APK"]], ["0", "", ["разрешений", "системы"]], ["0", "", ["рекламы", "и трекеров"]], ["3", "", ["темы", "оформления"]], ["12", "", ["акцентных", "цветов"]]]
+      "alt": "В цифрах: 1.8 МБ, 0 разрешений, 0 рекламы, 4 темы, 12 акцентов", "chip": "В цифрах", "title": "Лёгкое, быстрое *и приватное*",
+      "items": [["1.8", " МБ", ["размер APK"]], ["0", "", ["разрешений", "системы"]], ["0", "", ["рекламы", "и трекеров"]], ["4", "", ["темы", "оформления"]], ["12", "", ["акцентных", "цветов"]]]
     }
   },
   "en": {
@@ -31,7 +31,7 @@
       "alt": "Okto Notes — the best notes and journal app for Android",
       "title": ["The best app", "for *notes* and journaling"],
       "sub": ["Write down thoughts, keep a journal and track your mood —", "fast, offline and ad-free."],
-      "cards": [["Instant", "Autosave"], ["Offline", "No accounts"], ["Three themes", "Plus your own palette"], ["Free", "No ads"]]
+      "cards": [["Instant", "Autosave"], ["Offline", "No accounts"], ["Four themes", "Plus your own palette"], ["Free", "No ads"]]
     },
     "buttons": { "android": "Download for Android", "whatsNew": "What’s new" },
     "features": {
@@ -44,13 +44,13 @@
       ]
     },
     "themes": {
-      "alt": "Themes: Colorful, Okto and Custom", "chip": "Themes", "title": "Three themes — *pick yours*",
-      "cols": [["Colorful", "Main theme"], ["Okto", "Graphite and display"], ["Custom", "Any color"]],
+      "alt": "Themes: Colorful, Okto, Okto Light and Custom", "chip": "Themes", "title": "Four themes — *pick yours*",
+      "cols": [["Colorful", "Main theme"], ["Okto", "Graphite and display"], ["Okto Light", "White version"], ["Custom", "Any color"]],
       "accents": "12 accents + your own hue and saturation"
     },
     "numbers": {
-      "alt": "By the numbers: 1.8 MB, 0 permissions, 0 ads, 3 themes, 12 accents", "chip": "By the numbers", "title": "Light, fast *and private*",
-      "items": [["1.8", " MB", ["APK size"]], ["0", "", ["system", "permissions"]], ["0", "", ["ads", "and trackers"]], ["3", "", ["visual", "themes"]], ["12", "", ["accent", "colors"]]]
+      "alt": "By the numbers: 1.8 MB, 0 permissions, 0 ads, 4 themes, 12 accents", "chip": "By the numbers", "title": "Light, fast *and private*",
+      "items": [["1.8", " MB", ["APK size"]], ["0", "", ["system", "permissions"]], ["0", "", ["ads", "and trackers"]], ["4", "", ["visual", "themes"]], ["12", "", ["accent", "colors"]]]
     }
   },
   "es": {
@@ -58,7 +58,7 @@
       "alt": "Okto Notes — la mejor app de notas y diario para Android",
       "title": ["La mejor app", "de *notas* y diario"],
       "sub": ["Apunta ideas, lleva un diario y registra tu ánimo:", "rápido, sin conexión y sin anuncios."],
-      "cards": [["Al instante", "Guardado automático"], ["Sin conexión", "Sin cuentas"], ["Tres temas", "Y tu propia paleta"], ["Gratis", "Sin anuncios"]]
+      "cards": [["Al instante", "Guardado automático"], ["Sin conexión", "Sin cuentas"], ["Cuatro temas", "Y tu propia paleta"], ["Gratis", "Sin anuncios"]]
     },
     "buttons": { "android": "Descargar para Android", "whatsNew": "Novedades" },
     "features": {
@@ -71,13 +71,13 @@
       ]
     },
     "themes": {
-      "alt": "Temas: Colorido, Okto y Propio", "chip": "Temas", "title": "Tres temas: *elige el tuyo*",
-      "cols": [["Colorido", "Tema principal"], ["Okto", "Grafito y pantalla"], ["Propio", "Cualquier color"]],
+      "alt": "Temas: Colorido, Okto, Okto Light y Propio", "chip": "Temas", "title": "Cuatro temas: *elige el tuyo*",
+      "cols": [["Colorido", "Tema principal"], ["Okto", "Grafito y pantalla"], ["Okto Light", "Versión blanca"], ["Propio", "Cualquier color"]],
       "accents": "12 acentos + tu propio tono y saturación"
     },
     "numbers": {
-      "alt": "En cifras: 1,8 MB, 0 permisos, 0 anuncios, 3 temas, 12 acentos", "chip": "En cifras", "title": "Ligera, rápida *y privada*",
-      "items": [["1,8", " MB", ["tamaño del APK"]], ["0", "", ["permisos", "del sistema"]], ["0", "", ["anuncios", "y rastreadores"]], ["3", "", ["temas", "visuales"]], ["12", "", ["colores", "de acento"]]]
+      "alt": "En cifras: 1,8 MB, 0 permisos, 0 anuncios, 4 temas, 12 acentos", "chip": "En cifras", "title": "Ligera, rápida *y privada*",
+      "items": [["1,8", " MB", ["tamaño del APK"]], ["0", "", ["permisos", "del sistema"]], ["0", "", ["anuncios", "y rastreadores"]], ["4", "", ["temas", "visuales"]], ["12", "", ["colores", "de acento"]]]
     }
   },
   "pt": {
@@ -85,7 +85,7 @@
       "alt": "Okto Notes — o melhor app de notas e diário para Android",
       "title": ["O melhor app", "de *notas* e diário"],
       "sub": ["Anote ideias, mantenha um diário e marque o humor —", "rápido, offline e sem anúncios."],
-      "cards": [["Na hora", "Salvamento automático"], ["Offline", "Sem contas"], ["Três temas", "E sua própria paleta"], ["Grátis", "Sem anúncios"]]
+      "cards": [["Na hora", "Salvamento automático"], ["Offline", "Sem contas"], ["Quatro temas", "E sua própria paleta"], ["Grátis", "Sem anúncios"]]
     },
     "buttons": { "android": "Baixar para Android", "whatsNew": "Novidades" },
     "features": {
@@ -98,13 +98,13 @@
       ]
     },
     "themes": {
-      "alt": "Temas: Colorido, Okto e Próprio", "chip": "Temas", "title": "Três temas — *escolha o seu*",
-      "cols": [["Colorido", "Tema principal"], ["Okto", "Grafite e visor"], ["Próprio", "Qualquer cor"]],
+      "alt": "Temas: Colorido, Okto, Okto Light e Próprio", "chip": "Temas", "title": "Quatro temas — *escolha o seu*",
+      "cols": [["Colorido", "Tema principal"], ["Okto", "Grafite e visor"], ["Okto Light", "Versão branca"], ["Próprio", "Qualquer cor"]],
       "accents": "12 cores de destaque + seu tom e saturação"
     },
     "numbers": {
-      "alt": "Em números: 1,8 MB, 0 permissões, 0 anúncios, 3 temas, 12 cores", "chip": "Em números", "title": "Leve, rápido *e privado*",
-      "items": [["1,8", " MB", ["tamanho do APK"]], ["0", "", ["permissões", "do sistema"]], ["0", "", ["anúncios", "e rastreadores"]], ["3", "", ["temas", "visuais"]], ["12", "", ["cores de", "destaque"]]]
+      "alt": "Em números: 1,8 MB, 0 permissões, 0 anúncios, 4 temas, 12 cores", "chip": "Em números", "title": "Leve, rápido *e privado*",
+      "items": [["1,8", " MB", ["tamanho do APK"]], ["0", "", ["permissões", "do sistema"]], ["0", "", ["anúncios", "e rastreadores"]], ["4", "", ["temas", "visuais"]], ["12", "", ["cores de", "destaque"]]]
     }
   },
   "de": {
@@ -112,7 +112,7 @@
       "alt": "Okto Notes — die beste App für Notizen und Tagebuch auf Android",
       "title": ["Die beste App", "für *Notizen* und Tagebuch"],
       "sub": ["Gedanken notieren, Tagebuch führen, Stimmung festhalten —", "schnell, offline und ohne Werbung."],
-      "cards": [["Sofort", "Automatisch gespeichert"], ["Offline", "Ohne Konto"], ["Drei Designs", "Plus eigene Palette"], ["Kostenlos", "Ohne Werbung"]]
+      "cards": [["Sofort", "Automatisch gespeichert"], ["Offline", "Ohne Konto"], ["Vier Designs", "Plus eigene Palette"], ["Kostenlos", "Ohne Werbung"]]
     },
     "buttons": { "android": "Für Android laden", "whatsNew": "Was ist neu" },
     "features": {
@@ -125,13 +125,13 @@
       ]
     },
     "themes": {
-      "alt": "Designs: Bunt, Okto und Eigenes", "chip": "Designs", "title": "Drei Designs — *wähle deins*",
-      "cols": [["Bunt", "Hauptdesign"], ["Okto", "Graphit und Display"], ["Eigenes", "Jede Farbe"]],
+      "alt": "Designs: Bunt, Okto, Okto Light und Eigenes", "chip": "Designs", "title": "Vier Designs — *wähle deins*",
+      "cols": [["Bunt", "Hauptdesign"], ["Okto", "Graphit und Display"], ["Okto Light", "Weiße Version"], ["Eigenes", "Jede Farbe"]],
       "accents": "12 Akzente + eigener Farbton und Sättigung"
     },
     "numbers": {
-      "alt": "In Zahlen: 1,8 MB, 0 Berechtigungen, 0 Werbung, 3 Designs, 12 Akzente", "chip": "In Zahlen", "title": "Leicht, schnell *und privat*",
-      "items": [["1,8", " MB", ["APK-Größe"]], ["0", "", ["System-", "berechtigungen"]], ["0", "", ["Werbung", "und Tracker"]], ["3", "", ["Designs"]], ["12", "", ["Akzent-", "farben"]]]
+      "alt": "In Zahlen: 1,8 MB, 0 Berechtigungen, 0 Werbung, 4 Designs, 12 Akzente", "chip": "In Zahlen", "title": "Leicht, schnell *und privat*",
+      "items": [["1,8", " MB", ["APK-Größe"]], ["0", "", ["System-", "berechtigungen"]], ["0", "", ["Werbung", "und Tracker"]], ["4", "", ["Designs"]], ["12", "", ["Akzent-", "farben"]]]
     }
   },
   "fr": {
@@ -139,7 +139,7 @@
       "alt": "Okto Notes — la meilleure appli de notes et de journal sur Android",
       "title": ["La meilleure appli", "de *notes* et de journal"],
       "sub": ["Note tes idées, tiens ton journal et suis ton humeur —", "rapide, hors ligne et sans pub."],
-      "cards": [["Instantané", "Enregistrement auto"], ["Hors ligne", "Sans compte"], ["Trois thèmes", "Et ta propre palette"], ["Gratuit", "Sans pub"]]
+      "cards": [["Instantané", "Enregistrement auto"], ["Hors ligne", "Sans compte"], ["Quatre thèmes", "Et ta propre palette"], ["Gratuit", "Sans pub"]]
     },
     "buttons": { "android": "Télécharger pour Android", "whatsNew": "Nouveautés" },
     "features": {
@@ -152,13 +152,13 @@
       ]
     },
     "themes": {
-      "alt": "Thèmes : Coloré, Okto et Perso", "chip": "Thèmes", "title": "Trois thèmes — *choisis le tien*",
-      "cols": [["Coloré", "Thème principal"], ["Okto", "Graphite et écran"], ["Perso", "Toute couleur"]],
+      "alt": "Thèmes : Coloré, Okto, Okto Light et Perso", "chip": "Thèmes", "title": "Quatre thèmes — *choisis le tien*",
+      "cols": [["Coloré", "Thème principal"], ["Okto", "Graphite et écran"], ["Okto Light", "Version blanche"], ["Perso", "Toute couleur"]],
       "accents": "12 accents + ta propre teinte et saturation"
     },
     "numbers": {
-      "alt": "En chiffres : 1,8 Mo, 0 permission, 0 pub, 3 thèmes, 12 accents", "chip": "En chiffres", "title": "Légère, rapide *et privée*",
-      "items": [["1,8", " Mo", ["taille de l’APK"]], ["0", "", ["permission", "système"]], ["0", "", ["pub", "ni traqueur"]], ["3", "", ["thèmes", "visuels"]], ["12", "", ["couleurs", "d’accent"]]]
+      "alt": "En chiffres : 1,8 Mo, 0 permission, 0 pub, 4 thèmes, 12 accents", "chip": "En chiffres", "title": "Légère, rapide *et privée*",
+      "items": [["1,8", " Mo", ["taille de l’APK"]], ["0", "", ["permission", "système"]], ["0", "", ["pub", "ni traqueur"]], ["4", "", ["thèmes", "visuels"]], ["12", "", ["couleurs", "d’accent"]]]
     }
   },
   "it": {
@@ -166,7 +166,7 @@
       "alt": "Okto Notes — la migliore app per note e diario su Android",
       "title": ["La migliore app", "per *note* e diario"],
       "sub": ["Scrivi pensieri, tieni un diario e segna l’umore —", "veloce, offline e senza pubblicità."],
-      "cards": [["Istantanea", "Salvataggio automatico"], ["Offline", "Senza account"], ["Tre temi", "E la tua palette"], ["Gratis", "Senza pubblicità"]]
+      "cards": [["Istantanea", "Salvataggio automatico"], ["Offline", "Senza account"], ["Quattro temi", "E la tua palette"], ["Gratis", "Senza pubblicità"]]
     },
     "buttons": { "android": "Scarica per Android", "whatsNew": "Novità" },
     "features": {
@@ -179,13 +179,13 @@
       ]
     },
     "themes": {
-      "alt": "Temi: Colorato, Okto e Personale", "chip": "Temi", "title": "Tre temi — *scegli il tuo*",
-      "cols": [["Colorato", "Tema principale"], ["Okto", "Grafite e display"], ["Personale", "Ogni colore"]],
+      "alt": "Temi: Colorato, Okto, Okto Light e Personale", "chip": "Temi", "title": "Quattro temi — *scegli il tuo*",
+      "cols": [["Colorato", "Tema principale"], ["Okto", "Grafite e display"], ["Okto Light", "Versione bianca"], ["Personale", "Ogni colore"]],
       "accents": "12 accenti + la tua tonalità e saturazione"
     },
     "numbers": {
-      "alt": "In numeri: 1,8 MB, 0 permessi, 0 pubblicità, 3 temi, 12 accenti", "chip": "In numeri", "title": "Leggera, veloce *e privata*",
-      "items": [["1,8", " MB", ["dimensione APK"]], ["0", "", ["permessi", "di sistema"]], ["0", "", ["pubblicità", "e tracker"]], ["3", "", ["temi", "grafici"]], ["12", "", ["colori", "d’accento"]]]
+      "alt": "In numeri: 1,8 MB, 0 permessi, 0 pubblicità, 4 temi, 12 accenti", "chip": "In numeri", "title": "Leggera, veloce *e privata*",
+      "items": [["1,8", " MB", ["dimensione APK"]], ["0", "", ["permessi", "di sistema"]], ["0", "", ["pubblicità", "e tracker"]], ["4", "", ["temi", "grafici"]], ["12", "", ["colori", "d’accento"]]]
     }
   },
   "tr": {
@@ -193,7 +193,7 @@
       "alt": "Okto Notes — Android için en iyi not ve günlük uygulaması",
       "title": ["*Not* ve günlük için", "en iyi uygulama"],
       "sub": ["Düşüncelerini yaz, günlük tut ve ruh halini işaretle —", "hızlı, çevrimdışı ve reklamsız."],
-      "cards": [["Anında", "Otomatik kayıt"], ["Çevrimdışı", "Hesap yok"], ["Üç tema", "Ve kendi paletin"], ["Ücretsiz", "Reklam yok"]]
+      "cards": [["Anında", "Otomatik kayıt"], ["Çevrimdışı", "Hesap yok"], ["Dört tema", "Ve kendi paletin"], ["Ücretsiz", "Reklam yok"]]
     },
     "buttons": { "android": "Android için indir", "whatsNew": "Yenilikler" },
     "features": {
@@ -206,13 +206,13 @@
       ]
     },
     "themes": {
-      "alt": "Temalar: Renkli, Okto ve Özel", "chip": "Temalar", "title": "Üç tema — *seninkini seç*",
-      "cols": [["Renkli", "Ana tema"], ["Okto", "Grafit ve ekran"], ["Özel", "Her renk"]],
+      "alt": "Temalar: Renkli, Okto, Okto Light ve Özel", "chip": "Temalar", "title": "Dört tema — *seninkini seç*",
+      "cols": [["Renkli", "Ana tema"], ["Okto", "Grafit ve ekran"], ["Okto Light", "Beyaz sürüm"], ["Özel", "Her renk"]],
       "accents": "12 vurgu rengi + kendi tonun ve doygunluğun"
     },
     "numbers": {
-      "alt": "Rakamlarla: 1,8 MB, 0 izin, 0 reklam, 3 tema, 12 vurgu rengi", "chip": "Rakamlarla", "title": "Hafif, hızlı *ve gizli*",
-      "items": [["1,8", " MB", ["APK boyutu"]], ["0", "", ["sistem", "izni"]], ["0", "", ["reklam", "ve izleyici"]], ["3", "", ["görünüm", "teması"]], ["12", "", ["vurgu", "rengi"]]]
+      "alt": "Rakamlarla: 1,8 MB, 0 izin, 0 reklam, 4 tema, 12 vurgu rengi", "chip": "Rakamlarla", "title": "Hafif, hızlı *ve gizli*",
+      "items": [["1,8", " MB", ["APK boyutu"]], ["0", "", ["sistem", "izni"]], ["0", "", ["reklam", "ve izleyici"]], ["4", "", ["görünüm", "teması"]], ["12", "", ["vurgu", "rengi"]]]
     }
   },
   "uk": {
@@ -220,7 +220,7 @@
       "alt": "Okto Notes — найкращий застосунок для нотаток і щоденника на Android",
       "title": ["Найкращий застосунок", "для *нотаток* і щоденника"],
       "sub": ["Записуй думки, веди щоденник і відзначай настрій —", "швидко, офлайн і без реклами."],
-      "cards": [["Миттєво", "Автозбереження"], ["Офлайн", "Без акаунтів"], ["Три теми", "І своя палітра"], ["Безкоштовно", "Без реклами"]]
+      "cards": [["Миттєво", "Автозбереження"], ["Офлайн", "Без акаунтів"], ["Чотири теми", "І своя палітра"], ["Безкоштовно", "Без реклами"]]
     },
     "buttons": { "android": "Завантажити для Android", "whatsNew": "Що нового" },
     "features": {
@@ -233,13 +233,13 @@
       ]
     },
     "themes": {
-      "alt": "Теми: Кольорова, Okto і Своя", "chip": "Теми оформлення", "title": "Три теми — *обери свою*",
-      "cols": [["Кольорова", "Основна тема"], ["Okto", "Графіт і табло"], ["Своя", "Будь-який колір"]],
+      "alt": "Теми: Кольорова, Okto, Okto Light і Своя", "chip": "Теми оформлення", "title": "Чотири теми — *обери свою*",
+      "cols": [["Кольорова", "Основна тема"], ["Okto", "Графіт і табло"], ["Okto Light", "Біла версія"], ["Своя", "Будь-який колір"]],
       "accents": "12 акцентів + свій відтінок і насиченість"
     },
     "numbers": {
-      "alt": "У цифрах: 1.8 МБ, 0 дозволів, 0 реклами, 3 теми, 12 акцентів", "chip": "У цифрах", "title": "Легкий, швидкий *і приватний*",
-      "items": [["1.8", " МБ", ["розмір APK"]], ["0", "", ["дозволів", "системи"]], ["0", "", ["реклами", "й трекерів"]], ["3", "", ["теми", "оформлення"]], ["12", "", ["акцентних", "кольорів"]]]
+      "alt": "У цифрах: 1.8 МБ, 0 дозволів, 0 реклами, 4 теми, 12 акцентів", "chip": "У цифрах", "title": "Легкий, швидкий *і приватний*",
+      "items": [["1.8", " МБ", ["розмір APK"]], ["0", "", ["дозволів", "системи"]], ["0", "", ["реклами", "й трекерів"]], ["4", "", ["теми", "оформлення"]], ["12", "", ["акцентних", "кольорів"]]]
     }
   },
   "pl": {
@@ -247,7 +247,7 @@
       "alt": "Okto Notes — najlepsza aplikacja do notatek i dziennika na Androida",
       "title": ["Najlepsza aplikacja", "do *notatek* i dziennika"],
       "sub": ["Zapisuj myśli, prowadź dziennik i zaznaczaj nastrój —", "szybko, offline i bez reklam."],
-      "cards": [["Od razu", "Autozapis"], ["Offline", "Bez kont"], ["Trzy motywy", "I własna paleta"], ["Za darmo", "Bez reklam"]]
+      "cards": [["Od razu", "Autozapis"], ["Offline", "Bez kont"], ["Cztery motywy", "I własna paleta"], ["Za darmo", "Bez reklam"]]
     },
     "buttons": { "android": "Pobierz na Androida", "whatsNew": "Co nowego" },
     "features": {
@@ -260,13 +260,13 @@
       ]
     },
     "themes": {
-      "alt": "Motywy: Kolorowy, Okto i Własny", "chip": "Motywy", "title": "Trzy motywy — *wybierz swój*",
-      "cols": [["Kolorowy", "Główny motyw"], ["Okto", "Grafit i wyświetlacz"], ["Własny", "Dowolny kolor"]],
+      "alt": "Motywy: Kolorowy, Okto, Okto Light i Własny", "chip": "Motywy", "title": "Cztery motywy — *wybierz swój*",
+      "cols": [["Kolorowy", "Główny motyw"], ["Okto", "Grafit i wyświetlacz"], ["Okto Light", "Biała wersja"], ["Własny", "Dowolny kolor"]],
       "accents": "12 akcentów + własny odcień i nasycenie"
     },
     "numbers": {
-      "alt": "W liczbach: 1,8 MB, 0 uprawnień, 0 reklam, 3 motywy, 12 akcentów", "chip": "W liczbach", "title": "Lekka, szybka *i prywatna*",
-      "items": [["1,8", " MB", ["rozmiar APK"]], ["0", "", ["uprawnień", "systemu"]], ["0", "", ["reklam", "i trackerów"]], ["3", "", ["motywy", "wyglądu"]], ["12", "", ["kolorów", "akcentu"]]]
+      "alt": "W liczbach: 1,8 MB, 0 uprawnień, 0 reklam, 4 motywy, 12 akcentów", "chip": "W liczbach", "title": "Lekka, szybka *i prywatna*",
+      "items": [["1,8", " MB", ["rozmiar APK"]], ["0", "", ["uprawnień", "systemu"]], ["0", "", ["reklam", "i trackerów"]], ["4", "", ["motywy", "wyglądu"]], ["12", "", ["kolorów", "akcentu"]]]
     }
   }
 }

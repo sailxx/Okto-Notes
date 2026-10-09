@@ -8,7 +8,7 @@
 
 <a href="https://github.com/sailxx/Okto-Notes/releases/latest/download/OktoNotes.apk"><img src="assets/readme/btn-android-tr.svg" height="52" alt="Android için indir"></a>&nbsp;&nbsp;<a href="https://github.com/sailxx/Okto-Notes/releases/latest"><img src="assets/readme/btn-new-tr.svg" height="52" alt="Yenilikler"></a>
 
-**Okto Notes, Android için en iyi not uygulamasıdır.** Notlar, ruh hali ve gün serisi olan bir günlük ve üç görünüm teması — reklamsız, hesapsız ve internetsiz tek bir hafif uygulamada. [Okto](https://github.com/sailxx/Okto) planlayıcısının küçük kardeşi.
+**Okto Notes, Android için en iyi not uygulamasıdır.** Notlar, ruh hali ve gün serisi olan bir günlük ve dört görünüm teması — reklamsız, hesapsız ve internetsiz tek bir hafif uygulamada. [Okto](https://github.com/sailxx/Okto) planlayıcısının küçük kardeşi.
 
 </div>
 
@@ -32,7 +32,7 @@ Günde bir kayıt, **1–5 ölçeğinde ruh hali**, **art arda gün serisi**, 4 
 
 ### ✍️ Düzenleyici
 
-Her harfte otomatik kayıt — “Kaydet” düğmesi yok. Hızlı eklemeler: `• liste`, `☐ görev`, şimdiki saat. Kelime sayacı ve son kayıt saati. Bir kaydı yanlışlıkla mı sildiniz? **“Geri al”** düğmesi 4 saniye boyunca ekranda kalır.
+Her harfte otomatik kayıt — “Kaydet” düğmesi yok. Hızlı eklemeler: `• liste`, `☐ görev`, şimdiki saat. Kelime sayacı ve son kayıt saati. Bir kaydı yanlışlıkla mı sildiniz? **“Geri al”** düğmesi 4 saniye boyunca ekranda kalır. Notlara ve günlük kayıtlarına Fotoğraf ve Dosya düğmeleriyle **fotoğraf ve dosya** ekleyebilirsin; ekler yalnızca cihazda kalır.
 
 ### 🔒 Gizlilik
 
@@ -42,7 +42,7 @@ Her şey yalnızca telefonun dahili belleğinde saklanır. Uygulama **hiçbir iz
 
 <br>
 
-<img src="assets/readme/themes-tr.svg" width="100%" alt="Temalar: Renkli, Okto ve Özel">
+<img src="assets/readme/themes-tr.svg" width="100%" alt="Temalar: Renkli, Okto, Okto Light ve Özel">
 
 <details>
 <summary><b>Temalar nasıl çalışır</b></summary>
@@ -51,13 +51,14 @@ Ayarlar ana ekrandaki dişli simgesiyle açılır.
 
 - **Renkli** — ana tema: yumuşak pastel kartlar ve Nunito yazı tipi.
 - **Okto** — [Okto](https://sailxx.github.io/Okto/) tarzında grafit: LCD rakamlı ekran, kabarık tuşlar, Golos Text ve JetBrains Mono.
+- **Okto Light** — Okto’nun beyaz sürümü: aynı ekran ve tuşlar, açık zemin üzerinde.
 - **Özel** — görünümü (Renkli veya Okto), açık ya da koyu modu ve 12 renk arasından bir vurgu rengini seçin ya da tonu ve doygunluğu kaydırıcılarla ayarlayın. Tüm palet — arka plan, kartlar, ekran ve düğmeler — tek bir renkten oluşturulur, değişiklikler anında görünür.
 
 </details>
 
 <br>
 
-<img src="assets/readme/numbers-tr.svg" width="100%" alt="Rakamlarla: 1,8 MB, 0 izin, 0 reklam, 3 tema, 12 vurgu rengi">
+<img src="assets/readme/numbers-tr.svg" width="100%" alt="Rakamlarla: 1,8 MB, 0 izin, 0 reklam, 4 tema, 12 vurgu rengi">
 
 <details>
 <summary><b>Kurulum</b></summary>

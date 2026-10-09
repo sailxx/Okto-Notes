@@ -8,7 +8,7 @@
 
 <a href="https://github.com/sailxx/Okto-Notes/releases/latest/download/OktoNotes.apk"><img src="assets/readme/btn-android-pl.svg" height="52" alt="Pobierz na Androida"></a>&nbsp;&nbsp;<a href="https://github.com/sailxx/Okto-Notes/releases/latest"><img src="assets/readme/btn-new-pl.svg" height="52" alt="Co nowego"></a>
 
-**Okto Notes to najlepsza aplikacja do notatek na Androida.** Notatki, dziennik z nastrojem i serią dni oraz trzy motywy wyglądu — w jednej lekkiej aplikacji bez reklam, kont i internetu. Młodszy brat planera [Okto](https://github.com/sailxx/Okto).
+**Okto Notes to najlepsza aplikacja do notatek na Androida.** Notatki, dziennik z nastrojem i serią dni oraz cztery motywy wyglądu — w jednej lekkiej aplikacji bez reklam, kont i internetu. Młodszy brat planera [Okto](https://github.com/sailxx/Okto).
 
 </div>
 
@@ -32,7 +32,7 @@ Jeden wpis dziennie, **nastrój w skali 1–5**, **seria dni z rzędu**, mapa ci
 
 ### ✍️ Edytor
 
-Autozapis przy każdej literze — przycisku „Zapisz” nie ma. Szybkie wstawki: `• lista`, `☐ zadanie`, bieżąca godzina. Licznik słów i godzina ostatniego zapisu. Przypadkiem usunięty wpis? Przycisk **„Cofnij”** jest dostępny przez 4 sekundy.
+Autozapis przy każdej literze — przycisku „Zapisz” nie ma. Szybkie wstawki: `• lista`, `☐ zadanie`, bieżąca godzina. Licznik słów i godzina ostatniego zapisu. Przypadkiem usunięty wpis? Przycisk **„Cofnij”** jest dostępny przez 4 sekundy. Do notatek i wpisów w dzienniku możesz dołączać **zdjęcia i pliki** przyciskami „Zdjęcie” i „Plik”; załączniki zostają na urządzeniu.
 
 ### 🔒 Prywatność
 
@@ -42,7 +42,7 @@ Wszystko jest przechowywane tylko w pamięci wewnętrznej telefonu. Aplikacja ni
 
 <br>
 
-<img src="assets/readme/themes-pl.svg" width="100%" alt="Motywy: Kolorowy, Okto i Własny">
+<img src="assets/readme/themes-pl.svg" width="100%" alt="Motywy: Kolorowy, Okto, Okto Light i Własny">
 
 <details>
 <summary><b>Jak działają motywy</b></summary>
@@ -51,13 +51,14 @@ Ustawienia otwiera koło zębate na ekranie głównym.
 
 - **Kolorowy** — główny motyw: miękkie pastelowe karty i krój Nunito.
 - **Okto** — grafit w stylu [Okto](https://sailxx.github.io/Okto/): wyświetlacz z cyframi LCD, wypukłe klawisze, Golos Text i JetBrains Mono.
+- **Okto Light** — biała wersja Okto: ten sam wyświetlacz i klawisze na jasnym tle.
 - **Własny** — wybierz wygląd (Kolorowy lub Okto), tryb jasny lub ciemny i akcent spośród 12 kolorów albo dobierz odcień i nasycenie suwakami. Cała paleta — tło, karty, wyświetlacz i przyciski — powstaje z jednego koloru, a zmiany widać od razu.
 
 </details>
 
 <br>
 
-<img src="assets/readme/numbers-pl.svg" width="100%" alt="W liczbach: 1,8 MB, 0 uprawnień, 0 reklam, 3 motywy, 12 akcentów">
+<img src="assets/readme/numbers-pl.svg" width="100%" alt="W liczbach: 1,8 MB, 0 uprawnień, 0 reklam, 4 motywy, 12 akcentów">
 
 <details>
 <summary><b>Instalacja</b></summary>

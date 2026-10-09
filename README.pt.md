@@ -8,7 +8,7 @@
 
 <a href="https://github.com/sailxx/Okto-Notes/releases/latest/download/OktoNotes.apk"><img src="assets/readme/btn-android-pt.svg" height="52" alt="Baixar para Android"></a>&nbsp;&nbsp;<a href="https://github.com/sailxx/Okto-Notes/releases/latest"><img src="assets/readme/btn-new-pt.svg" height="52" alt="Novidades"></a>
 
-**Okto Notes é o melhor app de notas para Android.** Notas, um diário com humor e sequência de dias e três temas visuais — em um app leve, sem anúncios, sem contas e sem internet. O irmão mais novo do planejador [Okto](https://github.com/sailxx/Okto).
+**Okto Notes é o melhor app de notas para Android.** Notas, um diário com humor e sequência de dias e quatro temas visuais — em um app leve, sem anúncios, sem contas e sem internet. O irmão mais novo do planejador [Okto](https://github.com/sailxx/Okto).
 
 </div>
 
@@ -32,7 +32,7 @@ Uma entrada por dia, **humor numa escala de 1 a 5**, **sequência de dias seguid
 
 ### ✍️ Editor
 
-Salvamento automático a cada letra — não existe botão “Salvar”. Inserções rápidas: `• lista`, `☐ tarefa`, a hora atual. Contador de palavras e hora do último salvamento. Apagou uma entrada sem querer? O botão **“Desfazer”** fica disponível por 4 segundos.
+Salvamento automático a cada letra — não existe botão “Salvar”. Inserções rápidas: `• lista`, `☐ tarefa`, a hora atual. Contador de palavras e hora do último salvamento. Apagou uma entrada sem querer? O botão **“Desfazer”** fica disponível por 4 segundos. Dá para anexar **fotos e arquivos** a notas e entradas do diário com os botões Foto e Arquivo; os anexos ficam no aparelho.
 
 ### 🔒 Privacidade
 
@@ -42,7 +42,7 @@ Tudo fica guardado só na memória interna do celular. O app não pede **nenhuma
 
 <br>
 
-<img src="assets/readme/themes-pt.svg" width="100%" alt="Temas: Colorido, Okto e Próprio">
+<img src="assets/readme/themes-pt.svg" width="100%" alt="Temas: Colorido, Okto, Okto Light e Próprio">
 
 <details>
 <summary><b>Como funcionam os temas</b></summary>
@@ -51,13 +51,14 @@ As configurações abrem pela engrenagem na tela principal.
 
 - **Colorido** — o tema principal: cartões em tons pastel suaves e a fonte Nunito.
 - **Okto** — grafite no estilo do [Okto](https://sailxx.github.io/Okto/): visor com dígitos LCD, teclas em relevo, Golos Text e JetBrains Mono.
+- **Okto Light** — a versão branca do Okto: o mesmo visor e as mesmas teclas sobre fundo claro.
 - **Próprio** — escolha o visual (Colorido ou Okto), modo claro ou escuro e um destaque entre 12 cores, ou ajuste o tom e a saturação nos controles deslizantes. Toda a paleta — fundo, cartões, visor e botões — é gerada a partir de uma única cor, e as mudanças aparecem na hora.
 
 </details>
 
 <br>
 
-<img src="assets/readme/numbers-pt.svg" width="100%" alt="Em números: 1,8 MB, 0 permissões, 0 anúncios, 3 temas, 12 cores de destaque">
+<img src="assets/readme/numbers-pt.svg" width="100%" alt="Em números: 1,8 MB, 0 permissões, 0 anúncios, 4 temas, 12 cores de destaque">
 
 <details>
 <summary><b>Instalação</b></summary>

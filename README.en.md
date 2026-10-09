@@ -8,7 +8,7 @@
 
 <a href="https://github.com/sailxx/Okto-Notes/releases/latest/download/OktoNotes.apk"><img src="assets/readme/btn-android-en.svg" height="52" alt="Download for Android"></a>&nbsp;&nbsp;<a href="https://github.com/sailxx/Okto-Notes/releases/latest"><img src="assets/readme/btn-new-en.svg" height="52" alt="What’s new"></a>
 
-**Okto Notes is the best notes app for Android.** Notes, a journal with moods and day streaks, and three visual themes — in one light app with no ads, no accounts and no internet. The little brother of the [Okto](https://github.com/sailxx/Okto) planner.
+**Okto Notes is the best notes app for Android.** Notes, a journal with moods and day streaks, and four visual themes — in one light app with no ads, no accounts and no internet. The little brother of the [Okto](https://github.com/sailxx/Okto) planner.
 
 </div>
 
@@ -32,7 +32,7 @@ One entry per day, **mood on a 1–5 scale**, a **streak of days in a row**, a 4
 
 ### ✍️ Editor
 
-Autosave on every letter — there is no “Save” button. Quick inserts: `• list`, `☐ task`, the current time. A word counter and the time of the last save. Deleted an entry by accident? The **“Undo”** button is there for 4 seconds.
+Autosave on every letter — there is no “Save” button. Quick inserts: `• list`, `☐ task`, the current time. A word counter and the time of the last save. Deleted an entry by accident? The **“Undo”** button is there for 4 seconds. You can attach **photos and files** to notes and journal entries with the Photo and File buttons; attachments stay on the device.
 
 ### 🔒 Privacy
 
@@ -42,7 +42,7 @@ Everything is stored only in the phone’s internal storage. The app asks for **
 
 <br>
 
-<img src="assets/readme/themes-en.svg" width="100%" alt="Themes: Colorful, Okto and Custom">
+<img src="assets/readme/themes-en.svg" width="100%" alt="Themes: Colorful, Okto, Okto Light and Custom">
 
 <details>
 <summary><b>How the themes work</b></summary>
@@ -51,13 +51,14 @@ Settings open with the gear on the main screen.
 
 - **Colorful** — the main theme: soft pastel cards and the Nunito typeface.
 - **Okto** — graphite in the style of [Okto](https://sailxx.github.io/Okto/): a display with LCD digits, raised keys, Golos Text and JetBrains Mono.
+- **Okto Light** — the white version of Okto: the same display and keys on a light background.
 - **Custom** — choose the look (Colorful or Okto), light or dark mode and an accent from 12 colors, or tune the hue and saturation with sliders. The whole palette — background, cards, display and buttons — is built from a single color, and changes show up instantly.
 
 </details>
 
 <br>
 
-<img src="assets/readme/numbers-en.svg" width="100%" alt="By the numbers: 1.8 MB, 0 permissions, 0 ads, 3 themes, 12 accents">
+<img src="assets/readme/numbers-en.svg" width="100%" alt="By the numbers: 1.8 MB, 0 permissions, 0 ads, 4 themes, 12 accents">
 
 <details>
 <summary><b>Install</b></summary>

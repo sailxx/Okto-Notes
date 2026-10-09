@@ -81,7 +81,7 @@ function phoneTonal(x, y, k = 1) {
   return g(s);
 }
 function phoneOkto(x, y, p) {
-  let s = `<rect x="${x}" y="${y}" width="150" height="228" rx="20" fill="${p.bg}"/>`;
+  let s = `<rect x="${x}" y="${y}" width="150" height="228" rx="20" fill="${p.bg}"${p.edge ? ` stroke="${p.edge}"` : ''}/>`;
   s += `<circle cx="${x + 16}" cy="${y + 18}" r="3" fill="${p.key}"/><rect x="${x + 24}" y="${y + 15}" width="34" height="6" rx="2" fill="${p.ink}" fill-opacity=".8"/><rect x="${x + 100}" y="${y + 15}" width="38" height="6" rx="2" fill="${p.muted}" fill-opacity=".6"/>`;
   s += `<rect x="${x + 10}" y="${y + 32}" width="70" height="11" rx="2" fill="${p.ink}"/>`;
   for (let i = 0; i < 2; i++) {
@@ -161,17 +161,20 @@ function themes(t) {
   const W = 880, H = 520;
   let b = sectionHead(t.themes.chip, accent(t.themes.title));
   const okto = { bg: '#141414', key: '#262626', ink: '#EDEDED', muted: '#8E8E8E', well: '#0A0A0A', wellInk: '#F2F2F2', row: '#1D1D1D', tint: '#2A1E1F', primary: '#EDEDED' };
+  // «Okto Light» — те же значения, что OktoLightPalette в Theme.kt
+  const light = { bg: '#F6F6F6', key: '#DADADA', ink: '#141414', muted: '#6B6B6B', well: '#EAEAEA', wellInk: '#141414', row: '#FFFFFF', tint: '#F6E7E7', primary: '#141414', edge: '#DADADA' };
   const amber = { bg: '#120f0a', key: '#231d12', ink: '#f3e7cf', muted: '#9a8a6a', well: '#050402', wellInk: '#ffb000', row: '#1a160e', tint: '#2a2010', primary: '#ffb000' };
   const cols = [
     [...t.themes.cols[0], (x, y) => phoneTonal(x, y)],
     [...t.themes.cols[1], (x, y) => phoneOkto(x, y, okto)],
-    [...t.themes.cols[2], (x, y) => phoneOkto(x, y, amber)],
+    [...t.themes.cols[2], (x, y) => phoneOkto(x, y, light)],
+    [...t.themes.cols[3], (x, y) => phoneOkto(x, y, amber)],
   ];
   cols.forEach(([t, d, phone], i) => {
-    const x = 40 + i * 272, y = 132;
-    b += `<g class="r" ${delay(2 + i)}>${card(x, y, 256, 320, '#fff', 28)}${phone(x + 53, y + 20)}
-<text x="${x + 24}" y="${y + 284}" font-size="20" font-weight="900" fill="${P.ink}">${T(t)}</text>
-<text x="${x + 232}" y="${y + 284}" text-anchor="end" font-size="14" font-weight="700" fill="${P.muted}">${T(d)}</text></g>`;
+    const x = 40 + i * 204, y = 132;
+    b += `<g class="r" ${delay(2 + i)}>${card(x, y, 188, 320, '#fff', 28)}${phone(x + 19, y + 20)}
+<text x="${x + 20}" y="${y + 274}" font-size="20" font-weight="900" fill="${P.ink}">${T(t)}</text>
+<text x="${x + 20}" y="${y + 298}" font-size="14" font-weight="700" fill="${P.muted}">${T(d)}</text></g>`;
   });
   const sw = ['#8a8a8a', '#7c5cff', '#3d7bff', '#2ec4d6', '#2fbf8a', '#5cc85a', '#a6d93a', '#ffb000', '#ff7a2e', '#ef5a5f', '#ff5c9a', '#b05cff'];
   sw.forEach((c, i) => { b += `<circle class="r" ${delay(6 + i * 0.3)} cx="${52 + i * 26}" cy="${H - 34}" r="9" fill="${c}"/>`; });

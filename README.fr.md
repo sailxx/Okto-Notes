@@ -8,7 +8,7 @@
 
 <a href="https://github.com/sailxx/Okto-Notes/releases/latest/download/OktoNotes.apk"><img src="assets/readme/btn-android-fr.svg" height="52" alt="Télécharger pour Android"></a>&nbsp;&nbsp;<a href="https://github.com/sailxx/Okto-Notes/releases/latest"><img src="assets/readme/btn-new-fr.svg" height="52" alt="Nouveautés"></a>
 
-**Okto Notes est la meilleure appli de notes sur Android.** Des notes, un journal avec humeur et série de jours, trois thèmes visuels — dans une appli légère, sans pub, sans compte et sans internet. Le petit frère de l’agenda [Okto](https://github.com/sailxx/Okto).
+**Okto Notes est la meilleure appli de notes sur Android.** Des notes, un journal avec humeur et série de jours, quatre thèmes visuels — dans une appli légère, sans pub, sans compte et sans internet. Le petit frère de l’agenda [Okto](https://github.com/sailxx/Okto).
 
 </div>
 
@@ -32,7 +32,7 @@ Une entrée par jour, **l’humeur sur une échelle de 1 à 5**, une **série de
 
 ### ✍️ Éditeur
 
-Enregistrement automatique à chaque lettre — il n’y a pas de bouton « Enregistrer ». Insertions rapides : `• liste`, `☐ tâche`, l’heure actuelle. Compteur de mots et heure du dernier enregistrement. Entrée supprimée par erreur ? Le bouton **« Annuler »** reste affiché 4 secondes.
+Enregistrement automatique à chaque lettre — il n’y a pas de bouton « Enregistrer ». Insertions rapides : `• liste`, `☐ tâche`, l’heure actuelle. Compteur de mots et heure du dernier enregistrement. Entrée supprimée par erreur ? Le bouton **« Annuler »** reste affiché 4 secondes. Tu peux joindre des **photos et des fichiers** aux notes et aux entrées du journal avec les boutons Photo et Fichier ; les pièces jointes restent sur l’appareil.
 
 ### 🔒 Confidentialité
 
@@ -42,7 +42,7 @@ Tout est stocké uniquement dans la mémoire interne du téléphone. L’appli n
 
 <br>
 
-<img src="assets/readme/themes-fr.svg" width="100%" alt="Thèmes : Coloré, Okto et Perso">
+<img src="assets/readme/themes-fr.svg" width="100%" alt="Thèmes : Coloré, Okto, Okto Light et Perso">
 
 <details>
 <summary><b>Comment fonctionnent les thèmes</b></summary>
@@ -51,13 +51,14 @@ Les réglages s’ouvrent avec la roue dentée de l’écran principal.
 
 - **Coloré** — le thème principal : cartes aux tons pastel doux et police Nunito.
 - **Okto** — graphite dans le style d’[Okto](https://sailxx.github.io/Okto/) : écran à chiffres LCD, touches en relief, Golos Text et JetBrains Mono.
+- **Okto Light** — la version blanche d’Okto : le même écran et les mêmes touches sur fond clair.
 - **Perso** — choisissez l’apparence (Coloré ou Okto), le mode clair ou sombre et un accent parmi 12 couleurs, ou réglez la teinte et la saturation avec des curseurs. Toute la palette — fond, cartes, écran et boutons — se construit à partir d’une seule couleur, et les changements s’affichent tout de suite.
 
 </details>
 
 <br>
 
-<img src="assets/readme/numbers-fr.svg" width="100%" alt="En chiffres : 1,8 Mo, 0 autorisation, 0 pub, 3 thèmes, 12 accents">
+<img src="assets/readme/numbers-fr.svg" width="100%" alt="En chiffres : 1,8 Mo, 0 autorisation, 0 pub, 4 thèmes, 12 accents">
 
 <details>
 <summary><b>Installation</b></summary>
