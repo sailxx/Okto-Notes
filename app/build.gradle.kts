@@ -18,8 +18,8 @@ android {
         applicationId = "com.okto.notes"
         minSdk = 26
         targetSdk = 35
-        versionCode = 8
-        versionName = "1.7"
+        versionCode = 9
+        versionName = "1.8"
         buildConfigField("String", "FIREBASE_API_KEY", cfg("firebase.apiKey"))
         buildConfigField("String", "FIREBASE_PROJECT_ID", cfg("firebase.projectId"))
         buildConfigField("String", "GOOGLE_WEB_CLIENT_ID", cfg("google.webClientId"))
