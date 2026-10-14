@@ -36,7 +36,7 @@ Salvataggio automatico a ogni lettera: il pulsante «Salva» non c’è. Inserim
 
 ### 🔒 Privacy
 
-Tutto è salvato solo nella memoria interna del telefono. L’app non chiede **nessun permesso**, nemmeno l’accesso a internet.
+Tutto è salvato solo nella memoria interna del telefono. L’unico permesso è **internet**, solo per la sincronizzazione facoltativa delle note con Okto tramite il tuo account Google. Il diario non lascia mai il telefono. Senza accesso, l’app non invia nulla.
 
 </details>
 

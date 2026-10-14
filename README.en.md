@@ -36,7 +36,7 @@ Autosave on every letter — there is no “Save” button. Quick inserts: `• 
 
 ### 🔒 Privacy
 
-Everything is stored only in the phone’s internal storage. The app asks for **zero permissions** — not even internet access.
+Everything is stored only in the phone’s internal storage. The only permission is **internet**, used solely for the optional sync of notes with Okto through your Google account. The diary never leaves the phone. If you don’t sign in, the app sends nothing.
 
 </details>
 

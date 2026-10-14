@@ -36,7 +36,7 @@ Her harfte otomatik kayıt — “Kaydet” düğmesi yok. Hızlı eklemeler: `�
 
 ### 🔒 Gizlilik
 
-Her şey yalnızca telefonun dahili belleğinde saklanır. Uygulama **hiçbir izin** istemez — internet erişimi bile.
+Her şey yalnızca telefonun dahili belleğinde saklanır. Tek izin **internet**; yalnızca notların Google hesabınla Okto ile isteğe bağlı eşitlenmesi için kullanılır. Günlük telefondan asla çıkmaz. Giriş yapmazsan uygulama hiçbir şey göndermez.
 
 </details>
 

@@ -36,7 +36,7 @@ Salvamento automático a cada letra — não existe botão “Salvar”. Inserç
 
 ### 🔒 Privacidade
 
-Tudo fica guardado só na memória interna do celular. O app não pede **nenhuma permissão** — nem acesso à internet.
+Tudo fica guardado só na memória interna do celular. A única permissão é **internet**, só para a sincronização opcional das notas com o Okto pela conta Google. O diário nunca sai do celular. Sem login, o app não envia nada.
 
 </details>
 

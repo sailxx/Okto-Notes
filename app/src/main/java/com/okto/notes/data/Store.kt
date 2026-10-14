@@ -43,6 +43,9 @@ class Store(context: Context) {
         .put("day", day)
         .put("createdAt", createdAt)
         .put("updatedAt", updatedAt)
+        .put("cloudId", cloudId)
+        .put("cloudColor", cloudColor)
+        .put("cloudFiles", cloudFiles)
         .put("attachments", JSONArray().also { a -> attachments.forEach { a.put(JSONObject().put("file", it.file).put("name", it.name).put("mime", it.mime).put("size", it.size)) } })
 
     private fun JSONObject.toEntry() = Entry(
@@ -56,6 +59,9 @@ class Store(context: Context) {
         day = optLong("day"),
         createdAt = optLong("createdAt"),
         updatedAt = optLong("updatedAt"),
+        cloudId = optString("cloudId"),
+        cloudColor = optString("cloudColor"),
+        cloudFiles = optString("cloudFiles"),
         attachments = optJSONArray("attachments")?.let { a ->
             List(a.length()) { i -> a.getJSONObject(i).let { Attachment(it.getString("file"), it.optString("name"), it.optString("mime"), it.optLong("size")) } }
         } ?: emptyList(),

@@ -36,6 +36,11 @@ class MainActivity : ComponentActivity() {
         }
     }
 
+    override fun onStart() {
+        super.onStart()
+        if (::vm.isInitialized) vm.requestSync(300)
+    }
+
     override fun onStop() {
         super.onStop()
         vm.flush()

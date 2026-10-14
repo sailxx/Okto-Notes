@@ -24,5 +24,5 @@ text{font-family:"NUN",ui-rounded,"Segoe UI",sans-serif}
 <circle cx="488" cy="330" r="18" fill="#4A2FC0"/><text x="488" y="336" text-anchor="middle" font-size="16" font-weight="900" fill="#fff">4</text>
 <text x="518" y="337" font-size="21" font-weight="900" fill="#31111D">Приватность</text>
 <text x="472" y="380" font-size="15" font-weight="600" fill="#633B48">Всё хранится только на телефоне.</text>
-<text x="472" y="402" font-size="15" font-weight="600" fill="#633B48">Ноль разрешений, ни облака, ни трекеров.</text></g>
+<text x="472" y="402" font-size="15" font-weight="600" fill="#633B48">Один доступ — в интернет, и только для синхронизации с Okto.</text></g>
 </svg>

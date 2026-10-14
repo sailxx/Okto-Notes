@@ -28,7 +28,12 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.Slider
 import androidx.compose.material3.SliderDefaults
 import androidx.compose.material3.Text
+import android.app.Activity
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.platform.LocalContext
+import com.okto.notes.SyncStatus
+import java.text.DateFormat
+import java.util.Date
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -104,6 +109,8 @@ fun SettingsScreen(vm: OktoViewModel) {
 
             if (s.kind == ThemeKind.CUSTOM) CustomThemeEditor(vm, s)
 
+            if (vm.cloudAvailable) SyncSection(vm)
+
             SectionTitle(S.language, Modifier.padding(start = 4.dp, top = 12.dp))
             Row(Modifier.padding(horizontal = 4.dp), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                 // Названия языков — всегда на самих языках, чтобы свой находился в любом интерфейсе.
@@ -113,10 +120,51 @@ fun SettingsScreen(vm: OktoViewModel) {
 
             SectionTitle(S.about, Modifier.padding(start = 4.dp, top = 12.dp))
             Text(
-                S.aboutText("1.5"),
+                S.aboutText("1.6"),
                 style = t.bodyText, color = c.muted, modifier = Modifier.padding(horizontal = 4.dp),
             )
             Spacer(Modifier.height(24.dp))
+        }
+    }
+}
+
+/** Связь с Okto: вход через Google и состояние обмена заметками. */
+@Composable
+private fun SyncSection(vm: OktoViewModel) {
+    val t = T
+    val c = t.c
+    val activity = LocalContext.current as Activity
+    val shape = RoundedCornerShape(if (t.okto) 12.dp else 24.dp)
+    val status = vm.syncStatus
+    val signedIn = status != SyncStatus.OFF
+    SectionTitle(S.syncTitle, Modifier.padding(start = 4.dp, top = 12.dp))
+    Column(
+        Modifier
+            .fillMaxWidth()
+            .clip(shape)
+            .background(c.surface)
+            .padding(16.dp),
+        verticalArrangement = Arrangement.spacedBy(10.dp),
+    ) {
+        Text(S.syncSub, style = t.bodyText, color = c.muted)
+        if (signedIn) {
+            Text(S.syncedAs(vm.syncAccount), style = t.cardTitle, color = c.onBg)
+            val line = when (status) {
+                SyncStatus.SYNCING -> S.syncing
+                SyncStatus.ERROR -> S.syncFailed
+                SyncStatus.OFFLINE -> S.syncOffline
+                SyncStatus.EXPIRED -> S.syncSignedOut
+                else -> if (vm.lastSyncAt > 0) S.syncedAt(DateFormat.getTimeInstance(DateFormat.SHORT).format(Date(vm.lastSyncAt))) else ""
+            }
+            if (line.isNotEmpty()) Text(line, style = t.bodyText, color = if (status == SyncStatus.IDLE || status == SyncStatus.SYNCING) c.muted else c.danger)
+            Text(S.syncNote, style = t.bodyText, color = c.muted)
+            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                if (status == SyncStatus.EXPIRED) Btn(S.syncSignIn, { vm.signIn(activity) }, primary = true)
+                else Btn(S.syncNow, { vm.requestSync() }, primary = true)
+                Btn(S.syncSignOut, { vm.signOut() })
+            }
+        } else {
+            Btn(S.syncSignIn, { vm.signIn(activity) }, primary = true)
         }
     }
 }

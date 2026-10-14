@@ -1,5 +1,6 @@
 package com.okto.notes
 
+import android.app.Activity
 import android.app.Application
 import android.net.Uri
 import android.widget.Toast
@@ -9,6 +10,13 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.okto.notes.data.Attachments
+import com.okto.notes.data.CloudApi
+import com.okto.notes.data.CloudConfig
+import com.okto.notes.data.CloudException
+import com.okto.notes.data.CloudState
+import com.okto.notes.data.Change
+import com.okto.notes.data.NoteSync
+import com.okto.notes.data.requestGoogleIdToken
 import com.okto.notes.data.Entry
 import com.okto.notes.data.EntryType
 import com.okto.notes.data.SettingsStore
@@ -24,10 +32,13 @@ import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
 import com.okto.notes.data.Attachment
 import com.okto.notes.ui.stringsFor
+import java.io.IOException
 import java.time.LocalDate
 import kotlin.random.Random
 
 enum class Tab { NOTES, DIARY }
+
+enum class SyncStatus { OFF, IDLE, SYNCING, ERROR, OFFLINE, EXPIRED }
 
 class OktoViewModel(app: Application) : AndroidViewModel(app) {
     private val store = Store(app)
@@ -42,8 +53,29 @@ class OktoViewModel(app: Application) : AndroidViewModel(app) {
     var recentlyDeleted by mutableStateOf<Entry?>(null)
         private set
 
+    private val cloud = CloudState(app)
+    private val api = CloudApi(cloud)
+    private val syncLock = Mutex()
+    private var syncJob: Job? = null
+
+    /** Синхронизацию с Okto можно включить, только если в сборке заданы настройки облака. */
+    val cloudAvailable = CloudConfig.available
+    var syncStatus by mutableStateOf(if (cloud.signedIn) SyncStatus.IDLE else SyncStatus.OFF)
+        private set
+    var syncAccount by mutableStateOf(cloud.email)
+        private set
+    var lastSyncAt by mutableStateOf(cloud.lastSync)
+        private set
+
     init {
         viewModelScope.launch(Dispatchers.IO) { attachments.cleanup(entries) }
+        if (cloud.signedIn) requestSync(500)
+        viewModelScope.launch {
+            while (true) {
+                delay(120_000)
+                if (cloud.signedIn) runSync()
+            }
+        }
     }
 
     var tab by mutableStateOf(Tab.NOTES)
@@ -84,7 +116,7 @@ class OktoViewModel(app: Application) : AndroidViewModel(app) {
         }
 
     fun newNote() {
-        editing = Entry(id = newId(), type = EntryType.NOTE)
+        editing = Entry(id = newId(), type = EntryType.NOTE, cloudId = NoteSync.newCloudId())
     }
 
     fun newDiary(day: LocalDate = LocalDate.now(), mood: Int = -1) {
@@ -146,7 +178,7 @@ class OktoViewModel(app: Application) : AndroidViewModel(app) {
     }
 
     fun undoDelete() {
-        recentlyDeleted?.let(::commit)
+        recentlyDeleted?.let { commit(it.copy(updatedAt = System.currentTimeMillis())) }
         recentlyDeleted = null
     }
 
@@ -163,13 +195,14 @@ class OktoViewModel(app: Application) : AndroidViewModel(app) {
         persist()
     }
 
-    private fun persist() {
+    private fun persist(sync: Boolean = true) {
         saveJob?.cancel()
         val snapshot = entries
         saveJob = viewModelScope.launch(Dispatchers.IO) {
             delay(400)
             writeLock.withLock { store.save(snapshot) }
         }
+        if (sync && cloud.signedIn) requestSync(5000)
     }
 
     /** Немедленная запись на диск — вызывается, когда приложение уходит в фон. */
@@ -179,6 +212,108 @@ class OktoViewModel(app: Application) : AndroidViewModel(app) {
         viewModelScope.launch(Dispatchers.IO + NonCancellable) {
             writeLock.withLock { store.save(snapshot) }
         }
+        if (cloud.signedIn) requestSync(0)
+    }
+
+    // ---------- Синхронизация с Okto ----------
+
+    fun requestSync(delayMs: Long = 0) {
+        if (!cloud.signedIn) return
+        syncJob?.cancel()
+        syncJob = viewModelScope.launch {
+            delay(delayMs)
+            runSync()
+        }
+    }
+
+    fun signIn(activity: Activity) {
+        if (!cloudAvailable || syncStatus == SyncStatus.SYNCING) return
+        viewModelScope.launch {
+            syncStatus = SyncStatus.SYNCING
+            try {
+                val token = requestGoogleIdToken(activity)
+                if (token == null) {
+                    syncStatus = SyncStatus.OFF
+                    return@launch
+                }
+                withContext(Dispatchers.IO) { api.signIn(token) }
+                syncAccount = cloud.email
+                runSync()
+            } catch (e: Exception) {
+                syncStatus = if (e is IOException) SyncStatus.OFFLINE else SyncStatus.ERROR
+                Toast.makeText(getApplication(), stringsFor(settings.lang).syncFailed, Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    fun signOut() {
+        syncJob?.cancel()
+        cloud.clear()
+        syncAccount = ""
+        lastSyncAt = 0
+        syncStatus = SyncStatus.OFF
+    }
+
+    private suspend fun runSync() = syncLock.withLock {
+        if (!cloud.signedIn) return@withLock
+        syncStatus = SyncStatus.SYNCING
+        try {
+            val started = System.currentTimeMillis()
+            issuedIds.clear()
+            val remote = withContext(Dispatchers.IO) { api.listNotes() }
+            val res = NoteSync.merge(entries, remote, cloud.known, cloud.lastSync, started, ::freeId)
+            applyChanges(res.changes)
+            withContext(Dispatchers.IO) {
+                res.uploads.forEach(api::upload)
+                res.remoteDeletes.forEach { api.markDeleted(it, started) }
+            }
+            cloud.known = entries.filter { it.type == EntryType.NOTE && it.cloudId.isNotEmpty() }.map { it.cloudId }.toSet()
+            cloud.lastSync = started
+            withContext(Dispatchers.IO) { cloud.save() }
+            lastSyncAt = started
+            syncStatus = SyncStatus.IDLE
+        } catch (e: CloudException) {
+            syncStatus = if (e.signedOut) SyncStatus.EXPIRED else SyncStatus.ERROR
+        } catch (e: IOException) {
+            syncStatus = SyncStatus.OFFLINE
+        } catch (e: Exception) {
+            syncStatus = SyncStatus.ERROR
+        }
+    }
+
+    /** Применяет результат слияния к тому, что сейчас на экране: заметки, изменённые за время синхронизации, не трогаем. */
+    private fun applyChanges(changes: List<Change>) {
+        var list = entries
+        for (c in changes) {
+            val old = c.old
+            val new = c.new
+            list = when {
+                old == null -> list + new!!
+                list.none { it == old } -> list
+                editing?.id == old.id -> {
+                    // Открытую запись не подменяем, кроме присвоения облачного id — иначе правка создаст дубликат.
+                    if (new != null && new.updatedAt == old.updatedAt) {
+                        editing = editing?.copy(cloudId = new.cloudId)
+                        list.map { if (it.id == old.id) new else it }
+                    } else list
+                }
+                new == null -> list.filterNot { it.id == old.id }
+                else -> list.map { if (it.id == old.id) new else it }
+            }
+        }
+        if (list !== entries) {
+            entries = list
+            persist(sync = false)
+        }
+    }
+
+    private val issuedIds = mutableSetOf<Long>()
+
+    private fun freeId(): Long {
+        var id = newId()
+        while (id in issuedIds || entries.any { it.id == id }) id++
+        issuedIds += id
+        return id
     }
 
     private fun newId() = System.currentTimeMillis() * 1000 + Random.nextInt(1000)

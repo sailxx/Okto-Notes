@@ -16,6 +16,11 @@ data class Entry(
     val createdAt: Long = System.currentTimeMillis(),
     val updatedAt: Long = createdAt,
     val attachments: List<Attachment> = emptyList(),
+    /** Идентификатор заметки в облаке Okto (пусто, пока синхронизация её не видела). */
+    val cloudId: String = "",
+    /** Цвет и вложения из Okto: у Okto Notes таких нет, поэтому хранятся как есть и уходят обратно без изменений. */
+    val cloudColor: String = "",
+    val cloudFiles: String = "",
 ) {
     val isBlank: Boolean get() = title.isBlank() && body.isBlank() && mood < 0 && attachments.isEmpty()
     val date: LocalDate get() = LocalDate.ofEpochDay(day)

@@ -36,7 +36,7 @@ Autozapis przy każdej literze — przycisku „Zapisz” nie ma. Szybkie wstawk
 
 ### 🔒 Prywatność
 
-Wszystko jest przechowywane tylko w pamięci wewnętrznej telefonu. Aplikacja nie prosi o **żadne uprawnienia** — nawet o dostęp do internetu.
+Wszystko jest przechowywane tylko w pamięci wewnętrznej telefonu. Jedyne uprawnienie to **internet**, używany tylko do opcjonalnej synchronizacji notatek z Okto przez konto Google. Dziennik nigdy nie opuszcza telefonu. Bez logowania aplikacja nic nie wysyła.
 
 </details>
 

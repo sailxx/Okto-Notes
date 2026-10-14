@@ -1,8 +1,14 @@
+import java.util.Properties
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("org.jetbrains.kotlin.plugin.compose")
 }
+
+// Настройки облака (Firebase-проект Okto) лежат в local.properties и в репозиторий не попадают.
+val local = Properties().apply { rootProject.file("local.properties").takeIf { it.exists() }?.reader()?.use(::load) }
+fun cfg(name: String) = "\"" + (local.getProperty(name) ?: "") + "\""
 
 android {
     namespace = "com.okto.notes"
@@ -12,8 +18,11 @@ android {
         applicationId = "com.okto.notes"
         minSdk = 26
         targetSdk = 35
-        versionCode = 7
-        versionName = "1.6"
+        versionCode = 8
+        versionName = "1.7"
+        buildConfigField("String", "FIREBASE_API_KEY", cfg("firebase.apiKey"))
+        buildConfigField("String", "FIREBASE_PROJECT_ID", cfg("firebase.projectId"))
+        buildConfigField("String", "GOOGLE_WEB_CLIENT_ID", cfg("google.webClientId"))
     }
 
     buildTypes {
@@ -27,7 +36,10 @@ android {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
-    buildFeatures { compose = true }
+    buildFeatures {
+        compose = true
+        buildConfig = true
+    }
 }
 
 kotlin {
@@ -45,4 +57,7 @@ dependencies {
     implementation("androidx.compose.foundation:foundation")
     implementation("androidx.compose.material3:material3")
     implementation("androidx.compose.material:material-icons-core")
+    implementation("androidx.credentials:credentials:1.3.0")
+    implementation("androidx.credentials:credentials-play-services-auth:1.3.0")
+    implementation("com.google.android.libraries.identity.googleid:googleid:1.1.1")
 }

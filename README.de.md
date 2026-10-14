@@ -36,7 +36,7 @@ Automatisches Speichern bei jedem Buchstaben — einen „Speichern“-Knopf gib
 
 ### 🔒 Datenschutz
 
-Alles wird nur im internen Speicher des Handys abgelegt. Die App fragt **keine einzige Berechtigung** an — nicht einmal den Internetzugriff.
+Alles wird nur im internen Speicher des Handys abgelegt. Die einzige Berechtigung ist **Internet**, nur für den optionalen Abgleich der Notizen mit Okto über dein Google-Konto. Das Tagebuch verlässt das Handy nie. Ohne Anmeldung sendet die App nichts.
 
 </details>
 

@@ -36,7 +36,7 @@ Enregistrement automatique à chaque lettre — il n’y a pas de bouton « Enre
 
 ### 🔒 Confidentialité
 
-Tout est stocké uniquement dans la mémoire interne du téléphone. L’appli ne demande **aucune autorisation** — pas même l’accès à internet.
+Tout est stocké uniquement dans la mémoire interne du téléphone. La seule autorisation est **internet**, uniquement pour la synchronisation facultative des notes avec Okto via ton compte Google. Le journal ne quitte jamais le téléphone. Sans connexion, l’appli n’envoie rien.
 
 </details>
 

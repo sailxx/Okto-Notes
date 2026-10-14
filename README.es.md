@@ -36,7 +36,7 @@ Guardado automático en cada letra: no hay botón «Guardar». Inserciones rápi
 
 ### 🔒 Privacidad
 
-Todo se guarda solo en la memoria interna del teléfono. La app no pide **ningún permiso**, ni siquiera acceso a internet.
+Todo se guarda solo en la memoria interna del teléfono. El único permiso es **internet**, solo para la sincronización opcional de las notas con Okto mediante tu cuenta de Google. El diario nunca sale del teléfono. Si no inicias sesión, la app no envía nada.
 
 </details>
 
