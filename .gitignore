@@ -5,3 +5,6 @@ local.properties
 *.iml
 node_modules/
 preview.html
+
+# Ключ подписи
+keystore.properties
