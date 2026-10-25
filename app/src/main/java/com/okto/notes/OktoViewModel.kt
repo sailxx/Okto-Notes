@@ -46,7 +46,11 @@ class OktoViewModel(app: Application) : AndroidViewModel(app) {
     private val writeLock = Mutex()
     private var saveJob: Job? = null
 
-    var entries by mutableStateOf(store.load())
+    var entries by mutableStateOf(emptyList<Entry>())
+        private set
+
+    /** Пока записи не прочитаны с диска, писать нельзя: пустой список затёр бы файл. */
+    var loaded by mutableStateOf(false)
         private set
     var editing by mutableStateOf<Entry?>(null)
         private set
@@ -68,9 +72,16 @@ class OktoViewModel(app: Application) : AndroidViewModel(app) {
         private set
 
     init {
-        viewModelScope.launch(Dispatchers.IO) { attachments.cleanup(entries) }
-        if (cloud.signedIn) requestSync(500)
         viewModelScope.launch {
+            val disk = withContext(Dispatchers.IO) { store.load() }
+            val early = entries // правки, успевшие появиться до конца чтения, важнее диска
+            val ids = early.mapTo(HashSet()) { it.id }
+            entries = disk.filterNot { it.id in ids } + early
+            loaded = true
+            if (early.isNotEmpty()) persist(sync = false)
+            val snapshot = entries
+            launch(Dispatchers.IO) { attachments.cleanup(snapshot) }
+            if (cloud.signedIn) requestSync(500)
             while (true) {
                 delay(120_000)
                 if (cloud.signedIn) runSync()
@@ -196,6 +207,7 @@ class OktoViewModel(app: Application) : AndroidViewModel(app) {
     }
 
     private fun persist(sync: Boolean = true) {
+        if (!loaded) return
         saveJob?.cancel()
         val snapshot = entries
         saveJob = viewModelScope.launch(Dispatchers.IO) {
@@ -207,6 +219,7 @@ class OktoViewModel(app: Application) : AndroidViewModel(app) {
 
     /** Немедленная запись на диск — вызывается, когда приложение уходит в фон. */
     fun flush() {
+        if (!loaded) return
         saveJob?.cancel()
         val snapshot = entries
         viewModelScope.launch(Dispatchers.IO + NonCancellable) {

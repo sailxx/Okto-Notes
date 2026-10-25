@@ -87,7 +87,7 @@ private fun TonalNotes(vm: OktoViewModel, all: List<Entry>, shown: List<Entry>) 
                 Chip(S.favorites, vm.pinnedOnly) { vm.pinnedOnly = true }
             }
         }
-        if (shown.isEmpty()) {
+        if (shown.isEmpty() && vm.loaded) {
             item(span = StaggeredGridItemSpan.FullLine) {
                 if (all.isEmpty()) EmptyState("📝", S.emptyNotesTitle, S.emptyNotesText)
                 else EmptyState("🔍", S.nothingFoundTitle, S.nothingFoundText)
@@ -222,7 +222,7 @@ private fun OktoNotes(vm: OktoViewModel, all: List<Entry>, shown: List<Entry>) {
                 Chip(S.favorites, vm.pinnedOnly) { vm.pinnedOnly = true }
             }
         }
-        if (shown.isEmpty()) {
+        if (shown.isEmpty() && vm.loaded) {
             item {
                 if (all.isEmpty()) EmptyState("", S.emptyNotesTitle, S.emptyNotesText)
                 else EmptyState("", S.nothingFoundTitle, S.nothingFoundText)
