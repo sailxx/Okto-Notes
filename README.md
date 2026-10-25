@@ -1,5 +1,9 @@
 <div align="center">
 
+[Русский](README.ru.md) · **English** · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Türkçe](README.tr.md) · [Українська](README.uk.md) · [Polski](README.pl.md)
+
+<br>
+
 <img src="assets/readme/hero-en.svg" width="100%" alt="Okto Notes — the best notes and journal app for Android">
 
 <a href="https://github.com/sailxx/Okto-Notes/releases/latest/download/OktoNotes.apk"><img src="assets/readme/btn-android-en.svg" height="52" alt="Download for Android"></a>&nbsp;&nbsp;<a href="https://github.com/sailxx/Okto-Notes/releases/latest"><img src="assets/readme/btn-new-en.svg" height="52" alt="What’s new"></a>
