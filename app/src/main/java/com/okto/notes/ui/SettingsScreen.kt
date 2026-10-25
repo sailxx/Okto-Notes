@@ -43,6 +43,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.okto.notes.OktoViewModel
 import com.okto.notes.data.Lang
+import com.okto.notes.data.ThemeMode
 
 @Composable
 fun SettingsScreen(vm: OktoViewModel) {
@@ -76,6 +77,13 @@ fun SettingsScreen(vm: OktoViewModel) {
             verticalArrangement = Arrangement.spacedBy(12.dp),
         ) {
             if (vm.cloudAvailable) SyncSection(vm)
+
+            SectionTitle(S.theme, Modifier.padding(start = 4.dp, top = 12.dp))
+            Row(Modifier.padding(horizontal = 4.dp), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                Chip(S.themeSystem, s.mode == ThemeMode.SYSTEM) { vm.updateSettings { it.copy(mode = ThemeMode.SYSTEM) } }
+                Chip(S.light, s.mode == ThemeMode.LIGHT) { vm.updateSettings { it.copy(mode = ThemeMode.LIGHT) } }
+                Chip(S.dark, s.mode == ThemeMode.DARK) { vm.updateSettings { it.copy(mode = ThemeMode.DARK) } }
+            }
 
             SectionTitle(S.language, Modifier.padding(start = 4.dp, top = 12.dp))
             Row(Modifier.padding(horizontal = 4.dp), horizontalArrangement = Arrangement.spacedBy(8.dp)) {

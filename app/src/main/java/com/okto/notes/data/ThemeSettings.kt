@@ -12,7 +12,11 @@ enum class Lang {
     }
 }
 
+/** Тема: следовать системной или зафиксировать светлую/тёмную. */
+enum class ThemeMode { SYSTEM, LIGHT, DARK }
+
 data class ThemeSettings(
+    val mode: ThemeMode = ThemeMode.SYSTEM,
     val lang: Lang = Lang.system(),
 )
 
@@ -20,11 +24,13 @@ class SettingsStore(context: Context) {
     private val prefs = context.getSharedPreferences("settings", Context.MODE_PRIVATE)
 
     fun load() = ThemeSettings(
+        mode = enumOr(prefs.getString("mode", null), ThemeMode.SYSTEM),
         lang = enumOr(prefs.getString("lang", null), Lang.system()),
     )
 
     fun save(s: ThemeSettings) {
         prefs.edit()
+            .putString("mode", s.mode.name)
             .putString("lang", s.lang.name)
             .apply()
     }

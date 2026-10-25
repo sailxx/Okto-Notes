@@ -84,14 +84,7 @@ abstract class Strings {
 
     // Настройки
     abstract val theme: String
-    abstract val themeColor: String
-    abstract val themeColorSub: String
-    abstract val themeOktoSub: String
-    abstract val themeOktoLightSub: String
-    abstract val themeCustom: String
-    abstract val themeCustomSub: String
-    abstract val layout: String
-    abstract val layoutColor: String
+    abstract val themeSystem: String
     abstract val mode: String
     abstract val light: String
     abstract val dark: String
@@ -190,14 +183,7 @@ object RuStrings : Strings() {
     override val noAppToOpen = "Нет приложения для открытия файла"
 
     override val theme = "Тема"
-    override val themeColor = "Цветная"
-    override val themeColorSub = "Основная тема: мягкие пастельные карточки"
-    override val themeOktoSub = "Графит, табло с цифрами и клавиши"
-    override val themeOktoLightSub = "Белая: светлый фон, табло и клавиши"
-    override val themeCustom = "Своя"
-    override val themeCustomSub = "Собери тему из своей гаммы"
-    override val layout = "Оформление"
-    override val layoutColor = "Цветное"
+    override val themeSystem = "Системная"
     override val mode = "Режим"
     override val light = "Светлая"
     override val dark = "Тёмная"
@@ -307,14 +293,7 @@ object EnStrings : Strings() {
     override val noAppToOpen = "No app to open this file"
 
     override val theme = "Theme"
-    override val themeColor = "Colorful"
-    override val themeColorSub = "Main theme: soft pastel cards"
-    override val themeOktoSub = "Graphite, digit display and keys"
-    override val themeOktoLightSub = "White: light background, display and keys"
-    override val themeCustom = "Custom"
-    override val themeCustomSub = "Build a theme from your own palette"
-    override val layout = "Layout"
-    override val layoutColor = "Colorful"
+    override val themeSystem = "System"
     override val mode = "Mode"
     override val light = "Light"
     override val dark = "Dark"

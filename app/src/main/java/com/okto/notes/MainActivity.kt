@@ -10,6 +10,7 @@ import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.lifecycle.ViewModelProvider
+import com.okto.notes.data.ThemeMode
 import com.okto.notes.ui.App
 import com.okto.notes.ui.OktoTheme
 import com.okto.notes.ui.buildTheme
@@ -23,7 +24,11 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         vm = ViewModelProvider(this)[OktoViewModel::class.java]
         setContent {
-            val dark = isSystemInDarkTheme()
+            val dark = when (vm.settings.mode) {
+                ThemeMode.SYSTEM -> isSystemInDarkTheme()
+                ThemeMode.LIGHT -> false
+                ThemeMode.DARK -> true
+            }
             val theme = remember(dark) { buildTheme(dark) }
             // Иконки статус-бара: светлые на тёмной теме, тёмные на светлой.
             LaunchedEffect(theme.c.dark) {
