@@ -16,6 +16,7 @@ import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBars
@@ -41,6 +42,8 @@ import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.text.PlatformTextStyle
+import androidx.compose.ui.text.style.LineHeightStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.okto.notes.OktoViewModel
@@ -195,7 +198,21 @@ private fun OktoNotes(vm: OktoViewModel, all: List<Entry>, shown: List<Entry>) {
     ) {
         item { OktoHeader { vm.showSettings = true } }
         item {
-            ScreenTitle(S.notes, todaySubtitle(), Modifier.padding(top = 4.dp, bottom = 6.dp)) {
+            Row(Modifier.fillMaxWidth().height(44.dp).offset(y = (-6).dp), verticalAlignment = Alignment.CenterVertically) {
+                Text(
+                    S.notes,
+                    style = t.h1.copy(
+                        lineHeightStyle = LineHeightStyle(LineHeightStyle.Alignment.Center, LineHeightStyle.Trim.Both),
+                        platformStyle = PlatformTextStyle(includeFontPadding = false),
+                    ),
+                )
+                Row(
+                    Modifier.weight(1f).padding(horizontal = 8.dp),
+                    horizontalArrangement = Arrangement.spacedBy(6.dp, Alignment.CenterHorizontally),
+                ) {
+                    Chip(S.all, !vm.pinnedOnly) { vm.pinnedOnly = false }
+                    Chip(S.favorites, vm.pinnedOnly) { vm.pinnedOnly = true }
+                }
                 Text(
                     (if (searching) S.close else S.search).uppercase(),
                     fontFamily = JbMono, fontSize = 12.sp, letterSpacing = 1.6.sp, color = c.muted,
@@ -215,12 +232,6 @@ private fun OktoNotes(vm: OktoViewModel, all: List<Entry>, shown: List<Entry>) {
         }
         if (searching) {
             item { SearchField(vm.query, { vm.query = it }, S.searchNotesShort, Modifier.fillMaxWidth()) }
-        }
-        item {
-            Row(horizontalArrangement = Arrangement.spacedBy(8.dp), modifier = Modifier.padding(bottom = 4.dp)) {
-                Chip(S.all, !vm.pinnedOnly) { vm.pinnedOnly = false }
-                Chip(S.favorites, vm.pinnedOnly) { vm.pinnedOnly = true }
-            }
         }
         if (shown.isEmpty() && vm.loaded) {
             item {

@@ -43,15 +43,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.okto.notes.OktoViewModel
 import com.okto.notes.data.Lang
-import com.okto.notes.data.ThemeKind
-import com.okto.notes.data.ThemeSettings
-import com.okto.notes.data.UiStyle
-
-/** Готовые акценты для своей темы: (оттенок, насыщенность). Первый — графит без цвета. */
-private val Swatches = listOf(
-    0f to 0f, 255f to 0.7f, 220f to 0.75f, 195f to 0.8f, 165f to 0.65f, 140f to 0.6f,
-    85f to 0.7f, 45f to 0.9f, 25f to 0.85f, 0f to 0.75f, 335f to 0.7f, 290f to 0.6f,
-)
+import com.okto.notes.data.ThemeMode
 
 @Composable
 fun SettingsScreen(vm: OktoViewModel) {
@@ -84,32 +76,14 @@ fun SettingsScreen(vm: OktoViewModel) {
                 .padding(horizontal = 16.dp),
             verticalArrangement = Arrangement.spacedBy(12.dp),
         ) {
-            SectionTitle(S.theme, Modifier.padding(start = 4.dp, top = 6.dp))
-
-            ThemeOption(
-                title = S.themeColor, subtitle = S.themeColorSub,
-                preview = buildTheme(ThemeSettings(kind = ThemeKind.COLOR)),
-                selected = s.kind == ThemeKind.COLOR,
-            ) { vm.updateSettings { it.copy(kind = ThemeKind.COLOR) } }
-            ThemeOption(
-                title = "Okto", subtitle = S.themeOktoSub,
-                preview = buildTheme(ThemeSettings(kind = ThemeKind.OKTO)),
-                selected = s.kind == ThemeKind.OKTO,
-            ) { vm.updateSettings { it.copy(kind = ThemeKind.OKTO) } }
-            ThemeOption(
-                title = "Okto Light", subtitle = S.themeOktoLightSub,
-                preview = buildTheme(ThemeSettings(kind = ThemeKind.OKTO_LIGHT)),
-                selected = s.kind == ThemeKind.OKTO_LIGHT,
-            ) { vm.updateSettings { it.copy(kind = ThemeKind.OKTO_LIGHT) } }
-            ThemeOption(
-                title = S.themeCustom, subtitle = S.themeCustomSub,
-                preview = buildTheme(s.copy(kind = ThemeKind.CUSTOM)),
-                selected = s.kind == ThemeKind.CUSTOM,
-            ) { vm.updateSettings { it.copy(kind = ThemeKind.CUSTOM) } }
-
-            if (s.kind == ThemeKind.CUSTOM) CustomThemeEditor(vm, s)
-
             if (vm.cloudAvailable) SyncSection(vm)
+
+            SectionTitle(S.theme, Modifier.padding(start = 4.dp, top = 12.dp))
+            Row(Modifier.padding(horizontal = 4.dp), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                Chip(S.themeSystem, s.mode == ThemeMode.SYSTEM) { vm.updateSettings { it.copy(mode = ThemeMode.SYSTEM) } }
+                Chip(S.light, s.mode == ThemeMode.LIGHT) { vm.updateSettings { it.copy(mode = ThemeMode.LIGHT) } }
+                Chip(S.dark, s.mode == ThemeMode.DARK) { vm.updateSettings { it.copy(mode = ThemeMode.DARK) } }
+            }
 
             SectionTitle(S.language, Modifier.padding(start = 4.dp, top = 12.dp))
             Row(Modifier.padding(horizontal = 4.dp), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
@@ -166,138 +140,6 @@ private fun SyncSection(vm: OktoViewModel) {
         } else {
             Btn(S.syncSignIn, { vm.signIn(activity) }, primary = true)
         }
-    }
-}
-
-@Composable
-private fun ThemeOption(title: String, subtitle: String, preview: AppTheme, selected: Boolean, onClick: () -> Unit) {
-    val t = T
-    val c = t.c
-    val shape = RoundedCornerShape(if (t.okto) 12.dp else 24.dp)
-    Row(
-        Modifier
-            .fillMaxWidth()
-            .clip(shape)
-            .background(c.surface)
-            .border(if (selected) 2.dp else 1.dp, if (selected) c.primary else c.outline.copy(alpha = if (t.okto) 1f else 0.3f), shape)
-            .clickable(onClick = onClick)
-            .padding(14.dp),
-        verticalAlignment = Alignment.CenterVertically,
-    ) {
-        MiniPreview(preview)
-        Spacer(Modifier.width(14.dp))
-        Column(Modifier.weight(1f)) {
-            Text(t.cap(title), style = if (t.okto) t.keyLabel.copy(fontSize = 14.sp) else t.cardTitle, color = c.onBg)
-            Spacer(Modifier.height(2.dp))
-            Text(subtitle, style = t.bodyText, color = c.muted)
-        }
-        Box(
-            Modifier
-                .size(26.dp)
-                .clip(CircleShape)
-                .background(if (selected) c.primary else c.surfaceHi),
-            contentAlignment = Alignment.Center,
-        ) { if (selected) Icon(Icons.Filled.Check, null, tint = c.onPrimary, modifier = Modifier.size(16.dp)) }
-    }
-}
-
-/** Миниатюра темы: фон, табло, карточка и акцент. */
-@Composable
-private fun MiniPreview(p: AppTheme) {
-    val pc = p.c
-    val r = if (p.okto) 6.dp else 12.dp
-    Column(
-        Modifier
-            .size(width = 64.dp, height = 76.dp)
-            .clip(RoundedCornerShape(r + 4.dp))
-            .background(pc.bg)
-            .border(1.dp, pc.outline.copy(alpha = 0.4f), RoundedCornerShape(r + 4.dp))
-            .padding(6.dp),
-        verticalArrangement = Arrangement.spacedBy(4.dp),
-    ) {
-        Box(Modifier.fillMaxWidth().height(22.dp).clip(RoundedCornerShape(r)).background(pc.well))
-        Row(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
-            Box(Modifier.weight(1f).height(18.dp).clip(RoundedCornerShape(r)).background(p.note(1).bg))
-            Box(Modifier.weight(1f).height(18.dp).clip(RoundedCornerShape(r)).background(p.note(0).bg))
-        }
-        Box(Modifier.fillMaxWidth().height(12.dp).clip(RoundedCornerShape(r)).background(pc.primary))
-    }
-}
-
-@Composable
-private fun CustomThemeEditor(vm: OktoViewModel, s: ThemeSettings) {
-    val t = T
-    val c = t.c
-    val shape = RoundedCornerShape(if (t.okto) 12.dp else 24.dp)
-    Column(
-        Modifier
-            .fillMaxWidth()
-            .clip(shape)
-            .background(c.surface)
-            .padding(16.dp),
-        verticalArrangement = Arrangement.spacedBy(10.dp),
-    ) {
-        Label(S.layout)
-        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-            Chip(S.layoutColor, s.style == UiStyle.TONAL) { vm.updateSettings { it.copy(style = UiStyle.TONAL) } }
-            Chip("Okto", s.style == UiStyle.OKTO) { vm.updateSettings { it.copy(style = UiStyle.OKTO) } }
-        }
-        Spacer(Modifier.height(2.dp))
-        Label(S.mode)
-        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-            Chip(S.light, !s.dark) { vm.updateSettings { it.copy(dark = false) } }
-            Chip(S.dark, s.dark) { vm.updateSettings { it.copy(dark = true) } }
-        }
-        Spacer(Modifier.height(2.dp))
-        Label(S.accent)
-        for (row in Swatches.chunked(6)) {
-            Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-                row.forEach { (h, sat) ->
-                    val active = kotlin.math.abs(s.hue - h) < 0.5f && kotlin.math.abs(s.sat - sat) < 0.01f
-                    Box(
-                        Modifier
-                            .weight(1f)
-                            .aspectRatio(1f)
-                            .clip(CircleShape)
-                            .border(if (active) 3.dp else 0.dp, if (active) c.onBg else c.surface, CircleShape)
-                            .padding(if (active) 5.dp else 0.dp)
-                            .clip(CircleShape)
-                            .background(if (sat == 0f) hsl(0f, 0f, 0.35f) else hsl(h, sat, 0.55f))
-                            .clickable { vm.updateSettings { it.copy(hue = h, sat = sat) } },
-                    )
-                }
-            }
-        }
-        Spacer(Modifier.height(2.dp))
-        Label(S.hue(s.hue.toInt()))
-        Box(
-            Modifier
-                .fillMaxWidth()
-                .height(10.dp)
-                .clip(RoundedCornerShape(5.dp))
-                .background(Brush.horizontalGradient((0..12).map { hsl(it * 30f, 0.75f, 0.55f) })),
-        )
-        Slider(
-            value = s.hue,
-            onValueChange = { h -> vm.updateSettings { it.copy(hue = h, sat = if (it.sat < 0.05f) 0.7f else it.sat) } },
-            valueRange = 0f..359f,
-            colors = SliderDefaults.colors(
-                thumbColor = c.primary,
-                activeTrackColor = c.primary,
-                inactiveTrackColor = c.surfaceHi,
-            ),
-        )
-        Label(S.saturation((s.sat * 100).toInt()))
-        Slider(
-            value = s.sat,
-            onValueChange = { v -> vm.updateSettings { it.copy(sat = v) } },
-            valueRange = 0f..1f,
-            colors = SliderDefaults.colors(
-                thumbColor = c.primary,
-                activeTrackColor = c.primary,
-                inactiveTrackColor = c.surfaceHi,
-            ),
-        )
     }
 }
 
