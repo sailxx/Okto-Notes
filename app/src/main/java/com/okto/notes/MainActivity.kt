@@ -6,6 +6,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.SystemBarStyle
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.lifecycle.ViewModelProvider
@@ -22,7 +23,8 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         vm = ViewModelProvider(this)[OktoViewModel::class.java]
         setContent {
-            val theme = remember(vm.settings) { buildTheme(vm.settings) }
+            val dark = isSystemInDarkTheme()
+            val theme = remember(dark) { buildTheme(dark) }
             // Иконки статус-бара: светлые на тёмной теме, тёмные на светлой.
             LaunchedEffect(theme.c.dark) {
                 val style = if (theme.c.dark) {

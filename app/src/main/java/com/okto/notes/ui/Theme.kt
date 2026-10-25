@@ -22,9 +22,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import androidx.core.graphics.ColorUtils
 import com.okto.notes.R
-import com.okto.notes.data.ThemeKind
-import com.okto.notes.data.ThemeSettings
-import com.okto.notes.data.UiStyle
 import java.time.Instant
 import java.time.LocalDate
 import java.time.LocalDateTime
@@ -78,20 +75,6 @@ fun hsl(h: Float, s: Float, l: Float, a: Float = 1f): Color {
     return Color(argb).copy(alpha = a)
 }
 
-/** «Цветная» — основная тема (макет «Мягкий тональный»). */
-val ColorPalette = Palette(
-    dark = false,
-    bg = Color(0xFFF7F2FA), onBg = Color(0xFF1D1B20), muted = Color(0xFF49454F),
-    surface = Color.White, surfaceHi = Color(0xFFECE6F0), outline = Color(0xFF79747E),
-    primary = Color(0xFF4A2FC0), onPrimary = Color.White,
-    container = Color(0xFFE8DEFF), onContainer = Color(0xFF21005D),
-    accent2 = Color(0xFFFFD8E4), onAccent2 = Color(0xFF31111D),
-    well = Color(0xFFE8DEFF), wellInk = Color(0xFF21005D), wellDim = Color(0xFF4F4566),
-    wellGhost = Color(0x1421005D), wellEdge = Color.Transparent,
-    key = Color(0xFFECE6F0), keyInk = Color(0xFF1D1B20), keyEdge = Color(0xFFCAC4D0), keyHi = Color.Transparent,
-    danger = Color(0xFFB3261E),
-)
-
 /** «Okto» — графитовая тема по мотивам sailxx.github.io/Okto. */
 val OktoPalette = Palette(
     dark = true,
@@ -106,79 +89,19 @@ val OktoPalette = Palette(
     danger = Color(0xFFEF5A5F),
 )
 
-/** «Okto Light» — белая тема в раскладке Okto. */
+/** «Okto Light» — светлая тема нового Okto: белый корпус, тёплые серые карточки. */
 val OktoLightPalette = Palette(
     dark = false,
-    bg = Color(0xFFF6F6F6), onBg = Color(0xFF141414), muted = Color(0xFF6B6B6B),
-    surface = Color.White, surfaceHi = Color(0xFFEBEBEB), outline = Color(0xFFDADADA),
-    primary = Color(0xFF141414), onPrimary = Color(0xFFF6F6F6),
-    container = Color(0xFFEBEBEB), onContainer = Color(0xFF141414),
-    accent2 = Color(0xFFEBEBEB), onAccent2 = Color(0xFF141414),
-    well = Color(0xFFEAEAEA), wellInk = Color(0xFF141414), wellDim = Color(0xFF7A7A7A),
-    wellGhost = Color(0x0F000000), wellEdge = Color(0xFFD6D6D6),
-    key = Color.White, keyInk = Color(0xFF141414), keyEdge = Color(0xFFC4C4C4), keyHi = Color(0xCCFFFFFF),
+    bg = Color(0xFFFFFFFF), onBg = Color(0xFF141414), muted = Color(0xFF5F5F5C),
+    surface = Color(0xFFF3F3F1), surfaceHi = Color(0xFFE9E9E6), outline = Color(0xFFE4E4E1),
+    primary = Color(0xFF141414), onPrimary = Color(0xFFFFFFFF),
+    container = Color(0xFFE9E9E6), onContainer = Color(0xFF141414),
+    accent2 = Color(0xFFE9E9E6), onAccent2 = Color(0xFF141414),
+    well = Color(0xFFF1F1EF), wellInk = Color(0xFF111111), wellDim = Color(0xFF5A5A57),
+    wellGhost = Color(0x0F000000), wellEdge = Color(0x21000000),
+    key = Color(0xFFFFFFFF), keyInk = Color(0xFF141414), keyEdge = Color(0xFFCFCFCC), keyHi = Color(0xFFFFFFFF),
     danger = Color(0xFFD33A3F),
 )
-
-/** Своя тема в цветной раскладке: тональная палитра из одного оттенка. */
-fun tonalPalette(h: Float, s: Float, dark: Boolean): Palette {
-    val ps = s.coerceIn(0f, 1f)
-    return if (!dark) Palette(
-        dark = false,
-        bg = hsl(h, 0.45f * ps, 0.97f), onBg = hsl(h, 0.12f * ps, 0.12f), muted = hsl(h, 0.08f * ps, 0.30f),
-        surface = Color.White, surfaceHi = hsl(h, 0.25f * ps, 0.92f), outline = hsl(h, 0.06f * ps, 0.48f),
-        primary = hsl(h, maxOf(0.45f, 0.8f * ps), 0.40f), onPrimary = Color.White,
-        container = hsl(h, 0.85f * ps, 0.91f), onContainer = hsl(h, 0.65f * ps, 0.18f),
-        accent2 = hsl(h + 60f, 0.85f * ps, 0.90f), onAccent2 = hsl(h + 60f, 0.6f * ps, 0.16f),
-        well = hsl(h, 0.85f * ps, 0.91f), wellInk = hsl(h, 0.65f * ps, 0.18f), wellDim = hsl(h, 0.15f * ps, 0.36f),
-        wellGhost = hsl(h, 0.65f * ps, 0.18f, 0.08f), wellEdge = Color.Transparent,
-        key = hsl(h, 0.25f * ps, 0.92f), keyInk = hsl(h, 0.12f * ps, 0.12f), keyEdge = hsl(h, 0.12f * ps, 0.80f),
-        keyHi = Color.Transparent, danger = Color(0xFFB3261E),
-    ) else Palette(
-        dark = true,
-        bg = hsl(h, 0.12f * ps, 0.075f), onBg = hsl(h, 0.15f * ps, 0.90f), muted = hsl(h, 0.08f * ps, 0.68f),
-        surface = hsl(h, 0.12f * ps, 0.13f), surfaceHi = hsl(h, 0.10f * ps, 0.18f), outline = hsl(h, 0.06f * ps, 0.57f),
-        primary = hsl(h, maxOf(0.5f, 0.85f * ps), 0.80f), onPrimary = hsl(h, 0.65f * ps, 0.20f),
-        container = hsl(h, 0.35f * ps, 0.30f), onContainer = hsl(h, 0.85f * ps, 0.92f),
-        accent2 = hsl(h + 60f, 0.35f * ps, 0.30f), onAccent2 = hsl(h + 60f, 0.8f * ps, 0.90f),
-        well = hsl(h, 0.35f * ps, 0.30f), wellInk = hsl(h, 0.85f * ps, 0.92f), wellDim = hsl(h, 0.3f * ps, 0.78f),
-        wellGhost = hsl(h, 0.85f * ps, 0.92f, 0.10f), wellEdge = Color.Transparent,
-        key = hsl(h, 0.10f * ps, 0.18f), keyInk = hsl(h, 0.15f * ps, 0.90f), keyEdge = Color.Black,
-        keyHi = Color.Transparent, danger = Color(0xFFF2B8B5),
-    )
-}
-
-/** Своя тема в раскладке Okto: акцент красит табло и главную клавишу (как темы Amber/Ocean у Okto). */
-fun oktoPalette(h: Float, s: Float, dark: Boolean): Palette {
-    val ps = s.coerceIn(0f, 1f)
-    return if (dark) Palette(
-        dark = true,
-        bg = hsl(h, 0.18f * ps, 0.08f), onBg = hsl(h, 0.15f * ps, 0.91f), muted = hsl(h, 0.08f * ps, 0.58f),
-        surface = hsl(h, 0.15f * ps, 0.11f), surfaceHi = hsl(h, 0.14f * ps, 0.15f), outline = hsl(h, 0.14f * ps, 0.17f),
-        primary = if (ps < 0.05f) Color(0xFFEDEDED) else hsl(h, maxOf(0.7f, ps), 0.60f),
-        onPrimary = if (ps < 0.05f) Color(0xFF141414) else hsl(h, 0.6f, 0.10f),
-        container = hsl(h, 0.14f * ps, 0.15f), onContainer = hsl(h, 0.15f * ps, 0.91f),
-        accent2 = hsl(h, 0.14f * ps, 0.15f), onAccent2 = hsl(h, 0.15f * ps, 0.91f),
-        well = hsl(h, 0.25f * ps, 0.04f),
-        wellInk = if (ps < 0.05f) Color(0xFFF2F2F2) else hsl(h, maxOf(0.75f, ps), 0.66f),
-        wellDim = hsl(h, 0.18f * ps, 0.52f),
-        wellGhost = if (ps < 0.05f) Color(0x0FFFFFFF) else hsl(h, 0.75f, 0.66f, 0.08f),
-        wellEdge = hsl(h, 0.2f * ps, 0.10f),
-        key = hsl(h, 0.14f * ps, 0.15f), keyInk = hsl(h, 0.15f * ps, 0.91f), keyEdge = Color.Black,
-        keyHi = Color(0x10FFFFFF), danger = Color(0xFFEF5A5F),
-    ) else Palette(
-        dark = false,
-        bg = hsl(h, 0.22f * ps, 0.89f), onBg = hsl(h, 0.30f * ps, 0.12f), muted = hsl(h, 0.12f * ps, 0.34f),
-        surface = hsl(h, 0.20f * ps, 0.85f), surfaceHi = hsl(h, 0.25f * ps, 0.95f), outline = hsl(h, 0.18f * ps, 0.76f),
-        primary = hsl(h, 0.55f * ps, 0.28f), onPrimary = Color.White,
-        container = hsl(h, 0.25f * ps, 0.95f), onContainer = hsl(h, 0.30f * ps, 0.12f),
-        accent2 = hsl(h, 0.25f * ps, 0.95f), onAccent2 = hsl(h, 0.30f * ps, 0.12f),
-        well = hsl(h, 0.18f * ps, 0.15f), wellInk = hsl(h, 0.55f * ps, 0.86f), wellDim = hsl(h, 0.15f * ps, 0.60f),
-        wellGhost = hsl(h, 0.55f * ps, 0.86f, 0.07f), wellEdge = Color(0x66000000),
-        key = hsl(h, 0.30f * ps, 0.96f), keyInk = hsl(h, 0.30f * ps, 0.12f), keyEdge = hsl(h, 0.18f * ps, 0.68f),
-        keyHi = Color(0xCCFFFFFF), danger = Color(0xFFD33A3F),
-    )
-}
 
 // ---------- Тема приложения ----------
 
@@ -188,9 +111,10 @@ data class NoteColors(val bg: Color, val fg: Color, val muted: Color, val border
 val NoteHues = listOf(150f, 340f, 255f, 22f, 46f, 205f)
 
 @Immutable
-class AppTheme(val style: UiStyle, val c: Palette) {
-    val okto: Boolean get() = style == UiStyle.OKTO
-    val font: FontFamily get() = if (okto) Golos else Nunito
+class AppTheme(val c: Palette) {
+    /** Раскладка одна — Okto (табло и клавиши); флаг оставлен для общих компонентов. */
+    val okto: Boolean get() = true
+    val font: FontFamily get() = Golos
 
     /** Цвет метки (кружок в выборе цвета). 0 — без метки. */
     fun tag(i: Int): Color =
@@ -235,7 +159,7 @@ class AppTheme(val style: UiStyle, val c: Palette) {
     fun cap(s: String) = if (okto) s.uppercase() else s
 }
 
-val LocalAppTheme = staticCompositionLocalOf { AppTheme(UiStyle.TONAL, ColorPalette) }
+val LocalAppTheme = staticCompositionLocalOf { AppTheme(OktoPalette) }
 
 val T: AppTheme
     @Composable @ReadOnlyComposable get() = LocalAppTheme.current
@@ -243,15 +167,8 @@ val T: AppTheme
 val C: Palette
     @Composable @ReadOnlyComposable get() = LocalAppTheme.current.c
 
-fun buildTheme(s: ThemeSettings): AppTheme = when (s.kind) {
-    ThemeKind.COLOR -> AppTheme(UiStyle.TONAL, ColorPalette)
-    ThemeKind.OKTO -> AppTheme(UiStyle.OKTO, OktoPalette)
-    ThemeKind.OKTO_LIGHT -> AppTheme(UiStyle.OKTO, OktoLightPalette)
-    ThemeKind.CUSTOM -> when (s.style) {
-        UiStyle.TONAL -> AppTheme(UiStyle.TONAL, tonalPalette(s.hue, s.sat, s.dark))
-        UiStyle.OKTO -> AppTheme(UiStyle.OKTO, oktoPalette(s.hue, s.sat, s.dark))
-    }
-}
+/** Тема следует за системной: тёмная — графит, светлая — белый корпус. */
+fun buildTheme(dark: Boolean): AppTheme = AppTheme(if (dark) OktoPalette else OktoLightPalette)
 
 @Composable
 fun OktoTheme(theme: AppTheme, strings: Strings, content: @Composable () -> Unit) {
