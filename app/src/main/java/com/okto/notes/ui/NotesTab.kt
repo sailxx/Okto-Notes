@@ -42,6 +42,8 @@ import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.text.PlatformTextStyle
+import androidx.compose.ui.text.style.LineHeightStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.okto.notes.OktoViewModel
@@ -196,8 +198,14 @@ private fun OktoNotes(vm: OktoViewModel, all: List<Entry>, shown: List<Entry>) {
     ) {
         item { OktoHeader { vm.showSettings = true } }
         item {
-            Row(Modifier.fillMaxWidth().offset(y = (-6).dp), verticalAlignment = Alignment.CenterVertically) {
-                Text(S.notes, style = t.h1)
+            Row(Modifier.fillMaxWidth().height(44.dp).offset(y = (-6).dp), verticalAlignment = Alignment.CenterVertically) {
+                Text(
+                    S.notes,
+                    style = t.h1.copy(
+                        lineHeightStyle = LineHeightStyle(LineHeightStyle.Alignment.Center, LineHeightStyle.Trim.Both),
+                        platformStyle = PlatformTextStyle(includeFontPadding = false),
+                    ),
+                )
                 Row(
                     Modifier.weight(1f).padding(horizontal = 8.dp),
                     horizontalArrangement = Arrangement.spacedBy(6.dp, Alignment.CenterHorizontally),
