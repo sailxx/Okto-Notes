@@ -130,7 +130,7 @@ private fun TonalDiary(vm: OktoViewModel) {
         }
         item { TonalWeekCard(vm) }
         if (entries.isEmpty()) {
-            item { EmptyState("📔", S.emptyDiaryTitle, S.emptyDiaryText) }
+            if (vm.loaded) item { EmptyState("📔", S.emptyDiaryTitle, S.emptyDiaryText) }
         } else {
             item { SectionTitle(S.entries, Modifier.padding(start = 4.dp, top = 8.dp)) }
             items(entries, key = { it.id }) { e -> TonalDiaryCard(e, { vm.open(e) }, Modifier.animateItem()) }
@@ -298,7 +298,7 @@ private fun OktoDiary(vm: OktoViewModel) {
         }
 
         if (entries.isEmpty()) {
-            item { EmptyState("", S.emptyDiaryTitle, S.emptyDiaryText) }
+            if (vm.loaded) item { EmptyState("", S.emptyDiaryTitle, S.emptyDiaryText) }
         } else {
             item { SectionTitle(S.entries, Modifier.padding(start = 2.dp, top = 8.dp)) }
             items(entries, key = { it.id }) { e -> OktoDiaryRow(e, { vm.open(e) }, Modifier.animateItem()) }
