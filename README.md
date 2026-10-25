@@ -1,83 +1,82 @@
 <div align="center">
 
-**Русский** · [English](README.en.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Türkçe](README.tr.md) · [Українська](README.uk.md) · [Polski](README.pl.md)
+<img src="assets/readme/hero-en.svg" width="100%" alt="Okto Notes — the best notes and journal app for Android">
 
-<br>
+<a href="https://github.com/sailxx/Okto-Notes/releases/latest/download/OktoNotes.apk"><img src="assets/readme/btn-android-en.svg" height="52" alt="Download for Android"></a>&nbsp;&nbsp;<a href="https://github.com/sailxx/Okto-Notes/releases/latest"><img src="assets/readme/btn-new-en.svg" height="52" alt="What’s new"></a>
 
-<img src="assets/readme/hero-ru.svg" width="100%" alt="Okto Notes — лучшее приложение для заметок и дневника на Android">
-
-<a href="https://github.com/sailxx/Okto-Notes/releases/latest/download/OktoNotes.apk"><img src="assets/readme/btn-android-ru.svg" height="52" alt="Скачать для Android"></a>&nbsp;&nbsp;<a href="https://github.com/sailxx/Okto-Notes/releases/latest"><img src="assets/readme/btn-new-ru.svg" height="52" alt="Что нового"></a>
-
-**Okto Notes — лучшее приложение для заметок на Android.** Заметки, дневник с настроением и серией дней, четыре темы оформления — в одном лёгком приложении без рекламы, аккаунтов и интернета. Младший брат планера [Okto](https://github.com/sailxx/Okto).
+**Okto Notes is the best notes app for Android.** Notes, a journal with moods and day streaks, and four visual themes — in one light app with no ads, no accounts and no internet. The little brother of the [Okto](https://github.com/sailxx/Okto) planner.
 
 </div>
 
+> [!NOTE]
+> The app interface is in Russian.
+
 <br>
 
-<img src="assets/readme/features-ru.svg" width="100%" alt="Возможности: заметки, дневник, редактор, приватность">
+<img src="assets/readme/features-en.svg" width="100%" alt="Features: notes, journal, editor, privacy">
 
 <details>
-<summary><b>Подробнее о возможностях</b></summary>
+<summary><b>More about the features</b></summary>
 
-### 📝 Заметки
+### 📝 Notes
 
-Заголовок и текст, **7 цветных меток**, избранное (долгое нажатие на карточку) и поиск по всему тексту. В цветной теме заметки лежат плиткой в две колонки, в теме Okto — компактным списком с временем изменения.
+A title and text, **7 color labels**, favorites (long-press a card) and full-text search. In the colorful theme notes are laid out as two-column tiles; in the Okto theme as a compact list with the time of the last edit.
 
-### 📔 Дневник
+### 📔 Journal
 
-Одна запись на день, **настроение по шкале 1–5**, **серия дней подряд**, тепловая карта за 4 недели и график настроения за неделю. Тап по дню в недельной полосе открывает запись за этот день, тап по настроению — сразу создаёт запись на сегодня.
+One entry per day, **mood on a 1–5 scale**, a **streak of days in a row**, a 4-week heat map and a weekly mood chart. Tap a day in the week strip to open that day’s entry; tap a mood to create today’s entry right away.
 
-### ✍️ Редактор
+### ✍️ Editor
 
-Автосохранение на каждой букве — кнопки «Сохранить» нет. Быстрые вставки: `• список`, `☐ задача`, текущее время. Счётчик слов и время последнего сохранения. Случайно удалил запись — кнопка **«Вернуть»** в течение 4 секунд. К заметкам и записям дневника можно прикреплять **фото и файлы** — кнопки «Фото» и «Файл»; вложения хранятся только на телефоне.
+Autosave on every letter — there is no “Save” button. Quick inserts: `• list`, `☐ task`, the current time. A word counter and the time of the last save. Deleted an entry by accident? The **“Undo”** button is there for 4 seconds. You can attach **photos and files** to notes and journal entries with the Photo and File buttons; attachments stay on the device.
 
-### 🔒 Приватность
+### 🔒 Privacy
 
-Всё хранится только во внутренней памяти телефона. Единственное разрешение — **интернет**, и нужно оно только для необязательной синхронизации заметок с Okto через Google-аккаунт. Дневник в облако не уходит. Не войдёте в аккаунт — приложение ничего не отправляет.
+Everything is stored only in the phone’s internal storage. The only permission is **internet**, used solely for the optional sync of notes with Okto through your Google account. The diary never leaves the phone. If you don’t sign in, the app sends nothing.
 
 </details>
 
 <br>
 
-<img src="assets/readme/themes-ru.svg" width="100%" alt="Темы: Цветная, Okto, Okto Light и Своя">
+<img src="assets/readme/themes-en.svg" width="100%" alt="Themes: Colorful, Okto, Okto Light and Custom">
 
 <details>
-<summary><b>Как работают темы</b></summary>
+<summary><b>How the themes work</b></summary>
 
-Настройки открываются шестерёнкой на главном экране.
+Settings open with the gear on the main screen.
 
-- **Цветная** — основная тема: мягкие пастельные карточки, шрифт Nunito.
-- **Okto** — графит в стиле [Okto](https://sailxx.github.io/Okto/): табло с LCD-цифрами, объёмные клавиши, Golos Text и JetBrains Mono.
-- **Okto Light** — белая версия Okto: те же табло и клавиши на светлом фоне.
-- **Своя** — выбери оформление (Цветное или Okto), светлый или тёмный режим и акцент из 12 цветов, либо подбери оттенок и насыщенность ползунками. Вся палитра — фон, карточки, табло и кнопки — строится из одного цвета, изменения видны сразу.
+- **Colorful** — the main theme: soft pastel cards and the Nunito typeface.
+- **Okto** — graphite in the style of [Okto](https://sailxx.github.io/Okto/): a display with LCD digits, raised keys, Golos Text and JetBrains Mono.
+- **Okto Light** — the white version of Okto: the same display and keys on a light background.
+- **Custom** — choose the look (Colorful or Okto), light or dark mode and an accent from 12 colors, or tune the hue and saturation with sliders. The whole palette — background, cards, display and buttons — is built from a single color, and changes show up instantly.
 
 </details>
 
 <br>
 
-<img src="assets/readme/numbers-ru.svg" width="100%" alt="В цифрах: 1.8 МБ, 0 разрешений, 0 рекламы, 4 темы, 12 акцентов">
+<img src="assets/readme/numbers-en.svg" width="100%" alt="By the numbers: 1.8 MB, 0 permissions, 0 ads, 4 themes, 12 accents">
 
 <details>
-<summary><b>Установка</b></summary>
+<summary><b>Install</b></summary>
 
-1. Скачай [`OktoNotes.apk`](https://github.com/sailxx/Okto-Notes/releases/latest/download/OktoNotes.apk).
-2. Открой файл на телефоне и разреши установку из неизвестных источников.
-3. Готово — Android 8.0 и новее.
+1. Download [`OktoNotes.apk`](https://github.com/sailxx/Okto-Notes/releases/latest/download/OktoNotes.apk).
+2. Open the file on your phone and allow installs from unknown sources.
+3. Done — Android 8.0 or newer.
 
 </details>
 
 <details>
-<summary><b>Разработка</b></summary>
+<summary><b>Development</b></summary>
 
-Kotlin 2.2 + Jetpack Compose (Material 3), без сторонних зависимостей для хранения: записи лежат в JSON во внутренней памяти.
+Kotlin 2.2 + Jetpack Compose (Material 3), no third-party storage dependencies: entries are kept as JSON in internal storage.
 
 ```bash
-./gradlew assembleRelease   # APK в app/build/outputs/apk/release/
+./gradlew assembleRelease   # APK in app/build/outputs/apk/release/
 ```
 
-Нужны JDK 17+ и Android SDK (platform 35).
+You need JDK 17+ and the Android SDK (platform 35).
 
-Картинки README генерируются на всех языках (тексты — в `tools/readme/strings.json`), не правь SVG руками:
+The README images are generated in every language (texts live in `tools/readme/strings.json`) — don’t edit the SVGs by hand:
 
 ```bash
 cd tools/readme && npm install && node build.mjs
@@ -85,12 +84,12 @@ cd tools/readme && npm install && node build.mjs
 
 ```
 app/src/main/java/com/okto/notes/
-├── MainActivity.kt        — точка входа, применение темы
-├── OktoViewModel.kt       — состояние, автосохранение, серия дней
-├── data/                  — модель записи, JSON-хранилище, настройки темы
-└── ui/                    — тема и палитры, компоненты, экраны
+├── MainActivity.kt        — entry point, applies the theme
+├── OktoViewModel.kt       — state, autosave, day streak
+├── data/                  — entry model, JSON storage, theme settings
+└── ui/                    — theme and palettes, components, screens
 ```
 
-Шрифты Nunito, Golos Text и JetBrains Mono — SIL Open Font License 1.1.
+The Nunito, Golos Text and JetBrains Mono fonts are under the SIL Open Font License 1.1.
 
 </details>
