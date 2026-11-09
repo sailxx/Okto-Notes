@@ -10,11 +10,6 @@
 
 **Okto Notes is the best notes app for Android.** Notes, a journal with moods and day streaks, and four visual themes — in one light app with no ads, no accounts and no internet. The little brother of the [Okto](https://github.com/sailxx/Okto) planner.
 
-</div>
-
-> [!NOTE]
-> The app interface is in Russian.
-
 <br>
 
 <img src="assets/readme/features-en.svg" width="100%" alt="Features: notes, journal, editor, privacy">
